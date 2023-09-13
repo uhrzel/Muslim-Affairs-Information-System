@@ -95,7 +95,7 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI', 'mongodb+srv://ortegacanillo76:I7GTCUhzhXjb38vP@website-database.qertuhn.mongodb.net'),
+            'dsn' => env('DB_URI', ''),
             'database' => 'laravel_mongodb',
             'options' => [
                 'database' => 'admin' // sets the authentication database required by mongo 3
