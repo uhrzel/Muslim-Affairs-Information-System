@@ -29,4 +29,24 @@ class HomeController extends Controller
             return view('welcome');
         }
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function chatify(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($user->type == 'admin') {
+            return view('admin.chatify');
+        } elseif ($user->type == 'user') {
+            return view('user.chatify');
+        } else {
+            return view('welcome');
+        }
+    }
 }

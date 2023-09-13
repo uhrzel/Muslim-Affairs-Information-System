@@ -16,8 +16,8 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('chatify')" :active="request()->routeIs('chatify')">
-                        {{ __('Chatify') }}
+                    <x-nav-link :href="route('messenger')" :active="request()->routeIs('messenger')">
+                        {{ __('Messenger') }}
                     </x-nav-link>
                 </div>
             </div>

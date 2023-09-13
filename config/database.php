@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysql'), // Change this to the name of your connection driver
 
     /*
     |--------------------------------------------------------------------------
@@ -91,6 +91,15 @@ return [
             'prefix_indexes' => true,
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
+        ],
+
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI', 'mongodb+srv://ortegacanillo76:I7GTCUhzhXjb38vP@website-database.qertuhn.mongodb.net'),
+            'database' => 'laravel_mongodb',
+            'options' => [
+                'database' => 'admin' // sets the authentication database required by mongo 3
+            ]
         ],
 
     ],
