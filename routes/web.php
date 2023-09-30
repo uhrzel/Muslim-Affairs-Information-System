@@ -19,9 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('admin.dashboard');
-// })->middleware(['auth', 'admin'])->name('dashboard');
+Route::get('/user/{id}', [HomeController::class, 'userProfile'])->middleware(['auth', 'admin'])->name('admin.userProfile');
+Route::get('/user/edit/{id}', [HomeController::class, 'userEdit'])->middleware(['auth', 'admin'])->name('admin.userEdit');
+Route::patch('/user/edit/{id}', [HomeController::class, 'userUpdate'])->middleware(['auth', 'admin'])->name('admin.userUpdate');
+Route::delete('/user/delete/{id}', [HomeController::class, 'userDelete'])->middleware(['auth', 'admin'])->name('admin.userDelete');
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
