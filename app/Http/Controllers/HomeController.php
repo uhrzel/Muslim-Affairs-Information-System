@@ -25,7 +25,7 @@ class HomeController extends Controller
         if ($user->type == 'admin') {
             return view('admin.users.index', compact('users'));
         } elseif ($user->type == 'user') {
-            return view('user.dashboard');
+            return view('users.advertisements.index');
         } else {
             return view('welcome');
         }

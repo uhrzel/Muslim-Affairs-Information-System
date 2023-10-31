@@ -21,17 +21,23 @@
                         {{ __('Messenger') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit'])">
+                    <x-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])">
                         {{ __('Reports') }}
                     </x-nav-link>
+                    
+                    @if(Auth::user()->type == 'admin')
+                        <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit'])">
+                            {{ __('Reports') }}
+                        </x-nav-link>
 
-                    <x-nav-link :href="route('admin.advertisements')" :active="request()->routeIs(['admin.advertisements', 'admin.advertisementShow', 'admin.advertisementEdit'])">
-                        {{ __('Advertisement') }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('admin.advertisements')" :active="request()->routeIs(['admin.advertisements', 'admin.advertisementShow', 'admin.advertisementEdit'])">
+                            {{ __('Advertisement') }}
+                        </x-nav-link>
 
-                    <x-nav-link :href="route('admin.events')" :active="request()->routeIs(['admin.events', 'admin.eventShow', 'admin.eventEdit'])">
-                        {{ __('Event') }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('admin.events')" :active="request()->routeIs(['admin.events', 'admin.eventShow', 'admin.eventEdit'])">
+                            {{ __('Event') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

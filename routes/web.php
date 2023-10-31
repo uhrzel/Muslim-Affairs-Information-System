@@ -25,13 +25,6 @@ Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 
 
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    // Reports Resource
-    Route::resource('reports', ReportController::class)->except(['create', 'store', 'update', 'destroy'])->names([
-        'index' => 'admin.reports',
-        'show' => 'admin.reportShow',
-        'edit' => 'admin.reportEdit',
-    ]);
-
     // Advertisements
     Route::resource('advertisements', AdvertisementController::class)->except(['create', 'store', 'update', 'destroy'])->names([
         'index' => 'admin.advertisements',
@@ -53,6 +46,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'edit' => 'admin.userEdit',
         'update' => 'admin.userUpdate',
         'destroy' => 'admin.userDestroy',
+    ]);
+
+});
+
+// for admin and user
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    // Reports Resource
+    Route::resource('reports', ReportController::class)->except(['store', 'update', 'destroy'])->names([
+        'index' => 'admin.reports',
+        'create' => 'admin.reportCreate',
+        'show' => 'admin.reportShow',
+        'edit' => 'admin.reportEdit',
     ]);
 
 });
