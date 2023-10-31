@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +19,43 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/user/{id}', [HomeController::class, 'userProfile'])->middleware(['auth', 'admin'])->name('admin.userProfile');
-Route::get('/user/edit/{id}', [HomeController::class, 'userEdit'])->middleware(['auth', 'admin'])->name('admin.userEdit');
-Route::patch('/user/edit/{id}', [HomeController::class, 'userUpdate'])->middleware(['auth', 'admin'])->name('admin.userUpdate');
-Route::delete('/user/delete/{id}', [HomeController::class, 'userDelete'])->middleware(['auth', 'admin'])->name('admin.userDelete');
+Route::get('/', function () { return view('welcome'); });
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/chatify', [HomeController::class, 'chatify'])->middleware(['auth', 'verified'])->name('chatify');
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    // Reports Resource
+    Route::resource('reports', ReportController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+        'index' => 'admin.reports',
+        'show' => 'admin.reportShow',
+        'edit' => 'admin.reportEdit',
+    ]);
+
+    // Advertisements
+    Route::resource('advertisements', AdvertisementController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+        'index' => 'admin.advertisements',
+        'show' => 'admin.advertisementShow',
+        'edit' => 'admin.advertisementEdit',
+    ]);
+
+    // Events
+    Route::resource('events', EventController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+        'index' => 'admin.events',
+        'show' => 'admin.eventShow',
+        'edit' => 'admin.eventEdit',
+    ]);
+
+    // Users
+    Route::resource('users', UserController::class)->except(['create', 'store'])->names([
+        'index' => 'admin.users',
+        'show' => 'admin.userShow',
+        'edit' => 'admin.userEdit',
+        'update' => 'admin.userUpdate',
+        'destroy' => 'admin.userDestroy',
+    ]);
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

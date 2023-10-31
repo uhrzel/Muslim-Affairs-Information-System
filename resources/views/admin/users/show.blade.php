@@ -16,7 +16,7 @@
                         <a href="{{ route('admin.userEdit', $user->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
                             Edit
                         </a>
-                        <form action="{{ route('admin.userDelete', $user->id) }}" method="POST">
+                        <form action="{{ route('admin.userDestroy', $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-400 hover:text-red-600 underline dark:text-red-300 dark:hover:text-red-400 ml-6">

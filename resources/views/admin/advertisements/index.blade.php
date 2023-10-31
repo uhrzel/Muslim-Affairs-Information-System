@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('Advertisements') }}
         </h2>
     </x-slot>
 
@@ -10,14 +10,13 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 d-flex justify-space-between align-items-center">
                     <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                        Users List
+                        Advertisements List
                     </h1>
                 </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <table class="table-auto w-full text-left whitespace-no-wrap bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg color-gray-900 dark:text-gray-100">
+                    {{-- <table class="table-auto w-full text-left whitespace-no-wrap bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg color-gray-900 dark:text-gray-100">
                         <thead class="color-gray-900 dark:text-gray-100">
                             <tr>
-                                {{-- <th>Id</th> --}}
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Role</th>
@@ -29,7 +28,6 @@
                         <tbody class="divide-y divide-gray-300 dark:divide-gray-700">
                             @foreach($users as $user)
                             <tr>
-                                {{-- <td>{{ $user->id }}</td> --}}
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->type }}</td>
@@ -43,7 +41,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                    </table> --}}
                 </div>
             </div>
         </div>

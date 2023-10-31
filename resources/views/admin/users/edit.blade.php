@@ -13,7 +13,7 @@
                         User Edit - {{ $user->name }}
                     </h1>
                     <div class="flex items-center">
-                        <a href="{{ route('admin.userProfile', $user->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+                        <a href="{{ route('admin.userShow', $user->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
                             Back
                         </a>
                     </div>
