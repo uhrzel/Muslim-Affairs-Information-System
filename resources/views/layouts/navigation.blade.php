@@ -28,7 +28,7 @@
                     @endif
                     
                     @if(Auth::user()->type == 'admin')
-                        <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit'])">
+                        <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit', 'admin.reportCreate'])">
                             {{ __('Reports') }}
                         </x-nav-link>
 
@@ -98,6 +98,34 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('messenger')" :active="request()->routeIs('messenger')">
+                {{ __('Messenger') }}
+            </x-responsive-nav-link>
+
+            @if(Auth::user()->type == 'user')
+                <x-responsive-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])">
+                    {{ __('Reports') }}
+                </x-responsive-nav-link>
+            @endif
+
+            @if(Auth::user()->type == 'admin')
+                <x-responsive-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit'])">
+                    {{ __('Reports') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('admin.advertisements')" :active="request()->routeIs(['admin.advertisements', 'admin.advertisementShow', 'admin.advertisementEdit'])">
+                    {{ __('Advertisements') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('admin.events')" :active="request()->routeIs(['admin.events', 'admin.eventShow', 'admin.eventEdit'])">
+                    {{ __('Events') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('admin.events')" :active="request()->routeIs(['admin.events', 'admin.eventShow', 'admin.eventEdit'])">
+                    {{ __('Logs') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
