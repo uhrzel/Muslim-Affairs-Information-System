@@ -79,7 +79,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route("admin.users.index")->with("success", "User updated successfully.");
+        return redirect()->route("admin.userShow", $user->id)->with("success", "User updated successfully.");
     }
 
     /**
@@ -91,6 +91,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect("admin/users")->with("success", "User deleted successfully.");
+        return redirect("dashboard")->with("success", "User deleted successfully.");
     }
 }
