@@ -16,7 +16,7 @@
             background-color: #052e16;
             width: 100%;
         }
-    
+
         .drop-shadow-lg {
             filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.1));
         }
@@ -38,7 +38,7 @@
             </a>
         </div>
         <div class="flex items-center">
-          @if (Route::has('login'))
+            @if (Route::has('login'))
             @auth
             <a href="{{ url('/dashboard') }}" class="bg-yellow-400 text-dark font-bold py-2 px-10 rounded-full">Dashboard</a>
             @else
@@ -48,13 +48,13 @@
             <a href="{{ route('register') }}" class="bg-yellow-400 text-dark font-bold py-2 px-10 rounded-full">Register</a>
             @endif
             @endauth
-          @endif
+            @endif
         </div>
-      </nav>
-      <main class="flex flex-col justify-center items-center">
+    </nav>
+    <main class="flex flex-col justify-center items-center">
         <div class="w-full grid grid-cols-12 px-12 pt-8">
             <div class="col-span-6 flex flex-col justify-center">
-                <h1 class="text-7xl font-bold text-white"><span class="text-amber-200">Muslim</span> Affairs Office <span class="text-amber-200">Information System</span></h1>
+                <h1 class="text-7xl font-bold text-white"><span class="text-yellow-300">Muslim</span> Affairs<span class="text-white"> <br> Office<span class="text-yellow-300"> Information System</span></h1>
             </div>
             <div class="col-span-6">
                 <img src="img/man.png" alt="Picture of a man" class="w-96 object-cover mx-auto drop-shadow-lg">
@@ -64,31 +64,31 @@
         <div class="w-full grid grid-cols-12 px-12 mt-40 gap-4">
             <div class="col-span-3">
                 <div class="flex justify-center items-center">
-                    <img src="img/info.png" alt="about" class="w-32 h-32 rounded-full mr-10">
+                    <img src="img/info.png" alt="about" class="w-20 h-20 rounded-full mr-10">
                     <h1 class="text-2xl font-bold text-white">About</h1>
                 </div>
             </div>
             <div class="col-span-3">
                 <div class="flex justify-center items-center">
-                    <img src="img/calendar.png" alt="about" class="w-32 h-32 rounded-full mr-10">
+                    <img src="img/calendar.png" alt="about" class="w-20 h-20 rounded-full mr-10">
                     <h1 class="text-2xl font-bold text-white">Latest Events</h1>
                 </div>
             </div>
             <div class="col-span-3">
                 <div class="flex justify-center items-center">
-                    <img src="img/news.png" alt="about" class="w-32 h-32 rounded-full mr-10">
+                    <img src="img/news2.png" alt="about" class="w-20 h-20 rounded-full mr-10">
                     <h1 class="text-2xl font-bold text-white">Latest News</h1>
                 </div>
             </div>
             <div class="col-span-3">
                 <div class="flex justify-center items-center">
-                    <img src="img/ads.png" alt="about" class="w-32 h-32 rounded-full mr-10">
+                    <img src="img/ads2.png" alt="about" class="w-20 h-20 rounded-full mr-10">
                 </div>
             </div>
 
             <div class="col-span-3">
                 <div class="flex justify-center items-center mt-8">
-                    <img src="img/geo.png" alt="about" class="w-14 h-18 rounded-full mr-10">
+                    <img src="img/geo.png" alt="about" class="w-10 h-15  mr-10">
                     <h3 class="text-sm text-white">
                         Tupi South Cotabato <br>
                         9505 Philippines
@@ -104,7 +104,7 @@
             </div>
             <div class="col-span-3">
                 <div class="flex justify-center items-center mt-8">
-                    <img src="img/news-lg.png" alt="about" class="w-20 h-32 mr-10">
+                    <img src="img/news1.png" alt="about" class="w-12 h-20 mr-10">
                     <h4 class="text-sm text-white">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, cumque in esse ullam odio rerum vero voluptatum minima deleniti, consectetur illum reprehenderit a sed, id fugiat. Ipsam animi earum eligendi!
                     </h4>
@@ -112,13 +112,13 @@
             </div>
             <div class="col-span-3 row-span-2">
                 <div class="flex justify-center items-center mt-8">
-                    <img src="img/ads.png" alt="about" class="w-40 h-80 rounded-full mr-10">
+                    <img src="img/ads1.png" alt="about" class="w-30 h-40 rounded-full mr-10">
                 </div>
             </div>
 
             <div class="col-span-3">
                 <div class="flex justify-center items-center mt-8">
-                    <img src="img/phone.png" alt="about" class="w-14 h-18 rounded-full mr-10">
+                    <img src="img/tel.png" alt="about" class="w-12 h-12 rounded-full mr-10">
                     <h3 class="text-sm text-white">
                         +63 999 999 9999
                     </h3>
@@ -133,7 +133,7 @@
             </div>
             <div class="col-span-3">
                 <div class="flex justify-center items-center mt-8">
-                    <img src="img/news-lg.png" alt="about" class="w-20 h-32 mr-10">
+                    <img src="img/news1.png" alt="about" class="w-12 h-20 mr-10">
                     <h4 class="text-sm text-white">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, cumque in esse ullam odio rerum vero voluptatum minima deleniti, consectetur illum reprehenderit a sed, id fugiat. Ipsam animi earum eligendi!
                     </h4>
@@ -142,7 +142,7 @@
 
             <div class="col-span-3">
                 <div class="flex justify-center items-center mt-8">
-                    <img src="img/mail.png" alt="about" class="w-14 h-18 rounded-full mr-10">
+                    <img src="img/mail.png" alt="about" class="w-12 h-12 rounded-full mr-10">
                     <h3 class="text-sm text-white">
                         info@system.com
                     </h3>
@@ -157,7 +157,7 @@
             </div>
             <div class="col-span-3">
                 <div class="flex justify-center items-center mt-8">
-                    <img src="img/news-lg.png" alt="about" class="w-20 h-32 mr-10">
+                    <img src="img/news1.png" alt="about" class="w-12 h-20 mr-10">
                     <h4 class="text-sm text-white">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, cumque in esse ullam odio rerum vero voluptatum minima deleniti, consectetur illum reprehenderit a sed, id fugiat. Ipsam animi earum eligendi!
                     </h4>
@@ -169,10 +169,11 @@
                     <h1 class="text-2xl font-bold text-white">
                         MaoInfoSys All Rights Reserved
                     </h1>
+
                 </div>
             </div>
         </div>
-      </main>
+    </main>
 </body>
 
 </html>
