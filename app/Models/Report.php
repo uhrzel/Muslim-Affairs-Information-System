@@ -12,7 +12,7 @@ class Report extends Model
 
     protected $fillable = ['title', 'description', 'image', 'status', 'user_id'];
 
-    public function user():BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

@@ -7,6 +7,9 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\StatisticsController;
+use App\Http\Controllers\LogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +22,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () { return view('welcome'); });
+Route::get('/', function () {
+    return view('welcome');
+});
+
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -35,10 +41,27 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Events
     Route::resource('events', EventController::class)->except(['create', 'store', 'update', 'destroy'])->names([
         'index' => 'admin.events',
-        'show' => 'admin.eventShow',
-        'edit' => 'admin.eventEdit',
+        'show' => 'admin.eventsShow',
+        'edit' => 'admin.eventsEdit',
     ]);
-
+    //news
+    Route::resource('news', NewsController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+        'index' => 'admin.news',
+        'show' => 'admin.newsShow',
+        'edit' => 'admin.newsEdit',
+    ]);
+    //logs
+    Route::resource('logs', LogsController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+        'index' => 'admin.logs',
+        'show' => 'admin.logsShow',
+        'edit' => 'admin.logsEdit',
+    ]);
+    //statistics
+    Route::resource('statistics', StatisticsController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+        'index' => 'admin.statistics',
+        'show' => 'admin.statisticsShow',
+        'edit' => 'admin.statisticsEdit',
+    ]);
     // Users
     Route::resource('users', UserController::class)->except(['create', 'store'])->names([
         'index' => 'admin.users',
@@ -47,11 +70,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'update' => 'admin.userUpdate',
         'destroy' => 'admin.userDestroy',
     ]);
-
 });
 
 // for admin and user
 Route::middleware(['auth', 'verified'])->group(function () {
+
 
     // Reports Resource
     Route::resource('reports', ReportController::class)->except(['store', 'update', 'destroy'])->names([
@@ -60,7 +83,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'show' => 'admin.reportShow',
         'edit' => 'admin.reportEdit',
     ]);
-
 });
 
 Route::middleware('auth')->group(function () {
@@ -69,4 +91,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Event List') }}
+            {{ __('User Logs') }}
         </h2>
     </x-slot>
 
@@ -12,9 +12,9 @@
                     <table class="w-full text-sm text-left text-black">
                         <thead class="text-xs text-black uppercase bg-green-600 ">
                             <tr>
-                                <th scope="col" class="px-6 py-3">Event Name</th>
-                                <th scope="col" class="px-6 py-3">Event Decription</th>
-                                <th scope="col" class="px-6 py-3">Event Type</th>
+                                <th scope="col" class="px-6 py-3">Email</th>
+                                <th scope="col" class="px-6 py-3">Date</th>
+                                <th scope="col" class="px-6 py-3">Logs</th>
 
                                 <th scope="col" class="px-6 py-3">
                                     <span class="sr-only">
@@ -24,12 +24,12 @@
                             </tr>
                         </thead>
                         <tr>
-                            @foreach($events as $event)
+                            @foreach($logs as $user)
                         <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black">{{ $user->id }}</td>
-                            <td class="px-6 py-4">{{ $event->event_name }}</td>
-                            <td class="px-6 py-4">{{ $event->event_description }}</td>
-                            <td class="px-6 py-4">{{ $event->event_type }}</td>
+                            <td class="px-6 py-4">{{ $user->email }}</td>
+                            <td class="px-6 py-4">{{ $user->date }}</td>
+                            <td class="px-6 py-4">{{ $user->Logs }}</td>
 
 
                             <td class="px-6 py-4">
