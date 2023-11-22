@@ -1,22 +1,10 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <div class="flex bg-white dark:bg-gray-800 dark:border-gray-700">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight w-full">
-                {{ __('News') }} (10)
-    </h2>
-
-    <a href="{{ route('admin.newsCreate') }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
-        Create
-    </a>
-    </div>
-    </x-slot> --}}
-
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex items-center justify-between px-4 py-4 bg-white border-b dark:bg-gray-800 dark:border-gray-700 sm:px-6">
                     <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                        Event List
+                        Create News
                     </h1>
 
                     <a href="{{ route('admin.news') }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
@@ -24,23 +12,49 @@
                     </a>
                 </div>
 
-                <form action="{{ route('admin.newsCreate') }}" method="POST">
+                <form action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
+
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr>
-                                <th scope="col" class="px-6 py-3">Title</th>
-
+                                <th scope="col" class="px-6 py-3">News Title</th>
                                 <td class="px-6 py-4">
                                     <input type="text" name="title" id="title" placeholder="Title" class="bg-dark-100 w-full p-4 text-black rounded-lg @error('title') border-0 @enderror" value="{{ old('title') }}">
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="col" class="px-6 py-3">Description</th>
-
+                                <th scope="col" class="px-6 py-3">News Content</th>
                                 <td class="px-6 py-4">
-                                    <textarea name="description" id="description" placeholder="Description" class="bg-dark-100 w-full p-4 text-black rounded-lg @error('description') border-0 @enderror">{{ old('description') }}</textarea>
+                                    <textarea name="newsContent" id="newsContent" placeholder="content" class="bg-dark-100 w-full p-4 text-black rounded-lg @error('description') border-0 @enderror">{{ old('description') }}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="px-6 py-3">News Image</th>
+                                <td class="px-6 py-4">
+                                    <input type="file" name="newsImage" id="newsImage" class="bg-dark-100 w-full p-4 text-black rounded-lg @error('newsImage') border-0 @enderror">
+                                    @error('newsImage')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="px-6 py-3">News Date</th>
+                                <td class="px-6 py-4">
+                                    <input type="text" name="newsDate" id="newsDate" placeholder="Select date" class="bg-dark-100 w-full p-4 text-black rounded-lg datepicker @error('newsDate') border-0 @enderror">
+                                    @error('newsDate')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="px-6 py-3">News Time</th>
+                                <td class="px-6 py-4">
+                                    <input type="text" name="newsTime" id="newsTime" placeholder="Select time" class="bg-dark-100 w-full p-4 text-black rounded-lg timepicker @error('newsTime') border-0 @enderror">
+                                    @error('newsTime')
+                                    <span class="text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </td>
                             </tr>
 
@@ -57,4 +71,49 @@
             </div>
         </div>
     </div>
+    <!-- Include Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Include Flatpickr JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Include Pikaday CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+
+    <!-- Include Pikaday JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+
+    <!-- Initialize Pikaday -->
+    <!-- Initialize Pikaday -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var picker = new Pikaday({
+                field: document.getElementById('newsDate'),
+                format: 'YYYY-MM-DD',
+                toString(date, format) {
+                    const day = date.getDate();
+                    const month = date.getMonth() + 1;
+                    const year = date.getFullYear();
+
+                    // Ensure leading zeros
+                    const formattedDay = day < 10 ? '0' + day : day;
+                    const formattedMonth = month < 10 ? '0' + month : month;
+
+                    if (format === 'YYYY-MM-DD') {
+                        return `${year}-${formattedMonth}-${formattedDay}`;
+                    }
+
+                    return '';
+                },
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr('#newsTime', {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: 'H:i',
+            });
+        });
+    </script>
 </x-app-layout>

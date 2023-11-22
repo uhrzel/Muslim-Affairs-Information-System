@@ -45,11 +45,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
         'edit' => 'admin.eventsEdit',
     ]);
     //news
-    Route::resource('news', NewsController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+    Route::resource('news', NewsController::class)->except(['update'])->names([
         'index' => 'admin.news',
+        'create' => 'admin.newsCreate',
+        'store' => 'admin.news.store',
         'show' => 'admin.newsShow',
         'edit' => 'admin.newsEdit',
+        'destroy' => 'admin.newsDestroy',
     ]);
+
     //logs
     Route::resource('logs', LogsController::class)->except(['create', 'store', 'update', 'destroy'])->names([
         'index' => 'admin.logs',

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('news_content')->nullable();
             $table->text('news_image')->nullable();
             $table->datetime('news_date')->nullable();
+            $table->time('news_time')->nullable();
             $table->timestamps();
         });
     }
