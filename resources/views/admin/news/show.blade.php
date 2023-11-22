@@ -57,7 +57,7 @@
                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="col" class="px-6 py-3">News Image</th>
                             <td class="px-6 py-4">
-                                <img src="{{ asset('storage/' . $news->news_image) }}" class="w-32 h-32 object-cover">
+                                <img src="{{ asset('storage/news_images/' .basename($news->news_image))}}" class="w-32 h-32 object-cover">
                             </td>
                         </tr>
                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">

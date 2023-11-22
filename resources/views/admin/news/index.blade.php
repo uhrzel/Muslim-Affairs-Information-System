@@ -34,7 +34,9 @@
                             <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black">{{ $News->news_title }}</td>
                                 <td class="px-6 py-4">{{ $News->news_content}}</td>
-                                <td class="px-6 py-4">{{ $News->news_image }}</td>
+                                <td class="px-6 py-4">
+                                    <img src="{{ asset('storage/news_images/' . basename($News->news_image)) }}" class="max-w-full h-20 w-20">
+                                </td>
                                 <td class="px-6 py-4">{{ $News->news_date }}</td>
                                 <td class="px-6 py-4">
                                     {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}
@@ -47,6 +49,7 @@
                             </tr>
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div>

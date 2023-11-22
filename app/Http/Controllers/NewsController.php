@@ -50,7 +50,7 @@ class NewsController extends Controller
         if ($request->hasFile('newsImage')) {
             $image = $request->file('newsImage');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $imagePath = $image->storeAs('news_images', $imageName, 'public'); // Assuming you have a 'news_images' directory in your storage/public directory
+            $imagePath = $image->storeAs('public/news_images', $imageName); // Add 'public/' to the path
         } else {
             $imagePath = null;
         }
@@ -63,6 +63,7 @@ class NewsController extends Controller
             'news_date' => $request->input('newsDate'),
             'news_time' => $request->input('newsTime'),
         ]);
+
 
         return redirect()->route("admin.news")->with("success", "News created successfully.");
     }
@@ -87,6 +88,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
+
         return view("admin.news.edit", compact("news"));
     }
 
@@ -99,7 +101,39 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        $news->update($request->all());
+        $rules = [
+            'title' => 'sometimes|string|max:255',
+            'newsContent' => 'sometimes|string',
+            'newsDate' => 'sometimes|date_format:Y-m-d',
+            'newsTime' => 'sometimes|date_format:H:i',
+        ];
+
+        // Add validation rule for image only if a new file is provided
+        if ($request->hasFile('newsImage')) {
+            $rules['newsImage'] = 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048';
+        }
+
+        $request->validate($rules);
+
+        // Handle file upload only if a new file is provided
+        if ($request->hasFile('newsImage')) {
+            $image = $request->file('newsImage');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('public/news_images', $imageName);
+        } else {
+            // Retain the existing file if no new file is provided
+            $imagePath = $news->news_image;
+        }
+
+        // Update only the fillable fields
+        $news->update([
+            'news_title' => $request->input('title'), // Corrected input name
+            'news_content' => $request->input('newsContent'),
+            'news_image' => $imagePath,
+            'news_date' => $request->input('newsDate'),
+            'news_time' => $request->input('newsTime'),
+        ]);
+
         return redirect()->route("admin.news")->with("success", "News updated successfully.");
     }
 

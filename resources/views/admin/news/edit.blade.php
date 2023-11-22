@@ -20,9 +20,11 @@
                     </div>
                 </div>
 
-                <form action="{{ route('admin.newsEdit', $news->id) }}" method="POST">
+                <form action="{{ route('admin.newsUpdate', $news->id) }}" method="POST" enctype="multipart/form-data">
+
                     @csrf
                     @method('PUT')
+
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <tbody>
                             <tr>
@@ -61,12 +63,13 @@
                             <tr>
                                 <th scope="col" class="px-6 py-3">News Image</th>
                                 <td class="px-6 py-4">
-                                    <input type="file" name="newsImage" id="newsImage" class="bg-dark-100 w-full p-4 text-black rounded-lg @error('newsImage') border-0 @enderror" value="{{ $news->news_image}}">
-                                    @error('newsImage')
-                                    <span class="text-red-500">{{ $message }}</span>
-                                    @enderror
+                                    <input type="file" name="newsImage" id="newsImage" class="bg-dark-100 w-full p-4 text-black rounded-lg @error('newsImage') border-0 @enderror">
+
                                 </td>
                             </tr>
+
+
+
                             <tr>
                                 <th scope="col" class="px-6 py-3">News Date</th>
                                 <td class="px-6 py-4">
