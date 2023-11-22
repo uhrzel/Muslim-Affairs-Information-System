@@ -12,10 +12,9 @@
                     <table class="w-full text-sm text-left text-black">
                         <thead class="text-xs text-black uppercase bg-green-600 ">
                             <tr>
-                                <th scope="col" class="px-6 py-3">Advertisement Name</th>
                                 <th scope="col" class="px-6 py-3">Advertisement title</th>
+                                <th scope="col" class="px-6 py-3">Advertisement description</th>
                                 <th scope="col" class="px-6 py-3">Advertisement Image</th>
-                                <th scope="col" class="px-6 py-3">Advertisement Description</th>
                                 <th scope="col" class="px-6 py-3">
                                     <span class="sr-only">
                                         Action
@@ -29,10 +28,10 @@
                         @foreach($advertisements as $ads)
                         <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black">{{ $ads->id }}</td>
-                            <td class="px-6 py-4">{{ $ads->ads_name }}</td>
                             <td class="px-6 py-4">{{ $ads->ads_title }}</td>
+                            <td class="px-6 py-4">{{ $ads->ads_description }}</td>
                             <td class="px-6 py-4">{{ $ads->ads_image }}</td>
-                            <td class="px-6 py-4">{{ $ads->description }}</td>
+
 
                             <td class="px-6 py-4">
                                 <a href="{{ route('admin.userShow', $user->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
