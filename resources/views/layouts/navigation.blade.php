@@ -31,7 +31,7 @@
                         {{ __('Reports') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.advertisements')" :active="request()->routeIs(['admin.advertisements', 'admin.advertisementShow', 'admin.advertisementEdit'])">
+                    <x-nav-link :href="route('admin.advertisement')" :active="request()->routeIs(['admin.advertisement', 'admin.advertisementShow', 'admin.advertisementEdit'])">
                         {{ __('Advertisements') }}
                     </x-nav-link>
 
@@ -120,7 +120,7 @@
                 {{ __('Reports') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('admin.advertisements')" :active="request()->routeIs(['admin.advertisements', 'admin.advertisementsShow', 'admin.advertisementsEdit'])">
+            <x-responsive-nav-link :href="route('admin.advertisement')" :active="request()->routeIs(['admin.advertisement', 'admin.advertisementShow', 'admin.advertisementsEdit'])">
                 {{ __('Advertisements') }}
             </x-responsive-nav-link>
 

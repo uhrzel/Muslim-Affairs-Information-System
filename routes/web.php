@@ -32,10 +32,15 @@ Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 
 Route::middleware(['auth', 'admin'])->group(function () {
 
     // Advertisements
-    Route::resource('advertisements', AdvertisementController::class)->except(['create', 'store', 'update', 'destroy'])->names([
-        'index' => 'admin.advertisements',
+    Route::resource('advertisements', AdvertisementController::class)->names([
+        'index' => 'admin.advertisement',
         'show' => 'admin.advertisementShow',
         'edit' => 'admin.advertisementEdit',
+        'create' => 'admin.advertisementCreate',
+        'store' => 'admin.advertisementStore',
+        'update' => 'admin.advertisementUpdate',
+        'destroy' => 'admin.advertisementDestroy',
+
     ]);
 
     // Events

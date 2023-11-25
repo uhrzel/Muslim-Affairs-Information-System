@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->text('description');
-            $table->text('image')->nullable();
+            $table->text('ads_title');
+            $table->text('ads_description');
+            $table->text('ads_images')->nullable();
+            $table->text('ads_video')->nullable();
             $table->timestamps();
         });
     }
