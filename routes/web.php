@@ -39,11 +39,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
     ]);
 
     // Events
-    Route::resource('events', EventController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+    Route::resource('events', EventController::class)->names([
         'index' => 'admin.events',
+        'create' => 'admin.eventsCreate',
+        'store' => 'admin.eventsStore',
         'show' => 'admin.eventsShow',
         'edit' => 'admin.eventsEdit',
+        'update' => 'admin.eventsUpdate',
+        'destroy' => 'admin.eventsDestroy',
     ]);
+
     //news
     Route::resource('news', NewsController::class)->names([
         'index' => 'admin.news',

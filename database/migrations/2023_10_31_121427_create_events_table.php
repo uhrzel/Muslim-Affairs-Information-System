@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->text("name");
-            $table->text("description");
-            $table->enum("type", ["public", "private"]);
+            $table->text("event_name");
+            $table->text("event_description");
+            $table->text("event_image");
+            $table->datetime('event_date')->nullable();
+            $table->time('event_time')->nullable();
             $table->timestamps();
         });
     }

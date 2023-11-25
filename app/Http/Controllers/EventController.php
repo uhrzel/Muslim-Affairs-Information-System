@@ -36,9 +36,37 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        Event::create($request->all());
-        return redirect()->route("admin.events.index")->with("success", "Event created successfully.");
+        // Validate the request
+        $request->validate([
+            'event_name' => 'required|string|max:255',
+            'event_description' => 'required|string',
+            'eventImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'eventDate' => 'required|date_format:Y-m-d', // Adjust the date format as needed
+            'eventTime' => 'required|date_format:H:i',
+        ]);
+
+        // Handle file upload
+        if ($request->hasFile('eventImage')) {
+            $image = $request->file('eventImage');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('public/events_images', $imageName); // Add 'public/' to the path
+        } else {
+            $imagePath = null;
+        }
+
+        // Create Events record in the database
+        Event::create([
+            'event_name' => $request->input('event_name'),
+            'event_description' => $request->input('event_description'),
+            'event_image' => $imagePath,
+            'event_date' => $request->input('eventDate'),
+            'event_time' => $request->input('eventTime'),
+        ]);
+
+
+        return redirect()->route("admin.events")->with("success", "Event created successfully.");
     }
+
 
     /**
      * Display the specified resource.
@@ -48,7 +76,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view("admin.events.show", compact("event")); 
+        return view("admin.events.show", compact("event"));
     }
 
     /**
@@ -59,7 +87,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return view("admin.events.edit", compact("event")); 
+        return view("admin.events.edit", compact("event"));
     }
 
     /**
@@ -69,10 +97,43 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Event $event)
     {
-        $event->update($request->all());
-        return redirect()->route("admin.events.index")->with("success", "Event updated successfully.");
+        $rules = [
+            'event_name' => 'sometimes|string|max:255',
+            'event_description' => 'sometimes|string',
+            'eventDate' => 'sometimes|date_format:Y-m-d',
+            'eventTime' => 'sometimes|date_format:H:i',
+        ];
+
+        // Add validation rule for image only if a new file is provided
+        if ($request->hasFile('eventImage')) {
+            $rules['eventImage'] = 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048';
+        }
+
+        $request->validate($rules);
+
+        // Handle file upload only if a new file is provided
+        if ($request->hasFile('eventImage')) {
+            $image = $request->file('eventImage');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('public/events_images', $imageName);
+        } else {
+            // Retain the existing file if no new file is provided
+            $imagePath = $event->event_image;
+        }
+
+        // Update only the fillable fields
+        $event->update([
+            'event_name' => $request->input('event_name'), // Corrected input name
+            'event_description' => $request->input('event_description'),
+            'event_image' => $imagePath,
+            'event_date' => $request->input('eventDate'),
+            'event_time' => $request->input('eventTime'),
+        ]);
+
+        return redirect()->route("admin.events")->with("success", "Events updated successfully.");
     }
 
     /**
