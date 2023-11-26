@@ -9,9 +9,7 @@
 
 ## Installation
 
-
-<img src="img/man.png" alt="Picture of a man">
-
+<img src="https://github.com/uhrzel/muslim-affairs-information-system/blob/main/public/img/landing.png" alt="Picture of a man">
 
 1. Clone the repo and `cd` into it
 2. Run `composer install`
