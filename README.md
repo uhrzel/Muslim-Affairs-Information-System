@@ -9,6 +9,10 @@
 
 ## Installation
 
+ <p class="center">
+                <img src="img/man.png" alt="Picture of a man" class="w-96 object-cover mx-auto drop-shadow-lg">
+            </p>
+
 1. Clone the repo and `cd` into it
 2. Run `composer install`
 3. Run `npm install`
