@@ -36,7 +36,6 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request
         $request->validate([
             'adsTitle' => 'required|string|max:255',
             'adsDescription' => 'required|string',
@@ -45,7 +44,6 @@ class AdvertisementController extends Controller
 
         ]);
 
-        // Handle file upload for image
         if ($request->hasFile('adsImage')) {
             $image = $request->file('adsImage');
             $imageName = time() . '.' . $image->getClientOriginalExtension();

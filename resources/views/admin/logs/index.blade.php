@@ -16,27 +16,15 @@
                                 <th scope="col" class="px-6 py-3">Date</th>
                                 <th scope="col" class="px-6 py-3">Logs</th>
 
-                                <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">
-                                        Action
-                                    </span>
-                                </th>
                             </tr>
                         </thead>
                         <tr>
                             @foreach($logs as $user)
                         <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black">{{ $user->id }}</td>
+
                             <td class="px-6 py-4">{{ $user->email }}</td>
                             <td class="px-6 py-4">{{ $user->date }}</td>
-                            <td class="px-6 py-4">{{ $user->Logs }}</td>
-
-
-                            <td class="px-6 py-4">
-                                <a href="{{ route('admin.userShow', $user->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
-                                    View
-                                </a>
-                            </td>
+                            <td class="px-6 py-4">{{ $user->logs }}</td>
                         </tr>
                         @endforeach
                         </tbody>

@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Logs;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -27,6 +28,11 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        // Log user login information for 'user' type only
+        if ($request->user()->type === 'user') {
+            $this->logUserActivity($request->user()->email, 'login');
+        }
+
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
@@ -37,6 +43,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Log user logout information for 'user' type only
+        if (Auth::user()->type === 'user') {
+            $this->logUserActivity(Auth::user()->email, 'logout');
+        }
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
@@ -44,5 +55,17 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    /**
+     * Log user activity (login or logout) to the 'logs' table.
+     */
+    private function logUserActivity($email, $activity)
+    {
+        Logs::create([
+            'email' => $email,
+            'logs' => $activity,
+            'date' => now(),
+        ]);
     }
 }
