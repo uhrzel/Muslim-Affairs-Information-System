@@ -2,12 +2,8 @@
     <x-slot name="header">
         <div class="flex bg-blue-700">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight w-full">
-                {{ __('Reports from Users') }} (10)
+                {{ __('Reports from Users') }}
             </h2>
-
-            <a href="{{ route('admin.reportCreate') }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
-                Create
-            </a>
         </div>
     </x-slot>
 
@@ -19,36 +15,58 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs uppercase bg-green-600 text-black">
                             <tr>
-                                <th scope="col" class="px-6 py-3">ID</th>
-                                <th scope="col" class="px-6 py-3">Title</th>
-                                <th scope="col" class="px-6 py-3">Description</th>
-                                <th scope="col" class="px-6 py-3">User</th>
+                                <th scope="col" class="px-6 py-3">Report From</th>
+                                <th scope="col" class="px-6 py-3">User Email</th>
+                                <th scope="col" class="px-6 py-3">Report Title </th>
+                                <th scope="col" class="px-6 py-3">Report Description</th>
                                 <th scope="col" class="px-6 py-3">Status</th>
                                 <th scope="col" class="px-6 py-3">Created At</th>
-                                <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">
-                                        Action
-                                    </span>
-                                </th>
+
+                                <!-- Show Status and Action columns only for admin users -->
+                                @if(auth()->user()->type === 'admin')
+
+                                <th scope="col" class="px-6 py-3">Action</th>
+                                @endif
                             </tr>
                         </thead>
-                        <tr>
-                            {{-- @foreach($reports as $user)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">{{ $user->id }}</td>
-                            <td class="px-6 py-4">{{ $user->id }}</td>
-                            <td class="px-6 py-4">{{ $user->title }}</td>
-                            <td class="px-6 py-4">{{ $user->description }}</td>
-                            <td class="px-6 py-4">{{ $user->user }}</td>
-                            <td class="px-6 py-4">{{ $user->status }}</td>
-                            <td class="px-6 py-4">{{ $user->created }}</td>
-                            <td class="px-6 py-4">
-                                <a href="{{ route('admin.userShow', $user->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
-                                    View
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach --}}
+                        <tbody>
+                            @foreach($reports as $user)
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="px-6 py-4">{{ $user->user->name }}</td>
+                                <td class="px-6 py-4">{{ $user->user->email }}</td>
+                                <td class="px-6 py-4">{{ $user->report_title}}</td>
+                                <td class="px-6 py-4">{{ $user->report_description }}</td>
+                                <td class="px-6 py-4">{{ $user->status }}</td>
+                                <td class="px-6 py-4">{{ $user->created_at}}</td>
+
+                                <!-- Show Status and Action columns only for admin users -->
+                                @if(auth()->user()->type === 'admin')
+
+                                <td class="px-6 py-4">
+                                    @if($user->status === 'pending')
+                                    <form action="{{ route('admin.reportUpdate', $user->id) }}" method="POST" class="inline-block">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input type="hidden" name="status" value="settled">
+                                        <button type="submit" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+                                            Settled
+                                        </button>
+                                    </form>
+                                    <form action="{{ route('admin.reportUpdate', $user->id) }}" method="POST" class="inline-block">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input type="hidden" name="status" value="cancelled">
+                                        <button type="submit" class="text-red-400 hover:text-red-600 underline dark:text-red-300 dark:hover:text-red-400">
+                                            Cancel
+                                        </button>
+                                    </form>
+                                    @else
+                                    <span class="text-gray-500">Completed</span>
+                                    @endif
+                                </td>
+                                @endif
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

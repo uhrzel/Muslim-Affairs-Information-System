@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->string('description');
-            $table->string('image')->nullable();
-            $table->enum('status', ['pending', 'cancelled', 'approved'])->default('pending');
+            $table->string('report_title', 100);
+            $table->string('report_description');
+            $table->enum('status', ['pending', 'cancelled', 'settled'])->default('pending');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

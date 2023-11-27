@@ -94,11 +94,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     // Reports Resource
-    Route::resource('reports', ReportController::class)->except(['store', 'update', 'destroy'])->names([
+    Route::resource('reports', ReportController::class)->except(['destroy'])->names([
         'index' => 'admin.reports',
         'create' => 'admin.reportCreate',
         'show' => 'admin.reportShow',
         'edit' => 'admin.reportEdit',
+        'store' => 'admin.reportStore',
+        'update' => 'admin.reportUpdate',
     ]);
 });
 
