@@ -13,11 +13,13 @@
                     </h3>
 
                     <div class="flex gap-4">
-                        <a href="{{ route('admin.advertisement') }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+                        <a href="{{ route('admin.advertisement') }}" class="inline-block bg-yellow-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-yellow-200">
+                            <i class="fas fa-arrow-alt-circle-left mr-1"></i>
                             Back
                         </a>
 
-                        <a href="{{ route('admin.advertisementEdit', $advertisement->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+                        <a href="{{ route('admin.advertisementEdit', $advertisement->id) }}" class="inline-block bg-green-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-green-200">
+                            <i class="fas fa-edit mr-1"></i>
                             Edit
                         </a>
 
@@ -25,7 +27,8 @@
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="text-red-400 hover:text-red-600 underline dark:text-red-300 dark:hover:text-red-400" onclick="return confirm('Are you sure?')">
+                            <button type="submit" class="inline-block bg-red-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-red-200" onclick="return confirm('Are you sure?')">
+                                <i class="fas fa-trash mr-1"></i>
                                 Delete
                             </button>
                         </form>

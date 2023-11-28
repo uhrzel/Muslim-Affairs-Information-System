@@ -7,7 +7,8 @@
                         Create Event
                     </h1>
 
-                    <a href="{{ route('admin.events') }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+                    <a href="{{ route('admin.events') }}" class="inline-block bg-yellow-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-yellow-200">
+                        <i class="fas fa-arrow-alt-circle-left mr-1"></i>
                         Back
                     </a>
                 </div>

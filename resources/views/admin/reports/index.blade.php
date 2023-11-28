@@ -10,7 +10,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs uppercase bg-green-600 text-black">
@@ -24,7 +23,6 @@
 
                                 <!-- Show Status and Action columns only for admin users -->
                                 @if(auth()->user()->type === 'admin')
-
                                 <th scope="col" class="px-6 py-3">Action</th>
                                 @endif
                             </tr>
@@ -41,25 +39,26 @@
 
                                 <!-- Show Status and Action columns only for admin users -->
                                 @if(auth()->user()->type === 'admin')
-
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 flex items-center">
                                     @if($user->status === 'pending')
-                                    <form action="{{ route('admin.reportUpdate', $user->id) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        @method('PATCH')
-                                        <input type="hidden" name="status" value="settled">
-                                        <button type="submit" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
-                                            Settled
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('admin.reportUpdate', $user->id) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        @method('PATCH')
-                                        <input type="hidden" name="status" value="cancelled">
-                                        <button type="submit" class="text-red-400 hover:text-red-600 underline dark:text-red-300 dark:hover:text-red-400">
-                                            Cancel
-                                        </button>
-                                    </form>
+                                    <div class="flex space-x-2">
+                                        <form action="{{ route('admin.reportUpdate', $user->id) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            @method('PATCH')
+                                            <input type="hidden" name="status" value="settled">
+                                            <button type="submit" class="inline-block bg-blue-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">
+                                                Settled
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('admin.reportUpdate', $user->id) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            @method('PATCH')
+                                            <input type="hidden" name="status" value="cancelled">
+                                            <button type="submit" class="inline-block bg-red-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-red-200">
+                                                Cancel
+                                            </button>
+                                        </form>
+                                    </div>
                                     @else
                                     <span class="text-gray-500">Completed</span>
                                     @endif

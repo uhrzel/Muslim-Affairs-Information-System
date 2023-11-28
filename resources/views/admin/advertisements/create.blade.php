@@ -7,11 +7,12 @@
                         Create Ads
                     </h1>
 
-                    <a href="{{ route('admin.advertisement') }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+                    <a href="{{ route('admin.advertisement') }}" class="inline-block bg-yellow-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-yellow-200">
+                        <i class="fas fa-arrow-alt-circle-left mr-1"></i>
                         Back
                     </a>
                 </div>
-
+                s
                 <form action="{{ route('admin.advertisementStore') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')

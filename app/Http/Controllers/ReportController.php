@@ -14,9 +14,19 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::all();
+        $user = auth()->user();
+
+        if ($user->type === 'admin') {
+            // Fetch all reports for admin users
+            $reports = Report::all();
+        } else {
+            // Fetch reports only for the authenticated user
+            $reports = Report::where('user_id', $user->id)->get();
+        }
+
         return view('admin.reports.index', compact('reports'));
     }
+
 
     /**
      * Show the form for creating a new resource.

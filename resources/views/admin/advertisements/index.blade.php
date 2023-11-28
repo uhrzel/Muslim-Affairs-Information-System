@@ -4,9 +4,11 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight w-full">
                 {{ __('Advertisement List') }}
             </h2>
-            <a href="{{ route('admin.advertisementCreate') }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+            <a href="{{ route('admin.advertisementCreate') }}" class="inline-flex items-center bg-blue-500 text-white rounded-full px-4 py-2 leading-none text-sm dark:hover:text-green-200">
+                <i class="fas fa-plus mr-1"></i>
                 Create
             </a>
+
         </div>
     </x-slot>
 
@@ -23,9 +25,9 @@
                                 <th scope="col" class="px-6 py-3">Advertisement Video</th>
 
                                 <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">
-                                        Action
-                                    </span>
+
+                                    Action
+
                                 </th>
                             </tr>
                         </thead>
@@ -45,7 +47,8 @@
                                     </video>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('admin.advertisementShow', $Ads->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+                                    <a href="{{ route('admin.advertisementShow', $Ads->id) }}" class="inline-block bg-green-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-green-200">
+                                        <i class="fas fa-eye mr-1"></i>
                                         View
                                     </a>
                                 </td>
