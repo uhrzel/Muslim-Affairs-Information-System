@@ -22,13 +22,13 @@
 
                     @if(Auth::user()->type == 'user')
                     <x-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])">
-                        {{ __('Reports') }}
+                        {{ __('Complains') }}
                     </x-nav-link>
                     @endif
 
                     @if(Auth::user()->type == 'admin')
                     <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit', 'admin.reportCreate'])">
-                        {{ __('Reports') }}
+                        {{ __('Complains') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.advertisement')" :active="request()->routeIs(['admin.advertisement', 'admin.advertisementShow', 'admin.advertisementEdit'])">
@@ -49,6 +49,7 @@
                     <x-nav-link :href="route('admin.logs')" :active="request()->routeIs(['admin.logs', 'admin.logsShow', 'admin.logsEdit'])">
                         {{ __('User Logs') }}
                     </x-nav-link>
+
                     @endif
                 </div>
             </div>
@@ -111,13 +112,13 @@
 
             @if(Auth::user()->type == 'user')
             <x-responsive-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])">
-                {{ __('Reports') }}
+                {{ __('Complains') }}
             </x-responsive-nav-link>
             @endif
 
             @if(Auth::user()->type == 'admin')
             <x-responsive-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit'])">
-                {{ __('Reports') }}
+                {{ __('Complains') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('admin.advertisement')" :active="request()->routeIs(['admin.advertisement', 'admin.advertisementShow', 'admin.advertisementsEdit'])">

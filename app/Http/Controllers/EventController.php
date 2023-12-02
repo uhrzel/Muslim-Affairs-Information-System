@@ -43,6 +43,7 @@ class EventController extends Controller
             'eventImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'eventDate' => 'required|date_format:Y-m-d', // Adjust the date format as needed
             'eventTime' => 'required|date_format:H:i',
+            'event_visibility' => ['required', 'in:public,private'],
         ]);
 
         // Handle file upload
@@ -61,6 +62,7 @@ class EventController extends Controller
             'event_image' => $imagePath,
             'event_date' => $request->input('eventDate'),
             'event_time' => $request->input('eventTime'),
+            'status' => $request->input('event_visibility'),
         ]);
 
 
@@ -105,6 +107,7 @@ class EventController extends Controller
             'event_description' => 'sometimes|string',
             'eventDate' => 'sometimes|date_format:Y-m-d',
             'eventTime' => 'sometimes|date_format:H:i',
+            'event_visibility' => ['required', 'in:public,private'],
         ];
 
         // Add validation rule for image only if a new file is provided
@@ -131,6 +134,7 @@ class EventController extends Controller
             'event_image' => $imagePath,
             'event_date' => $request->input('eventDate'),
             'event_time' => $request->input('eventTime'),
+            'status' => $request->input('event_visibility'),
         ]);
 
         return redirect()->route("admin.events")->with("success", "Events updated successfully.");

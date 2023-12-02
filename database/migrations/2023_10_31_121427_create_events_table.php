@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text("event_image");
             $table->datetime('event_date')->nullable();
             $table->time('event_time')->nullable();
+            $table->text("status");
             $table->timestamps();
         });
     }

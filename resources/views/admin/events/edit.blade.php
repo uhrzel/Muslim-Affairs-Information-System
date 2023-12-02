@@ -88,6 +88,15 @@
                                     @enderror
                                 </td>
                             </tr>
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Event Visibility</th>
+                                <td class="px-6 py-4">
+                                    <select name="event_visibility" id="event_visibility" class="bg-dark-100 w-full p-4 text-black rounded-lg">
+                                        <option value="public">Public</option>
+                                        <option value="private">Private</option>
+                                    </select>
+                                </td>
+                            </tr>
 
                             <tr>
                                 <td colspan="2" class="px-6 py-4 text-right">

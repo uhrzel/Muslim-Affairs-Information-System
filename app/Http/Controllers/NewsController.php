@@ -44,6 +44,8 @@ class NewsController extends Controller
             'newsImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'newsDate' => 'required|date_format:Y-m-d', // Adjust the date format as needed
             'newsTime' => 'required|date_format:H:i',
+            'news_visibility' =>
+            ['required', 'in:public,private'],
         ]);
 
         // Handle file upload
@@ -62,6 +64,7 @@ class NewsController extends Controller
             'news_image' => $imagePath,
             'news_date' => $request->input('newsDate'),
             'news_time' => $request->input('newsTime'),
+            'status' => $request->input('news_visibility'),
         ]);
 
 
@@ -106,6 +109,8 @@ class NewsController extends Controller
             'newsContent' => 'sometimes|string',
             'newsDate' => 'sometimes|date_format:Y-m-d',
             'newsTime' => 'sometimes|date_format:H:i',
+            'news_visibility' =>
+            ['required', 'in:public,private'],
         ];
 
         // Add validation rule for image only if a new file is provided
@@ -132,6 +137,7 @@ class NewsController extends Controller
             'news_image' => $imagePath,
             'news_date' => $request->input('newsDate'),
             'news_time' => $request->input('newsTime'),
+            'status' => $request->input('news_visibility'),
         ]);
 
         return redirect()->route("admin.news")->with("success", "News updated successfully.");

@@ -102,6 +102,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'store' => 'admin.reportStore',
         'update' => 'admin.reportUpdate',
     ]);
+    /*    Route::resource('reports', AdminReport::class)->except(['destroy'])->names([
+        'index' => 'admin.adminReport',
+        'create' => 'admin.adminReportCreate',
+        'show' => 'admin.adminReportShow',
+        'edit' => 'admin.adminReportEdit',
+        'store' => 'admin.adminReportStore',
+        'update' => 'admin.adminReportUpdate',
+    ]); */
 });
 
 Route::middleware('auth')->group(function () {

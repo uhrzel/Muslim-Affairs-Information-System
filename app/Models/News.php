@@ -15,5 +15,6 @@ class News extends Model
         'news_image',
         'news_date',
         'news_time',
+        'status',
     ];
 }
