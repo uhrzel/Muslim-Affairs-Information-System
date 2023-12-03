@@ -11,6 +11,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\LogsController;
 use App\Models\Event;
+use App\Models\News;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +24,10 @@ use App\Models\Event;
 */
 
 Route::get('/', function () {
-    $events = Event::all(); // Fetch events
-    return view('welcome', compact('events'));
+    $events = Event::all();
+    $news = News::all();
+
+    return view('welcome', compact('events', 'news'));
 });
 
 
