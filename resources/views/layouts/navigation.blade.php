@@ -1,3 +1,14 @@
+<style>
+    .custom-style {
+        color: white;
+    }
+
+    .custom-style:hover {
+        color: yellow;
+    }
+</style>
+
+
 <nav x-data="{ open: false }" class="text-black bg-green-600 border-b">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,42 +22,42 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" class="text-black">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs(['dashboard', 'admin.userShow', 'admin.userEdit', 'admin.users'])">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs(['dashboard', 'admin.userShow', 'admin.userEdit', 'admin.users'])" class="custom-style">
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('messenger')" :active="request()->routeIs('messenger')">
+                    <x-nav-link :href="route('messenger')" :active="request()->routeIs('messenger')" class="custom-style">
                         {{ __('Messenger') }}
                     </x-nav-link>
 
                     @if(Auth::user()->type == 'user')
-                    <x-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])">
+                    <x-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])" class="custom-style">
                         {{ __('Complains') }}
                     </x-nav-link>
                     @endif
 
                     @if(Auth::user()->type == 'admin')
-                    <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit', 'admin.reportCreate'])">
+                    <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit', 'admin.reportCreate'])" class="custom-style">
                         {{ __('Complains') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.advertisement')" :active="request()->routeIs(['admin.advertisement', 'admin.advertisementShow', 'admin.advertisementEdit'])">
+                    <x-nav-link :href="route('admin.advertisement')" :active="request()->routeIs(['admin.advertisement', 'admin.advertisementShow', 'admin.advertisementEdit'])" class="custom-style">
                         {{ __('Advertisements') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.events')" :active="request()->routeIs(['admin.events', 'admin.eventsShow', 'admin.eventsEdit'])">
+                    <x-nav-link :href="route('admin.events')" :active="request()->routeIs(['admin.events', 'admin.eventsShow', 'admin.eventsEdit'])" class="custom-style">
                         {{ __('Events') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.news')" :active="request()->routeIs(['admin.news', 'admin.newsShow', 'admin.newsEdit'])">
+                    <x-nav-link :href="route('admin.news')" :active="request()->routeIs(['admin.news', 'admin.newsShow', 'admin.newsEdit'])" class="custom-style">
                         {{ __('News') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.statistics')" :active="request()->routeIs(['admin.statistics', 'admin.statisticsShow', 'admin.statisticsEdit'])">
+                    <x-nav-link :href="route('admin.statistics')" :active="request()->routeIs(['admin.statistics', 'admin.statisticsShow', 'admin.statisticsEdit'])" class="custom-style">
                         {{ __('Statistics') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.logs')" :active="request()->routeIs(['admin.logs', 'admin.logsShow', 'admin.logsEdit'])">
+                    <x-nav-link :href="route('admin.logs')" :active="request()->routeIs(['admin.logs', 'admin.logsShow', 'admin.logsEdit'])" class="custom-style">
                         {{ __('User Logs') }}
                     </x-nav-link>
 
