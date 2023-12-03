@@ -193,16 +193,17 @@
                             Partnership
                         </h6>
                         <p class="mb-4">
-                            <a href="#!" class="text-neutral-600 dark:text-neutral-200">Angular</a>
+                            <a href="#!" class="text-neutral-600 dark:text-neutral-200">LGU/PLDU - South Cotabato
+                            </a>
                         </p>
                         <p class="mb-4">
-                            <a href="#!" class="text-neutral-600 dark:text-neutral-200">React</a>
+                            <a href="#!" class="text-neutral-600 dark:text-neutral-200">None Government Organization (NGO)</a>
                         </p>
                         <p class="mb-4">
-                            <a href="#!" class="text-neutral-600 dark:text-neutral-200">Vue</a>
+                            <a href="#!" class="text-neutral-600 dark:text-neutral-200">PNP</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-neutral-600 dark:text-neutral-200">Laravel</a>
+                            <a href="#!" class="text-neutral-600 dark:text-neutral-200">SF-PA</a>
                         </p>
                     </div>
                     <!-- Useful links section -->
