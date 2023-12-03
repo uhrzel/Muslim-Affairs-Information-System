@@ -110,24 +110,23 @@ class EventController extends Controller
             'event_visibility' => ['required', 'in:public,private'],
         ];
 
-        // Add validation rule for image only if a new file is provided
         if ($request->hasFile('eventImage')) {
             $rules['eventImage'] = 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048';
         }
 
         $request->validate($rules);
 
-        // Handle file upload only if a new file is provided
+
         if ($request->hasFile('eventImage')) {
             $image = $request->file('eventImage');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('public/events_images', $imageName);
         } else {
-            // Retain the existing file if no new file is provided
+      
             $imagePath = $event->event_image;
         }
 
-        // Update only the fillable fields
+    
         $event->update([
             'event_name' => $request->input('event_name'), // Corrected input name
             'event_description' => $request->input('event_description'),
