@@ -12,7 +12,7 @@
                         Back
                     </a>
                 </div>
-                s
+
                 <form action="{{ route('admin.advertisementStore') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')

@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\News;
+use App\Models\Advertisement;
 use App\Models\Statistics;
+use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StatisticsController extends Controller
@@ -14,8 +19,14 @@ class StatisticsController extends Controller
      */
     public function index()
     {
+
         $statistics = statistics::all();
-        return view("admin.statistics.index", compact("statistics"));
+        $events = Event::all();
+        $news = News::all();
+        $advertisements = Advertisement::all();
+        $users = User::all();
+        $reports = Report::all();
+        return view("admin.statistics.index", compact("statistics", "events", "news", "advertisements", "users", "reports"));
     }
 
     /**

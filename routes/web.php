@@ -30,7 +30,6 @@ Route::get('/', function () {
     return view('welcome', compact('events', 'news'));
 });
 
-
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
