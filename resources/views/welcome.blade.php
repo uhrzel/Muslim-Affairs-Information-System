@@ -12,7 +12,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 
-
     <style>
         .bg-green-fullscreen {
             background-color: #052e16;
@@ -34,10 +33,7 @@
             transition: background 0.3s ease-in-out;
         }
 
-        .news-content {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
+
 
         .news-item:hover .news-content {
             opacity: 1;
@@ -249,8 +245,6 @@
                         <a href="#" onclick="openModal('{{ $News->news_title }}', '{{ $News->news_date }}', '{{ $News->news_time }}', '{{ $News->news_content }}', '{{ asset('storage/news_images/' . basename($News->news_image)) }}')">
                             <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
                         </a>
-
-
                     </div>
                 </div>
                 <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12 news-item">
@@ -340,7 +334,6 @@
                         <a href="#" onclick="openModal2('{{ $Event->event_name }}', '{{ $Event->event_date }}', '{{ $Event->event_time }}', '{{ $Event->event_description }}', '{{ asset('storage/events_images/' . basename($Event->event_image)) }}')">
                             <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
                         </a>
-
                     </div>
                     <h5 class="mt-3 mb-2 text-lg font-bold text-white"><strong>Event Name: </strong>{{ $Event->event_name }}</h5>
                     <div class="mb-3 flex items-center justify-center text-sm font-medium text-yellow-400">
