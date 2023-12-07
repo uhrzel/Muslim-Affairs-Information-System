@@ -32,7 +32,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get data from HTML data attributes
+
             var publicEventsCount = parseInt(document.getElementById('publicEventsCount').dataset.count);
             var privateEventsCount = parseInt(document.getElementById('privateEventsCount').dataset.count);
             var publicNewsCount = parseInt(document.getElementById('publicNewsCount').dataset.count);
@@ -48,7 +48,7 @@
             // Set up the charts for events
             var eventsCtx = document.getElementById('eventsChart').getContext('2d');
             var eventsChart = new Chart(eventsCtx, {
-                type: 'bar',
+                type: 'polarArea',
                 data: {
                     labels: ['Public Events', 'Private Events', 'Total Events'],
                     datasets: [{
@@ -136,7 +136,7 @@
 
             var reportsCtx = document.getElementById('reportsChart').getContext('2d');
             var reportsChart = new Chart(reportsCtx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: ['Settled Complains', 'Pending Complains', 'Cancelled Complains', 'Total Complains'],
                     datasets: [{
@@ -194,7 +194,6 @@
         });
     </script>
 
-    <!-- Pass data using HTML data attributes -->
     <div id="publicEventsCount" data-count="{{ $events->where('status', 'public')->count() }}" style="display: none;"></div>
     <div id="privateEventsCount" data-count="{{ $events->where('status', 'private')->count() }}" style="display: none;"></div>
     <div id="publicNewsCount" data-count="{{ $news->where('status', 'public')->count() }}" style="display: none;"></div>
