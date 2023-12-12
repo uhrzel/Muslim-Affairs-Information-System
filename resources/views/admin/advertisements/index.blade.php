@@ -47,7 +47,7 @@
                                     </video>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('admin.advertisementShow', $Ads->id) }}" class="inline-block bg-green-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-green-200">
+                                    <a href="{{ route('admin.advertisementShow', $Ads->id) }}" class="w-24 inline-block bg-green-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-green-200">
                                         <i class="fas fa-eye mr-1"></i>
                                         View
                                     </a>
