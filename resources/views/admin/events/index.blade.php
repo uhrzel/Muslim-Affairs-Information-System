@@ -1,20 +1,31 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex bg-blue-700">
+        <div class="flex bg-blue-700 items-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight w-full">
                 {{ __('Event List') }}
             </h2>
-            <a href="{{ route('admin.eventsCreate') }}" class="inline-flex items-center bg-blue-500 text-white rounded-full px-4 py-2 leading-none text-sm dark:hover:text-green-200">
-                <i class="fas fa-plus mr-1"></i>
-                Create
-            </a>
+            <div class="relative pr-4"> <!-- Adjust the padding as needed -->
+                <input type="text" id="searchInput" class="w-full border rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring focus:border-blue-300" placeholder="Search...">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i class="fas fa-search text-gray-400"></i>
+                </div>
+            </div>
+            <div class="mr-4"> <!-- Adjust the margin as needed -->
+                <a href="{{ route('admin.eventsCreate') }}" class="inline-flex items-center bg-blue-500 text-white rounded-full px-4 py-2 leading-none text-sm dark:hover:text-green-200">
+                    <i class="fas fa-plus"></i>
+                    <span class="ml-1">Create</span>
+                </a>
+            </div>
         </div>
     </x-slot>
+
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
                     <table class="w-full text-sm text-left text-black">
                         <thead class="text-xs text-black uppercase bg-green-600 ">
                             <tr>
@@ -30,11 +41,11 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="searchResults">
                             @foreach($events as $Events)
                             <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black">{{ $Events->event_name }}</td>
-                                <td class="px-6 py-4">{{ $Events->event_description}}</td>
+                                <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black event-name">{{ $Events->event_name }}</td>
+                                <td class=" px-6 py-4 event-description">{{ $Events->event_description}}</td>
                                 <td class="px-6 py-4">
                                     <img src="{{ asset('storage/events_images/' . basename($Events->event_image)) }}" class="max-w-full h-20 w-20">
                                 </td>
@@ -57,4 +68,22 @@
             </div>
         </div>
     </div>
+    <script>
+        // Real-time search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const tableRows = document.querySelectorAll('#searchResults tr');
+
+            tableRows.forEach(row => {
+                const eventName = row.querySelector('.event-name').textContent.toLowerCase();
+                const eventDescription = row.querySelector('.event-description').textContent.toLowerCase();
+
+                if (eventName.includes(searchTerm) || eventDescription.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </x-app-layout>
