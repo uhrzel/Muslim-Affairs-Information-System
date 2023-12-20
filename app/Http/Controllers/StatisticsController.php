@@ -20,13 +20,12 @@ class StatisticsController extends Controller
     public function index()
     {
 
-        $statistics = statistics::all();
         $events = Event::all();
         $news = News::all();
         $advertisements = Advertisement::all();
         $users = User::all();
         $reports = Report::all();
-        return view("admin.statistics.index", compact("statistics", "events", "news", "advertisements", "users", "reports"));
+        return view("admin.statistics.index", compact("events", "news", "advertisements", "users", "reports"));
     }
 
     /**
