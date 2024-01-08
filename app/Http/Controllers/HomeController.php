@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
-
+use App\Models\News;
+use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -22,10 +23,13 @@ class HomeController extends Controller
         $user = Auth::user();
         $users = User::all();
 
+
         if ($user->type == 'admin') {
             return view('admin.users.index', compact('users'));
         } elseif ($user->type == 'user') {
-            return view('users.advertisements.index');
+            $events = Event::all();
+            $news = News::all();
+            return view('users.advertisements.index', compact('events', 'news'));
         } else {
             return view('welcome');
         }

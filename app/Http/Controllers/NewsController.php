@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use DateTime;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -36,9 +37,40 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        News::create($request->all());
-        return redirect()->route("admin.news.index")->with("success", "News created successfully.");
+        // Validate the request
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'newsContent' => 'required|string',
+            'newsImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'newsDate' => 'required|date_format:Y-m-d', // Adjust the date format as needed
+            'newsTime' => 'required|date_format:H:i',
+            'news_visibility' =>
+            ['required', 'in:public,private'],
+        ]);
+
+        // Handle file upload
+        if ($request->hasFile('newsImage')) {
+            $image = $request->file('newsImage');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('public/news_images', $imageName); // Add 'public/' to the path
+        } else {
+            $imagePath = null;
+        }
+
+        // Create News record in the database
+        News::create([
+            'news_title' => $request->input('title'),
+            'news_content' => $request->input('newsContent'),
+            'news_image' => $imagePath,
+            'news_date' => $request->input('newsDate'),
+            'news_time' => $request->input('newsTime'),
+            'status' => $request->input('news_visibility'),
+        ]);
+
+
+        return redirect()->route("admin.news")->with("success", "News created successfully.");
     }
+
 
     /**
      * Display the specified resource.
@@ -59,6 +91,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
+
         return view("admin.news.edit", compact("news"));
     }
 
@@ -71,8 +104,43 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        $news->update($request->all());
-        return redirect()->route("admin.news.index")->with("success", "News updated successfully.");
+        $rules = [
+            'title' => 'sometimes|string|max:255',
+            'newsContent' => 'sometimes|string',
+            'newsDate' => 'sometimes|date_format:Y-m-d',
+            'newsTime' => 'sometimes|date_format:H:i',
+            'news_visibility' =>
+            ['required', 'in:public,private'],
+        ];
+
+        // Add validation rule for image only if a new file is provided
+        if ($request->hasFile('newsImage')) {
+            $rules['newsImage'] = 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048';
+        }
+
+        $request->validate($rules);
+
+        // Handle file upload only if a new file is provided
+        if ($request->hasFile('newsImage')) {
+            $image = $request->file('newsImage');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('public/news_images', $imageName);
+        } else {
+            // Retain the existing file if no new file is provided
+            $imagePath = $news->news_image;
+        }
+
+        // Update only the fillable fields
+        $news->update([
+            'news_title' => $request->input('title'), // Corrected input name
+            'news_content' => $request->input('newsContent'),
+            'news_image' => $imagePath,
+            'news_date' => $request->input('newsDate'),
+            'news_time' => $request->input('newsTime'),
+            'status' => $request->input('news_visibility'),
+        ]);
+
+        return redirect()->route("admin.news")->with("success", "News updated successfully.");
     }
 
     /**
@@ -84,6 +152,6 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         $news->delete();
-        return redirect()->route("admin.news.index")->with("success", "News deleted successfully.");
+        return redirect()->route("admin.news")->with("success", "News deleted successfully.");
     }
 }

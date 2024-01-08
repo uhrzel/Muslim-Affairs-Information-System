@@ -14,9 +14,19 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::all();
+        $user = auth()->user();
+
+        if ($user->type === 'admin') {
+            // Fetch all reports for admin users
+            $reports = Report::all();
+        } else {
+            // Fetch reports only for the authenticated user
+            $reports = Report::where('user_id', $user->id)->get();
+        }
+
         return view('admin.reports.index', compact('reports'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,9 +46,21 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        Report::create($request->all());
-        return redirect()->route('admin.reports.index')->with('success', 'Report created successfully.');
+        $validatedData = $request->validate([
+            'reportTitle' => 'required',
+            'reportDescription' => 'required',
+        ]);
+
+        $report = new Report;
+        $report->report_title = $validatedData['reportTitle'];
+        $report->report_description = $validatedData['reportDescription'];
+        $report->status = 'pending';
+        $report->user_id = auth()->user()->id;
+        $report->save();
+
+        return redirect()->route('admin.reports')->with('success', 'Report created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -48,7 +70,7 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-        return view('admin.reports.show', compact('report'));   
+        return view('admin.reports.show', compact('report'));
     }
 
     /**
@@ -59,7 +81,7 @@ class ReportController extends Controller
      */
     public function edit(Report $report)
     {
-        return view('admin.reports.edit', compact('report'));   
+        return view('admin.reports.edit', compact('report'));
     }
 
     /**
@@ -69,11 +91,18 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Report $report)
     {
-        $report->update($request->all());
-        return redirect()->route('admin.reports.index')->with('success', 'Report updated successfully.');
+        $request->validate([
+            'status' => 'required|in:settled,cancelled', // Add validation for status
+        ]);
+
+        $report->update(['status' => $request->status]);
+
+        return redirect()->route('admin.reports')->with('success', 'Report updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -83,7 +112,7 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-        $report->delete();   
+        $report->delete();
         return redirect()->route('admin.reports.index')->with('success', 'Report deleted successfully.');
     }
 }

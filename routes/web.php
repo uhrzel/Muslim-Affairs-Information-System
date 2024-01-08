@@ -10,7 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\LogsController;
-
+use App\Models\Event;
+use App\Models\News;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,33 +24,52 @@ use App\Http\Controllers\LogsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $events = Event::all();
+    $news = News::all();
 
+    return view('welcome', compact('events', 'news'));
+});
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
 
     // Advertisements
-    Route::resource('advertisements', AdvertisementController::class)->except(['create', 'store', 'update', 'destroy'])->names([
-        'index' => 'admin.advertisements',
+    Route::resource('advertisements', AdvertisementController::class)->names([
+        'index' => 'admin.advertisement',
         'show' => 'admin.advertisementShow',
         'edit' => 'admin.advertisementEdit',
+        'create' => 'admin.advertisementCreate',
+        'store' => 'admin.advertisementStore',
+        'update' => 'admin.advertisementUpdate',
+        'destroy' => 'admin.advertisementDestroy',
+
     ]);
 
     // Events
-    Route::resource('events', EventController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+    Route::resource('events', EventController::class)->names([
         'index' => 'admin.events',
+        'create' => 'admin.eventsCreate',
+        'store' => 'admin.eventsStore',
         'show' => 'admin.eventsShow',
         'edit' => 'admin.eventsEdit',
+        'update' => 'admin.eventsUpdate',
+        'destroy' => 'admin.eventsDestroy',
     ]);
+
     //news
-    Route::resource('news', NewsController::class)->except(['create', 'store', 'update', 'destroy'])->names([
+    Route::resource('news', NewsController::class)->names([
         'index' => 'admin.news',
+        'create' => 'admin.newsCreate',
+        'store' => 'admin.news.store',
         'show' => 'admin.newsShow',
         'edit' => 'admin.newsEdit',
+        'destroy' => 'admin.newsDestroy',
+        'update' => 'admin.newsUpdate',
     ]);
+
+
+
     //logs
     Route::resource('logs', LogsController::class)->except(['create', 'store', 'update', 'destroy'])->names([
         'index' => 'admin.logs',
@@ -77,12 +97,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     // Reports Resource
-    Route::resource('reports', ReportController::class)->except(['store', 'update', 'destroy'])->names([
+    Route::resource('reports', ReportController::class)->except(['destroy'])->names([
         'index' => 'admin.reports',
         'create' => 'admin.reportCreate',
         'show' => 'admin.reportShow',
         'edit' => 'admin.reportEdit',
+        'store' => 'admin.reportStore',
+        'update' => 'admin.reportUpdate',
     ]);
+    /*    Route::resource('reports', AdminReport::class)->except(['destroy'])->names([
+        'index' => 'admin.adminReport',
+        'create' => 'admin.adminReportCreate',
+        'show' => 'admin.adminReportShow',
+        'edit' => 'admin.adminReportEdit',
+        'store' => 'admin.adminReportStore',
+        'update' => 'admin.adminReportUpdate',
+    ]); */
 });
 
 Route::middleware('auth')->group(function () {

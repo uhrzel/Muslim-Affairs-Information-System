@@ -9,5 +9,5 @@ class Logs extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["email", "logs"];
+    protected $fillable = ['email', 'date', 'logs'];
 }

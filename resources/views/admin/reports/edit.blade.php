@@ -2,7 +2,7 @@
     {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Admin Dashboard') }}
-        </h2>
+    </h2>
     </x-slot> --}}
 
     <div class="py-12">
@@ -14,7 +14,8 @@
                     </h3>
 
                     <div class="flex gap-4">
-                        <a href="{{ route('admin.reportShow', $report->id) }}" class="text-blue-400 hover:text-blue-600 underline dark:text-blue-300 dark:hover:text-blue-400">
+                        <a href="{{ route('admin.reportShow', $report->id) }}" class="inline-block bg-yellow-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-yellow-200">
+                            <i class="fas fa-arrow-alt-circle-leftmr-1"></i>
                             Back
                         </a>
                     </div>
@@ -27,7 +28,7 @@
                         <tbody>
                             <tr>
                                 <th scope="col" class="px-6 py-3">ID</th>
-                                
+
                                 <td class="px-6 py-4">
                                     <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                                         1
@@ -40,9 +41,9 @@
                                 <td class="px-6 py-4">
                                     <input type="text" name="title" id="title" placeholder="Your title" class="bg-dark-100 w-full p-4 text-black rounded-lg @error('title') border-0 @enderror" value="Title Sample">
                                     @error('title')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
+                                    <div class="text-red-500 mt-2 text-sm">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
                                 </td>
                             </tr>
@@ -62,9 +63,9 @@
                                         <option value="approve" @if($report->status == 'approve') selected @endif>Approve</option>
                                     </select>
                                     @error('status')
-                                        <div class="text-red-500 mt-2 text-sm">
-                                            {{ $message }}
-                                        </div>
+                                    <div class="text-red-500 mt-2 text-sm">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
                                 </td>
                             </tr>
@@ -79,6 +80,6 @@
                     </table>
                 </form>
             </div>
-        </div>        
+        </div>
     </div>
 </x-app-layout>
