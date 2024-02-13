@@ -1,20 +1,23 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex bg-blue-700">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight w-full">
+        <div class="flex justify-between items-center bg-blue-700 px-4 py-6">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Reports from Users') }}
             </h2>
-            <div class="relative pr-4"> <!-- Adjust the padding as needed -->
+            <div class="relative"> <!-- Adjust the padding as needed -->
                 <input type="text" id="searchInput" class="w-full border rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring focus:border-blue-300" placeholder="Search...">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                     <i class="fas fa-search text-gray-400"></i>
                 </div>
             </div>
         </div>
-
-
     </x-slot>
 
+    <div class="mt-1 mr-4 flex items-center justify-end space-x-2">
+        <a href="{{ route('export.excel') }}" class="inline-block bg-blue-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">Export Excel</a>
+        <a href="{{ route('export.pdf') }}" class="inline-block bg-green-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">Export PDF</a>
+        <a href="{{ route('export.word') }}" class="inline-block bg-yellow-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">Export Word</a>
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">

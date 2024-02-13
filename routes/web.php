@@ -12,6 +12,7 @@ use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\LogsController;
 use App\Models\Event;
 use App\Models\News;
+use App\Http\Controllers\ExportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/export/excel', [ExportController::class, 'excel'])->name('export.excel');
+Route::get('/export/pdf', [ExportController::class, 'pdf'])->name('export.pdf');
+Route::get('/export/word', [ExportController::class, 'word'])->name('export.word');
 
 Route::middleware(['auth', 'admin'])->group(function () {
 
