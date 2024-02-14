@@ -1,25 +1,33 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <x-app-layout>
         <x-slot name="header">
-            <div class="flex justify-between items-center bg-blue-700 px-4 py-6">
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Reports from Users') }}
+            <div class="flex bg-blue-700">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight w-full">
+                    {{ __('Reports from Clients') }}
                 </h2>
-                <div class="relative"> <!-- Adjust the padding as needed -->
+
+                <div class="relative pr-4"> <!-- Adjust the padding as needed -->
                     <input type="text" id="searchInput" class="w-full border rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring focus:border-blue-300" placeholder="Search...">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="fas fa-search text-gray-400"></i>
                     </div>
                 </div>
             </div>
-
         </x-slot>
-
-
-        <div class="mt-1 mr-4 flex items-center justify-end space-x-2">
-            <a href="{{ route('export.excel') }}" id="exportExcel" class="inline-block bg-blue-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">Export Excel</a>
-            <a href="{{ route('export.pdf') }}" id="exportPdf" class="inline-block bg-green-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">Export PDF</a>
-            <a href="{{ route('export.word') }}" id="exportWord" class="inline-block bg-yellow-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">Export Word</a>
+        <div class="mt-3 mr-10 flex items-center justify-end">
+            @if(auth()->user()->type === 'admin')
+            <form method="POST" class="form-inline" id="exportForm">
+                <button type="submit" id="exportExcel" class="text-white bg-green-500 hover:bg-transparent px-2 py-1 rounded-md mr-1 text-xs border border-green-500 transition duration-300">
+                    <i class="fa fa-file-excel-o"></i> Excel
+                </button>
+                <button type="submit" id="exportPdf" class="text-white bg-red-500 hover:bg-transparent px-2 py-1 rounded-md mr-1 text-xs border border-red-500 transition duration-300">
+                    <i class="fa fa-file-pdf-o"></i> PDF
+                </button>
+                <button type="submit" id="exportWord" class="text-white bg-blue-500 hover:bg-transparent px-2 py-1 rounded-md text-xs border border-blue-500 transition duration-300">
+                    <i class="fa fa-file-word-o"></i> Word
+                </button>
+            </form>
+            @endif
         </div>
 
         <div class="py-12">
@@ -49,7 +57,16 @@
                                     <td class="px-6 py-4 user-email">{{ $user->user->email }}</td>
                                     <td class="px-6 py-4 user-reportTitle">{{ $user->report_title}}</td>
                                     <td class="px-6 py-4 user-reportDescription">{{ $user->report_description }}</td>
-                                    <td class="px-6 py-4 user-status">{{ $user->status }}</td>
+                                    <td class="px-6 py-4 user-status"> @if($user->status === 'pending')
+                                        <span class="bg-yellow-300 text-yellow-800 px-2 py-1 rounded">{{ $user->status }}</span>
+                                        @elseif($user->status === 'settled')
+                                        <span class="bg-blue-300 text-blue-800 px-2 py-1 rounded">{{ $user->status }}</span>
+                                        @elseif($user->status === 'cancelled')
+                                        <span class="bg-red-300 text-red-800 px-2 py-1 rounded">{{ $user->status }}</span>
+                                        @else
+                                        <span>{{ $user->status }}</span>
+                                        @endif
+                                    </td>
                                     <td class="px-6 py-4">{{ $user->created_at}}</td>
 
                                     <!-- Show Status and Action columns only for admin users -->
@@ -83,74 +100,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <div id="confirmationModalPdf" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-
-                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="document">
-                        <!-- Modal content -->
-                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <div class="sm:flex sm:items-start">
-                                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
-                                    <img src="img/pdf.png" alt="Icon" class="h-6 w-12">
-                                </div>
-                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                                        Export Confirmation
-                                    </h3>
-                                    <div class="mt-2">
-                                        <p class="text-sm text-gray-500">
-                                            Do you want to export this report as PDF?
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                            <button id="exportButton1" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
-                                Export
-                            </button>
-                            <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal1()">
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="confirmationModalWord" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-
-                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="document">
-                        <!-- Modal content -->
-                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <div class="sm:flex sm:items-start">
-                                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
-                                    <img src="img/word.png" alt="Icon" class="h-6 w-12">
-                                </div>
-                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                                        Export Confirmation
-                                    </h3>
-                                    <div class="mt-2">
-                                        <p class="text-sm text-gray-500">
-                                            Do you want to export this report as Word?
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                            <button id="exportButton2" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
-                                Export
-                            </button>
-                            <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal2()">
-                                Cancel
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -188,6 +137,75 @@
                     </div>
                 </div>
             </div>
+            <div id="confirmationModalPdf" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="document">
+                        <!-- Modal content -->
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div class="sm:flex sm:items-start">
+                                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
+                                    <img src="img/pdf.png" alt="Icon" class="h-6 w-12">
+                                </div>
+                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                        Export Confirmation
+                                    </h3>
+                                    <div class="mt-2">
+                                        <p class="text-sm text-gray-500">
+                                            Do you want to export this report as PDF?
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button id="exportButton1" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-500 text-base font-medium text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                Export
+                            </button>
+                            <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal1()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="confirmationModalWord" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="document">
+                        <!-- Modal content -->
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div class="sm:flex sm:items-start">
+                                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
+                                    <img src="img/word.png" alt="Icon" class="h-6 w-12">
+                                </div>
+                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                        Export Confirmation
+                                    </h3>
+                                    <div class="mt-2">
+                                        <p class="text-sm text-gray-500">
+                                            Do you want to export this report as Word?
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button id="exportButton2" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                Export
+                            </button>
+                            <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal2()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- Bootstrap JS -->
@@ -213,6 +231,31 @@
                         row.style.display = 'none';
                     }
                 });
+            });
+
+            //excel
+
+            function showModal3() {
+                document.getElementById('confirmationModalExcel').classList.remove('hidden');
+                document.getElementsByTagName('html')[0].classList.add('overflow-y-hidden');
+            }
+
+            // Function to close the modal
+            function closeModal3() {
+                document.getElementById('confirmationModalExcel').classList.add('hidden');
+                document.getElementsByTagName('html')[0].classList.remove('overflow-y-hidden');
+            }
+
+            // Handle click event on the "Export PDF" button to show the modal
+            document.getElementById('exportExcel').addEventListener('click', function(e) {
+                e.preventDefault();
+                showModal3();
+            });
+
+            // Handle click event on the "Export" button in the modal to proceed with export
+            document.getElementById('exportButton3').addEventListener('click', function() {
+                window.location.href = "{{ route('export.excel') }}";
+                closeModal3();
             });
 
             //pdf
@@ -263,31 +306,6 @@
             document.getElementById('exportButton2').addEventListener('click', function() {
                 window.location.href = "{{ route('export.word') }}";
                 closeModal2();
-            });
-
-            //excel
-
-            function showModal3() {
-                document.getElementById('confirmationModalExcel').classList.remove('hidden');
-                document.getElementsByTagName('html')[0].classList.add('overflow-y-hidden');
-            }
-
-            // Function to close the modal
-            function closeModal3() {
-                document.getElementById('confirmationModalExcel').classList.add('hidden');
-                document.getElementsByTagName('html')[0].classList.remove('overflow-y-hidden');
-            }
-
-            // Handle click event on the "Export PDF" button to show the modal
-            document.getElementById('exportExcel').addEventListener('click', function(e) {
-                e.preventDefault();
-                showModal3();
-            });
-
-            // Handle click event on the "Export" button in the modal to proceed with export
-            document.getElementById('exportButton3').addEventListener('click', function() {
-                window.location.href = "{{ route('export.excel') }}";
-                closeModal3();
             });
         </script>
     </x-app-layout>
