@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use PDF;
 use App\Exports\ReportsExport;
 use Spatie\Browsershot\Browsershot;
-
+use TCPDF;
 
 class ExportController extends Controller
 {/* 
@@ -16,22 +16,42 @@ class ExportController extends Controller
         return Excel::download(new ReportsExport, 'reports.xlsx');
     } */
 
-
     public function pdf()
     {
         $reports = Report::all();
 
+        // Create new PDF document
+        $pdf = new TCPDF();
+
+        // Set document information
+        $pdf->SetCreator('uhrzel');
+        $pdf->SetAuthor('Muslim Affairs Administrator');
+        $pdf->SetTitle('Reports PDF');
+        $pdf->SetSubject('Reports PDF');
+
+        // Add a page
+        $pdf->AddPage();
+
+        // Render the HTML view to a string
         $html = view('admin.reports.exports.pdf', compact('reports'))->render();
 
-        $pdf = Browsershot::html($html)
-            ->setNodeModulePath('C:\xampp\htdocs\muslim-affairs-information-system\node_modules')
-            ->pdf();
+        // Output the HTML content to the PDF
+        $pdf->writeHTML($html);
 
-        return response($pdf)
-            ->header('Content-Type', 'application/pdf')
+        // Close and output PDF
+        $pdfContent = $pdf->Output(
+            'reports.pdf',
+            'S'
+        );
+
+        // Return the PDF as a response
+        return response($pdfContent)
+            ->header(
+                'Content-Type',
+                'application/pdf'
+            )
             ->header('Content-Disposition', 'attachment; filename="reports.pdf"');
     }
-
 
     public function word()
     {
