@@ -34,8 +34,8 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs uppercase bg-green-600 text-black">
+                        <table class="w-full text-sm text-left">
+                            <thead class="text-xs uppercase bg-indigo-700 text-white">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">Report From</th>
                                     <th scope="col" class="px-6 py-3">User Email</th>
@@ -52,7 +52,7 @@
                             </thead>
                             <tbody id="searchResults">
                                 @foreach($reports as $user)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
                                     <td class="px-6 py-4 user-name">{{ $user->user->name }}</td>
                                     <td class="px-6 py-4 user-email">{{ $user->user->email }}</td>
                                     <td class="px-6 py-4 user-reportTitle">{{ $user->report_title}}</td>

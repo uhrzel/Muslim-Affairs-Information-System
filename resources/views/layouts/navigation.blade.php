@@ -5,8 +5,10 @@
     }
 
     .custom-style:hover {
-        color: yellow;
+        color: #4F46E5;
+
     }
+
 
     .nav-link-container {
         padding: 0.1rem 0.5rem;
@@ -174,7 +176,6 @@
                 <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
-
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')" class="nav-link">
                     {{ __('Profile') }}

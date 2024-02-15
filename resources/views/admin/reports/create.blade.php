@@ -1,6 +1,6 @@
 <x-app-layout>
     {{-- <x-slot name="header">
-        <div class="flex bg-white dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex bg-white">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight w-full">
                 {{ __('Reports from Users') }}
     </h2>
@@ -13,8 +13,8 @@
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-gray-600 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex items-center justify-between px-4 py-4 bg-green-600 sm:px-6">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="flex items-center justify-between px-4 py-4 bg-indigo-600 sm:px-6">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white">
                         Create Report
                     </h3>
@@ -29,7 +29,7 @@
                 <form action="{{ route('admin.reportStore') }}" method="POST">
                     @csrf
                     @method('POST')
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <table class="w-full text-sm text-left text-gray-600">
                         <tbody>
                             <tr>
                                 <th scope="col" class="px-6 py-3">Title</th>

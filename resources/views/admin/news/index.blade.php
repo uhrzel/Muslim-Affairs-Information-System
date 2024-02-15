@@ -20,10 +20,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-black">
-                        <thead class="text-xs text-black uppercase bg-green-600 ">
+                        <thead class="text-xs text-white uppercase bg-indigo-700 ">
                             <tr>
                                 <th scope="col" class="px-6 py-3">News Title</th>
                                 <th scope="col" class="px-6 py-3">News Content</th>
@@ -39,8 +39,8 @@
                         </thead>
                         <tbody id="searchResults">
                             @foreach($news as $News)
-                            <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black news-title">{{ $News->news_title }}</td>
+                            <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200"">
+                                <td scope=" row" class="px-6 py-4 font-medium whitespace-nowrap text-black news-title">{{ $News->news_title }}</td>
                                 <td class="px-6 py-4 news-content">{{ $News->news_content}}</td>
                                 <td class="px-6 py-4">
                                     <img src="{{ asset('storage/news_images/' . basename($News->news_image)) }}" class="max-w-full h-20 w-20">
@@ -50,7 +50,7 @@
                                     {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('admin.newsShow', $News->id) }}" class="w-24  inline-block bg-green-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">
+                                    <a href="{{ route('admin.newsShow', $News->id) }}" class="w-24  inline-block bg-indigo-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">
                                         <i class="fas fa-eye mr-1"></i>
                                         View
                                     </a>

@@ -23,7 +23,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-black">
-                        <thead class="text-xs text-black uppercase bg-green-600 ">
+                        <thead class="text-xs uppercase bg-indigo-700 text-white ">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Advertisement Title</th>
                                 <th scope="col" class="px-6 py-3">Advertisement Description</th>
@@ -39,7 +39,7 @@
                         </thead>
                         <tbody id="searchResults">
                             @foreach($advertisements as $Ads)
-                            <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
                                 <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black ads-title">{{ $Ads->ads_title }}</td>
                                 <td class="px-6 py-4 ads-description">{{ $Ads->ads_description}}</td>
                                 <td class="px-6 py-4">
@@ -53,7 +53,7 @@
                                     </video>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('admin.advertisementShow', $Ads->id) }}" class="w-24 inline-block bg-green-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-green-200">
+                                    <a href="{{ route('admin.advertisementShow', $Ads->id) }}" class="w-24 inline-block bg-indigo-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-green-200">
                                         <i class="fas fa-eye mr-1"></i>
                                         View
                                     </a>

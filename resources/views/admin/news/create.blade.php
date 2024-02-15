@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex items-center justify-between px-4 py-4 bg-white border-b dark:bg-gray-800 dark:border-gray-700 sm:px-6">
+            <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="flex items-center justify-between px-4 py-4 bg-white border-b bg-indigo-700 sm:px-6">
                     <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">
                         Create News
                     </h1>
@@ -18,7 +18,7 @@
                     @csrf
                     @method('POST')
 
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <table class="w-full text-sm text-left text-gray-600">
                         <tbody>
                             <tr>
                                 <th scope="col" class="px-6 py-3">News Title</th>

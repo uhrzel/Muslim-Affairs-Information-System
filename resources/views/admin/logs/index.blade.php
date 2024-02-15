@@ -18,11 +18,11 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-black">
 
-                        <thead class="text-xs text-black uppercase bg-green-600 ">
+                        <thead class="text-xs text-white uppercase bg-indigo-700 ">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Email</th>
                                 <th scope="col" class="px-6 py-3">Date</th>
@@ -32,7 +32,7 @@
                         </thead>
                         <tbody id="searchResults">
                             @foreach($logs as $user)
-                            <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b0">
 
                                 <td class="px-6 py-4 user-email">{{ $user->email }}</td>
                                 <td class="px-6 py-4">{{ $user->date }}</td>
