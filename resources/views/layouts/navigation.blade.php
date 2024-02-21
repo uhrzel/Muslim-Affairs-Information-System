@@ -23,6 +23,7 @@
 </style>
 
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <nav x-data="{ open: false }" class="text-black bg-green-600 border-b">
     <!-- Primary Navigation Menu -->
@@ -39,49 +40,49 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs(['dashboard', 'admin.userShow', 'admin.userEdit', 'admin.users'])" class="custom-style nav-link-container">
-                        {{ __('Dashboard') }}
+                        <i class="fas fa-home-alt mr-1"></i>{{ __('Dashboard') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('messenger')" :active="request()->routeIs('messenger')" class="custom-style nav-link-container">
-                        {{ __('Messenger') }}
+                        <i class="fas fa-message mr-1"></i> {{ __('Messenger') }}
                     </x-nav-link>
 
                     @if(Auth::user()->type == 'user')
                     <x-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])" class="custom-style nav-link-container">
-                        {{ __('Complains') }}
+                        <i class="fas fa-file-alt mr-1"></i> {{ __('Complains') }}
                     </x-nav-link>
                     @endif
 
                     @if(Auth::user()->type == 'admin')
                     <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit', 'admin.reportCreate'])" class="custom-style nav-link-container">
-                        {{ __('Complains') }}
+                        <i class="fas fa-file-alt mr-1"></i> {{ __('Complains') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.advertisement')" :active="request()->routeIs(['admin.advertisement', 'admin.advertisementShow', 'admin.advertisementEdit'])" class="custom-style nav-link-container">
-                        {{ __('Advertisements') }}
+                        <i class="fas fa-bullhorn mr-1"></i>{{ __('Advertisements') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.events')" :active="request()->routeIs(['admin.events', 'admin.eventsShow', 'admin.eventsEdit'])" class="custom-style nav-link-container">
-                        {{ __('Events') }}
+                        <i class="fas fa-calendar-alt mr-1"></i> {{ __('Events') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.news')" :active="request()->routeIs(['admin.news', 'admin.newsShow', 'admin.newsEdit'])" class="custom-style nav-link-container">
-                        {{ __('News') }}
+                        <i class="fas fa-newspaper mr-1"></i> {{ __('News') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.statistics')" :active="request()->routeIs(['admin.statistics', 'admin.statisticsShow', 'admin.statisticsEdit'])" class="custom-style nav-link-container">
-                        {{ __('Statistics') }}
+                        <i class="fas fa-chart-line mr-1"></i> {{ __('Statistics') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.logs')" :active="request()->routeIs(['admin.logs', 'admin.logsShow', 'admin.logsEdit'])" class="custom-style nav-link-container">
-                        {{ __('User Logs') }}
+                        <i class="fas fa-history mr-1"></i> {{ __('User Logs') }}
                     </x-nav-link>
                     @endif
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden sm:flex sm:items-center sm:ml-6 ">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">

@@ -28,8 +28,8 @@
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -48,7 +48,7 @@
             // Set up the charts for events
             var eventsCtx = document.getElementById('eventsChart').getContext('2d');
             var eventsChart = new Chart(eventsCtx, {
-                type: 'polarArea',
+                type: 'bar',
                 data: {
                     labels: ['Public Events', 'Private Events', 'Total Events'],
                     datasets: [{
@@ -136,7 +136,7 @@
 
             var reportsCtx = document.getElementById('reportsChart').getContext('2d');
             var reportsChart = new Chart(reportsCtx, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: ['Settled Complains', 'Pending Complains', 'Cancelled Complains', 'Total Complains'],
                     datasets: [{
