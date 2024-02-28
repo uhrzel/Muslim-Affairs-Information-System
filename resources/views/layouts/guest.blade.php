@@ -16,11 +16,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <style>
-
+    .min-h-screen {
+        background-color: #052e16;
+    }
 </style>
 
 <body class="font-sans text-black antialiased ">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-slate-600">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
         <div>
             <a href="/">
                 <img src="img/logo1.png" class="block h-20 w-auto">

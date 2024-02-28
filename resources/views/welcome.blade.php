@@ -173,6 +173,70 @@
             /* Adjust the color as needed */
             transition: fill 0.3s ease-in-out;
         }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .flex-mobile {
+                display: flex;
+                justify-content: flex-end;
+                /* Align items to the right */
+                align-items: center;
+            }
+
+            .mobile-menu {
+                display: block;
+                margin-right: 20px;
+                /* Adjust margin as needed */
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                /* Align links vertically */
+                align-items: flex-end;
+                /* Align items to the right */
+                position: fixed;
+                top: 10 0px;
+                right: 10px;
+                /* Position on the right side */
+                background-color: white;
+                padding: 10px;
+                z-index: 999;
+                width: 20%;
+                max-width: 300px;
+                height: 60%;
+                overflow-y: auto;
+            }
+
+            .nav-links a {
+                display: block;
+                color: #fff;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .nav-links a:hover {
+                text-decoration: underline;
+            }
+        }
+
+        /* Show nav links for desktop */
+        @media screen and (min-width: 769px) {
+            .nav-links {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-links a {
+                margin: 0 10px;
+                color: #fff;
+                text-decoration: none;
+            }
+        }
     </style>
 </head>
 
@@ -190,26 +254,49 @@
                 <img src="img/logo3.png" alt="Muslim Affairs Office Logo" class="w-16 h-16 rounded-full">
             </a>
         </div>
-        <div class="flex items-center">
-            @if (Route::has('login'))
-            @auth
-            <a href="{{ url('/dashboard') }}" class="bg-yellow-400 text-dark font-bold py-2 px-10 rounded-full">Dashboard</a>
-            @else
-            <a href="{{ route('login') }}" class="bg-yellow-400 text-dark font-bold py-2 px-10 rounded-full mr-4">Log in</a>
 
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="bg-yellow-400 text-dark font-bold py-2 px-10 rounded-full">Register</a>
-            @endif
-            @endauth
-            @endif
+        <div class="flex items-center flex-mobile"> <!-- Apply flex-mobile class here -->
+            <div class="mobile-menu">
+                <button id="mobileMenuButton" class="text-white focus:outline-none">
+                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <div id="mobileNavLinks" class="nav-links">
+                    @if (Route::has('login'))
+                    @auth
+                    <a href="{{ url('/dashboard') }}" class="font-bold py-2" style="color: #052e16;">Dashboard</a>
+                    @else
+                    <a href="{{ route('login') }}" class="font-bold py-2" style="color: #052e16;">Log in</a>
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="font-bold py-2" style="color: #052e16;">Register</a>
+                    @endif
+                    @endauth
+                    @endif
+                </div>
+            </div>
+            <div class="nav-links">
+                @if (Route::has('login'))
+                @auth
+                <a href="{{ url('/dashboard') }}" class="bg-yellow-400 font-bold py-2 px-10 rounded-full" style="color: #052e16;">Dashboard</a>
+                @else
+                <a href="{{ route('login') }}" class="bg-yellow-400 font-bold py-2 px-10 rounded-full mr-4" style="color: #052e16;">Log in</a>
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="bg-yellow-400  font-bold py-2 px-10 rounded-full" style="color: #052e16;">Register</a>
+                @endif
+                @endauth
+                @endif
+            </div>
         </div>
+
     </nav>
     <main class="flex flex-col justify-center items-center">
         <div class="w-full grid grid-cols-12 px-12 pt-8 mb-8">
             <div class="col-span-6 flex flex-col justify-center">
                 <h1 class="text-7xl font-bold text-white"><span class="text-yellow-300">Muslim</span> Affairs<span class="text-white"> <br> Office<span class="text-yellow-300"> Information System</span></h1>
             </div>
-            <div class="col-span-6 mb-32">
+            <div class="col-span-6 mb-8">
                 <img src="img/man.png" alt="Picture of a man" class="w-96 object-cover mx-auto drop-shadow-lg">
             </div>
         </div>
@@ -256,6 +343,8 @@
                         News
                     </div>
                     <p class="mb-6 text-neutral-500 dark:text-neutral-300">
+
+                        <small> <strong>{{ $News->created_at->diffForHumans() }}</strong> </small><br>
                         <small>News Date: <u>{{$News->news_date}}</u> </small> <br>
                         <small>News Time: <u>{{$News->news_time}}</u></small>
                     </p>
@@ -498,5 +587,33 @@
         </footer>
     </main>
 </body>
+<script>
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileNavLinks = document.getElementById('mobileNavLinks');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileNavLinks.style.display = (mobileNavLinks.style.display === 'block') ? 'none' : 'block';
+    });
+
+    const menuButton = document.getElementById('mobileMenuButton');
+    const menuIcon = document.getElementById('menuIcon');
+
+    menuButton.addEventListener('click', function() {
+        // Toggle between hamburger and "x" icons
+        if (menuIcon.classList.contains('open')) {
+            // Change back to hamburger icon
+            menuIcon.innerHTML = `
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        `;
+            menuIcon.classList.remove('open');
+        } else {
+            // Change to "x" icon
+            menuIcon.innerHTML = `
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        `;
+            menuIcon.classList.add('open');
+        }
+    });
+</script>
 
 </html>
