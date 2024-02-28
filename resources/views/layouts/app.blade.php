@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- <link rel="icon" type="image/png" href="img/man.png" /> -->
+    <link rel="icon" type="image/png" href="{{ asset('img/man.png') }}" />
 
     <title>Muslim Affairs Information System</title>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -16,10 +17,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rzQ3sBBRRF1u8+P8p4iUyVMp5O3Jbiu2n6cLhxdHP5qNaxC4Zq7uJ68Hlh1e5thW" crossorigin="anonymous">
     <!-- Add this line to include flatpickr library -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="icon" type="image/png" href="img/man.png" />
-
-
-
 
     <!-- Add this line to include the date picker script -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
