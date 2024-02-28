@@ -5,7 +5,7 @@
                 {{ __('User List') }}
             </h2>
             <div class="relative pr-4"> <!-- Adjust the padding as needed -->
-                <input type="text" id="searchInput" class="w-full border rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring focus:border-indigo-300" placeholder="Search...">
+                <input type="text" id="searchInput" class="w-full text-black border rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring focus:border-indigo-300" placeholder="Search...">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                     <i class="fas fa-search text-gray-400"></i>
                 </div>
