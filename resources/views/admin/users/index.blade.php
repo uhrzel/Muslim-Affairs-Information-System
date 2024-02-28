@@ -35,10 +35,10 @@
                         <tbody id="searchResults">
                             @foreach($users as $user)
                             <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
-                                <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap">{{ $user->id }}</td>
-                                <td class="px-6 py-4">{{ $user->name }}</td>
-                                <td class="px-6 py-4">{{ $user->email }}</td>
-                                <td class="px-6 py-4">{{ $user->type }}</td>
+                                <td scope="row" class="user-id px-6 py-4 font-medium whitespace-nowrap">{{ $user->id }}</td>
+                                <td class="user-name px-6 py-4">{{ $user->name }}</td>
+                                <td class="user-email px-6 py-4">{{ $user->email }}</td>
+                                <td class="user-type px-6 py-4">{{ $user->type }}</td>
                                 <td class="px-6 py-4">{{ $user->created_at }}</td>
                                 <td class="px-6 py-4">{{ $user->updated_at }}</td>
                                 <td class="px-6 py-4">
