@@ -2,7 +2,7 @@
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex items-center justify-between px-4 py-4 bg-white border-b bg-indigo-700 sm:px-6">
+                <div class="flex items-center justify-between px-4 py-4  border-b bg-indigo-700 sm:px-6">
                     <h1 class="text-2xl font-bold text-white">
                         Create Ads
                     </h1>

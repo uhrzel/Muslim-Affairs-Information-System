@@ -2,7 +2,7 @@
     <x-slot name="header">
 
         <div class="flex bg-blue-700 items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight w-full">
+            <h2 class="font-semibold text-xl text-white leading-tight w-full">
                 {{ __('User Logs') }}
             </h2>
             <div class="relative pr-4"> <!-- Adjust the padding as needed -->
