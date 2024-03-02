@@ -16,6 +16,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'header_image_url' => 'https://r2.easyimg.io/zubvxe9tc/man.png',
 
     /*
     |--------------------------------------------------------------------------

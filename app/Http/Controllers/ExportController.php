@@ -137,7 +137,6 @@ class ExportController extends Controller
         $table->addCell(1000)->addText('Status');
         $table->addCell(1500)->addText('Created At');
 
-        // Add data from the reports
         foreach ($reports as $report) {
             $table->addRow();
             $table->addCell()->addText($report->user->name);
