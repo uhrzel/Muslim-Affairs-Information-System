@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -91,14 +92,19 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-
     public function update(Request $request, Report $report)
     {
         $request->validate([
-            'status' => 'required|in:settled,cancelled', // Add validation for status
+            'feedback_message' => 'nullable|string', // Validation for feedback message
         ]);
 
-        $report->update(['status' => $request->status]);
+        // Update the feedback message if provided
+        if ($request->has('feedback_message')) {
+            $report->feedback_message = $request->feedback_message;
+        }
+
+        // Save the changes
+        $report->save();
 
         return redirect()->route('admin.reports')->with('success', 'Report updated successfully.');
     }
@@ -114,5 +120,29 @@ class ReportController extends Controller
     {
         $report->delete();
         return redirect()->route('admin.reports.index')->with('success', 'Report deleted successfully.');
+    }
+    public function submitFeedback(Request $request)
+    {
+        $validatedData = $request->validate([
+            'report_id' => 'required|exists:reports,id',
+            'feedback_message' => 'required|string',
+            'status' => 'required|in:settled,cancelled',
+        ]);
+
+        $reportId = $validatedData['report_id'];
+        $feedbackMessage = $validatedData['feedback_message'];
+        $status = $validatedData['status'];
+
+        // Update the report with the feedback message and status
+        try {
+            $report = Report::findOrFail($reportId);
+            $report->feedback_message = $feedbackMessage;
+            $report->status = $status;
+            $report->save();
+
+            return redirect()->back()->with('success', 'Feedback submitted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to submit feedback. Please try again.');
+        }
     }
 }

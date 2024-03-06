@@ -100,6 +100,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // for admin and user
 Route::middleware(['auth', 'verified'])->group(function () {
 
+    Route::post('/submit-feedback', [ReportController::class, 'submitFeedback'])->name('admin.submitFeedback');
+
+
 
     // Reports Resource
     Route::resource('reports', ReportController::class)->except(['destroy'])->names([

@@ -29,7 +29,6 @@
             </form>
             @endif
         </div>
-
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -37,24 +36,31 @@
                         <table class="w-full text-sm text-left">
                             <thead class="text-xs uppercase bg-indigo-700 text-white">
                                 <tr>
+                                    @if(auth()->user()->type === 'admin')
                                     <th scope="col" class="px-6 py-3">Report From</th>
                                     <th scope="col" class="px-6 py-3">User Email</th>
                                     <th scope="col" class="px-6 py-3">Report Title </th>
+                                    @endif
+                                    @if(auth()->user()->type === 'user')
+                                    <th scope="col" class="px-6 py-3">Reported Title</th>
+                                    @endif
                                     <th scope="col" class="px-6 py-3">Report Description</th>
                                     <th scope="col" class="px-6 py-3">Status</th>
                                     <th scope="col" class="px-6 py-3">Created At</th>
-
                                     <!-- Show Status and Action columns only for admin users -->
                                     @if(auth()->user()->type === 'admin')
                                     <th scope="col" class="px-6 py-3">Action</th>
                                     @endif
+                                    <th scope="col" class="px-6 py-3">FeedBack</th>
                                 </tr>
                             </thead>
                             <tbody id="searchResults">
                                 @foreach($reports as $user)
                                 <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
+                                    @if(auth()->user()->type === 'admin')
                                     <td class="px-6 py-4 user-name">{{ $user->user->name }}</td>
                                     <td class="px-6 py-4 user-email">{{ $user->user->email }}</td>
+                                    @endif
                                     <td class="px-6 py-4 user-reportTitle">{{ $user->report_title}}</td>
                                     <td class="px-6 py-4 user-reportDescription">{{ $user->report_description }}</td>
                                     <td class="px-6 py-4 user-status"> @if($user->status === 'pending')
@@ -68,34 +74,25 @@
                                         @endif
                                     </td>
                                     <td class="px-6 py-4">{{ $user->created_at}}</td>
-
                                     <!-- Show Status and Action columns only for admin users -->
                                     @if(auth()->user()->type === 'admin')
                                     <td class="px-6 py-4 flex items-center">
                                         @if($user->status === 'pending')
                                         <div class="flex space-x-2">
-                                            <form action="{{ route('admin.reportUpdate', $user->id) }}" method="POST" class="inline-block">
-                                                @csrf
-                                                @method('PATCH')
-                                                <input type="hidden" name="status" value="settled">
-                                                <button type="submit" class="inline-block bg-blue-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">
-                                                    Settled
-                                                </button>
-                                            </form>
-                                            <form action="{{ route('admin.reportUpdate', $user->id) }}" method="POST" class="inline-block">
-                                                @csrf
-                                                @method('PATCH')
-                                                <input type="hidden" name="status" value="cancelled">
-                                                <button type="submit" class="inline-block bg-red-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-red-200">
-                                                    Cancel
-                                                </button>
-                                            </form>
+                                            <button class="feedback-btn bg-blue-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200" data-report-id="{{ $user->id }}" data-status="settled">
+                                                Settled
+                                            </button>
+                                            <button class="feedback-btn bg-red-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-red-200" data-report-id="{{ $user->id }}" data-status="cancelled">
+                                                Cancel
+                                            </button>
+
                                         </div>
                                         @else
                                         <span class="text-gray-500">Completed</span>
                                         @endif
                                     </td>
                                     @endif
+                                    <td class="px-6 py-4 user-reportDescription">{{ $user->feedback_message }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -103,6 +100,52 @@
                     </div>
                 </div>
             </div>
+            <!-- Updated Modal Code -->
+            <div id="feedbackModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+                <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                    </div>
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div class="sm:flex sm:items-start">
+                                <button class="absolute top-0 right-0 m-4 text-gray-500 hover:text-gray-700" onclick="closeModal()">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                    <!-- Heroicon name: exclamation -->
+                                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 3a9.001 9.001 0 1 1 17.876 0H5.062z" />
+                                    </svg>
+                                </div>
+                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                        Submit Feedback
+                                    </h3>
+                                    <div class="mt-2">
+                                        <form id="feedbackForm" action="{{ route('admin.submitFeedback') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" id="reportId" name="report_id">
+                                            <input type="hidden" id="status" name="status">
+                                            <textarea id="feedbackMessage" name="feedback_message" rows="4" cols="50" placeholder="Enter feedback message" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+                                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    Submit Feedback
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="confirmationModalExcel" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                 <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
@@ -307,5 +350,35 @@
                 window.location.href = "{{ route('export.word') }}";
                 closeModal2();
             });
+
+
+
+
+            // JavaScript function to open the modal with the correct report id and status
+            function openModal(reportId, status) {
+                var modal = document.getElementById("feedbackModal");
+                var reportIdInput = document.getElementById("reportId");
+                var statusInput = document.getElementById("status");
+                reportIdInput.value = reportId;
+                statusInput.value = status;
+                modal.style.display = "block";
+            }
+
+            // Get the buttons that open the modal
+            var feedbackButtons = document.querySelectorAll(".feedback-btn");
+
+            // Add event listeners to each button to open the modal with the correct report id and status
+            feedbackButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    var reportId = button.getAttribute("data-report-id");
+                    var status = button.getAttribute("data-status");
+                    openModal(reportId, status);
+                });
+            });
+
+            function closeModal() {
+                var modal = document.getElementById("feedbackModal");
+                modal.style.display = "none";
+            }
         </script>
     </x-app-layout>
