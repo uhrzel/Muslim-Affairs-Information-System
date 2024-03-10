@@ -73,7 +73,11 @@
                                         <span>{{ $user->status }}</span>
                                         @endif
                                     </td>
-                                    <td class="px-6 py-4">{{ $user->created_at}}</td>
+                                    <td class="px-6 py-4 user-created">
+                                        {{ \Carbon\Carbon::parse($user->created_at)->format('F j, Y') }} <br>
+                                        {{ \Carbon\Carbon::parse($user->created_at)->format('h:i A') }}
+                                    </td>
+
                                     <!-- Show Status and Action columns only for admin users -->
                                     @if(auth()->user()->type === 'admin')
                                     <td class="px-6 py-4 flex items-center">
@@ -273,8 +277,9 @@
                     const userReportTitle = row.querySelector('.user-reportTitle').textContent.toLowerCase();
                     const userDescription = row.querySelector('.user-reportDescription').textContent.toLowerCase();
                     const userStatus = row.querySelector('.user-status').textContent.toLowerCase();
+                    const userCreated = row.querySelector('.user-created').textContent.toLowerCase();
 
-                    if (userName.includes(searchTerm) || userEmail.includes(searchTerm) || userReportTitle.includes(searchTerm) || userDescription.includes(searchTerm) || userStatus.includes(searchTerm)) {
+                    if (userName.includes(searchTerm) || userEmail.includes(searchTerm) || userReportTitle.includes(searchTerm) || userDescription.includes(searchTerm) || userStatus.includes(searchTerm) || userCreated.includes(searchTerm)) {
                         row.style.display = '';
                     } else {
                         row.style.display = 'none';

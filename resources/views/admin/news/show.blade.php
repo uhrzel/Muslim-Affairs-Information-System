@@ -67,13 +67,13 @@
                         <tr class="hover:bg-gray-50 ">
                             <th scope="col" class="px-6 py-3">News Date</th>
                             <td class="px-6 py-4">
-                                {{ $news->news_date }}
+                                {{ \Carbon\Carbon::parse($news->news_date   )->format('F j, Y') }}
                             </td>
                         </tr>
                         <tr class="hover:bg-gray-50 ">
                             <th scope="col" class="px-6 py-3">News Time</th>
                             <td class="px-6 py-4">
-                                {{ $news->news_time }}
+                                {{ \Carbon\Carbon::parse($news->news_time)->format('h:i A') }}
                             </td>
                         </tr>
                         <tr class="hover:bg-gray-50 ">

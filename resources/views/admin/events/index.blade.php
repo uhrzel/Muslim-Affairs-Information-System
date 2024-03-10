@@ -49,8 +49,8 @@
                                 <td class="px-6 py-4">
                                     <img src="{{ asset('storage/events_images/' . basename($Events->event_image)) }}" class="max-w-full h-20 w-20">
                                 </td>
-                                <td class="px-6 py-4">{{ $Events->event_date }}</td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 event-created">{{\Carbon\Carbon::parse($Events->event_date)->format('F j, Y') }}</td>
+                                <td class="px-6 py-4 event-time">
                                     {{ \Carbon\Carbon::parse($Events->event_time)->format('h:i A') }}
                                 </td>
                                 <td class="px-6 py-4">
@@ -78,8 +78,9 @@
             tableRows.forEach(row => {
                 const eventName = row.querySelector('.event-name').textContent.toLowerCase();
                 const eventDescription = row.querySelector('.event-description').textContent.toLowerCase();
-
-                if (eventName.includes(searchTerm) || eventDescription.includes(searchTerm)) {
+                const eventCreated = row.querySelector('.event-created').textContent.toLowerCase();
+                const eventTime = row.querySelector('.event-time').textContent.toLowerCase();
+                if (eventName.includes(searchTerm) || eventDescription.includes(searchTerm) || eventTime.includes(searchTerm) || eventCreated.includes(searchTerm)) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';

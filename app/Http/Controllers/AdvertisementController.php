@@ -14,7 +14,7 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        $advertisements = Advertisement::paginate(2);
+        $advertisements = Advertisement::orderBy('created_at', 'desc')->paginate(3);
         return view('admin.advertisements.index', compact('advertisements'));
     }
 

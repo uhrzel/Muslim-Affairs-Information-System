@@ -21,12 +21,12 @@
                     <table class="w-full text-sm text-left text-gray-800">
                         <thead class="text-xs uppercase bg-indigo-700 text-white">
                             <tr>
-                                <th scope="col" class="px-6 py-3">ID</th>
+                                <!--         <th scope="col" class="px-6 py-3">ID</th> -->
                                 <th scope="col" class="px-6 py-3">Name</th>
                                 <th scope="col" class="px-6 py-3">Email</th>
                                 <th scope="col" class="px-6 py-3">Role</th>
                                 <th scope="col" class="px-6 py-3">Created At</th>
-                                <th scope="col" class="px-6 py-3">Updated At</th>
+
                                 <th scope="col" class="px-6 py-3">
                                     Action
                                 </th>
@@ -35,12 +35,18 @@
                         <tbody id="searchResults">
                             @foreach($users as $user)
                             <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
-                                <td scope="row" class="user-id px-6 py-4 font-medium whitespace-nowrap">{{ $user->id }}</td>
+                                <!--     <td scope="row" class="user-id px-6 py-4 font-medium whitespace-nowrap">{{ $user->id }}</td> -->
                                 <td class="user-name px-6 py-4">{{ $user->name }}</td>
                                 <td class="user-email px-6 py-4">{{ $user->email }}</td>
                                 <td class="user-type px-6 py-4">{{ $user->type }}</td>
-                                <td class="px-6 py-4">{{ $user->created_at }}</td>
-                                <td class="px-6 py-4">{{ $user->updated_at }}</td>
+                                <td class="user-created px-6 py-4">
+                                    {{ \Carbon\Carbon::parse($user->created_at)->format('F j, Y') }}
+                                    <br>
+                                    {{ \Carbon\Carbon::parse($user->created_at)->format('h:i A') }}
+
+                                </td>
+
+
                                 <td class="px-6 py-4">
                                     <a href="{{ route('admin.userShow', $user->id) }}" class="w-24 inline-flex items-center bg-indigo-500 text-white rounded-full px-4 py-2 leading-none hover:bg-indigo-600">
                                         <i class="fas fa-eye mr-1"></i>
@@ -63,12 +69,13 @@
             const tableRows = document.querySelectorAll('#searchResults tr');
 
             tableRows.forEach(row => {
-                const userId = row.querySelector('.user-id').textContent.toLowerCase();
+                /*  const userId = row.querySelector('.user-id').textContent.toLowerCase(); */
                 const userName = row.querySelector('.user-name').textContent.toLowerCase();
                 const userEmail = row.querySelector('.user-email').textContent.toLowerCase();
                 const userType = row.querySelector('.user-type').textContent.toLowerCase();
+                const usercreated = row.querySelector('.user-created').textContent.toLowerCase();
 
-                if (userId.includes(searchTerm) || userName.includes(searchTerm) || userEmail.includes(searchTerm) || userType.includes(searchTerm)) {
+                if ( /* userId.includes(searchTerm) || */ userName.includes(searchTerm) || userEmail.includes(searchTerm) || userType.includes(searchTerm) || usercreated.includes(searchTerm)) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';

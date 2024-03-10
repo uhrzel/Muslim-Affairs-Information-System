@@ -45,10 +45,10 @@
                                 <td class="px-6 py-4">
                                     <img src="{{ asset('storage/news_images/' . basename($News->news_image)) }}" class="max-w-full h-20 w-20">
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 news-date">
                                     {{ \Carbon\Carbon::parse($News->news_date   )->format('F j, Y') }}
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 news-time">
                                     {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}
                                 </td>
                                 <td class="px-6 py-4">
@@ -78,8 +78,9 @@
             tableRows.forEach(row => {
                 const newsTitle = row.querySelector('.news-title').textContent.toLowerCase();
                 const newsContent = row.querySelector('.news-content').textContent.toLowerCase();
-
-                if (newsTitle.includes(searchTerm) || newsContent.includes(searchTerm)) {
+                const newsDate = row.querySelector('.news-date').textContent.toLowerCase();
+                const newsTime = row.querySelector('.news-time').textContent.toLowerCase();
+                if (newsTitle.includes(searchTerm) || newsContent.includes(searchTerm) || newsDate.includes(searchTerm) || newsTime.includes(searchTerm)) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';

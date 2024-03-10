@@ -19,7 +19,8 @@ class ReportController extends Controller
 
         if ($user->type === 'admin') {
             // Fetch all reports for admin users
-            $reports = Report::paginate(3);
+            $reports = Report::orderBy('created_at', 'desc')
+                ->paginate(3);
         } else {
             // Fetch reports only for the authenticated user
             $reports = Report::where('user_id', $user->id)->get();
