@@ -22,8 +22,10 @@ class ReportController extends Controller
             $reports = Report::orderBy('created_at', 'desc')
                 ->paginate(3);
         } else {
-            // Fetch reports only for the authenticated user
-            $reports = Report::where('user_id', $user->id)->get();
+
+            $reports = Report::where('user_id', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->paginate(3);
         }
 
         return view('admin.reports.index', compact('reports'));

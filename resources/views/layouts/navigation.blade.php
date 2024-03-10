@@ -48,7 +48,7 @@
                     </x-nav-link>
 
                     @if(Auth::user()->type == 'user')
-                    <x-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])" class="custom-style nav-link-container">
+                    <x-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])" class="custom-style nav-link-container">
                         <i class="fas fa-file-alt mr-1"></i> {{ __('Complains') }}
                     </x-nav-link>
                     @endif
@@ -139,7 +139,7 @@
             </x-responsive-nav-link>
 
             @if(Auth::user()->type == 'user')
-            <x-responsive-nav-link :href="route('admin.reportCreate')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])" class="nav-link">
+            <x-responsive-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])" class="nav-link">
                 {{ __('Complains') }}
             </x-responsive-nav-link>
             @endif

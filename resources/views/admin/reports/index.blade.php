@@ -12,6 +12,14 @@
                         <i class="fas fa-search text-gray-400"></i>
                     </div>
                 </div>
+                @if(auth()->user()->type === 'user')
+                <a href="{{ route('admin.reportCreate') }}" class="inline-flex items-center bg-blue-500 text-white rounded-full px-4 py-2 leading-none text-sm dark:hover:text-green-200">
+
+                    <i class="fas fa-plus mr-1"></i>
+                    Create
+                </a>
+
+                @endif
             </div>
         </x-slot>
         <div class="mt-3 mr-10 flex items-center justify-end">
