@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $users = User::all();
+        $users = User::paginate(3);
 
 
         if ($user->type == 'admin') {

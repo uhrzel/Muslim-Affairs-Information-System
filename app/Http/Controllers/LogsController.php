@@ -14,9 +14,10 @@ class LogsController extends Controller
      */
     public function index()
     {
-        $logs = Logs::all();
+        $logs = Logs::orderBy('date', 'desc')->paginate(8);
         return view("admin.logs.index", compact("logs"));
     }
+
 
     /**
      * Show the form for creating a new resource.

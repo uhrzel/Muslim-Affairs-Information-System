@@ -65,6 +65,7 @@
                     </table>
                 </div>
             </div>
+            {{ $advertisements->links() }}
         </div>
     </div>
     <script>

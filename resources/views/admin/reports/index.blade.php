@@ -99,6 +99,10 @@
                         </table>
                     </div>
                 </div>
+                @if(auth()->user()->type === 'admin')
+                {{ $reports->links() }}
+                @endif
+
             </div>
             <!-- Updated Modal Code -->
             <div id="feedbackModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
@@ -110,16 +114,15 @@
                     <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                             <div class="sm:flex sm:items-start">
-                                <button class="absolute top-0 right-0 m-4 text-gray-500 hover:text-gray-700" onclick="closeModal()">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <button class="absolute top-0 right-0 m-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none" onclick="closeModal()">
+                                    <svg class="h-4 w-4 text-gray-500 hover:text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
+
                                 <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                    <!-- Heroicon name: exclamation -->
-                                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 3a9.001 9.001 0 1 1 17.876 0H5.062z" />
-                                    </svg>
+                                    <img src="img/mess.png" alt="Icon" class="h-10 w-12">
+
                                 </div>
                                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
@@ -131,9 +134,12 @@
                                             <input type="hidden" id="reportId" name="report_id">
                                             <input type="hidden" id="status" name="status">
                                             <textarea id="feedbackMessage" name="feedback_message" rows="4" cols="50" placeholder="Enter feedback message" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
-                                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            <div class="mt-3 flex justify-center">
+                                                <button type="submit" class="inline-flex justify-center w-40 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                     Submit Feedback
+                                                </button>
+                                                <button type="button" class="inline-flex justify-center w-40 ml-4 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" onclick="closeModal()">
+                                                    Cancel
                                                 </button>
                                             </div>
                                         </form>

@@ -45,7 +45,9 @@
                                 <td class="px-6 py-4">
                                     <img src="{{ asset('storage/news_images/' . basename($News->news_image)) }}" class="max-w-full h-20 w-20">
                                 </td>
-                                <td class="px-6 py-4">{{ $News->news_date }}</td>
+                                <td class="px-6 py-4">
+                                    {{ \Carbon\Carbon::parse($News->news_date   )->format('F j, Y') }}
+                                </td>
                                 <td class="px-6 py-4">
                                     {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}
                                 </td>
@@ -61,6 +63,9 @@
 
                     </table>
                 </div>
+            </div>
+            <div class="mt-4">
+                {{ $news->links() }}
             </div>
         </div>
     </div>

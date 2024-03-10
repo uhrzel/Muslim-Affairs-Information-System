@@ -18,30 +18,30 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-black">
-
                         <thead class="text-xs text-white uppercase bg-indigo-700 ">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Email</th>
                                 <th scope="col" class="px-6 py-3">Date</th>
                                 <th scope="col" class="px-6 py-3">Logs</th>
-
                             </tr>
                         </thead>
                         <tbody id="searchResults">
                             @foreach($logs as $user)
                             <tr class="bg-white border-b0">
-
                                 <td class="px-6 py-4 user-email">{{ $user->email }}</td>
-                                <td class="px-6 py-4">{{ $user->date }}</td>
+                                <td class="px-6 py-4 user-date">{{ \Carbon\Carbon::parse($user->date)->format('F j, Y') }}</td>
                                 <td class="px-6 py-4 user-logs">{{ $user->logs }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="mt-4">
+                {{ $logs->links() }}
             </div>
         </div>
     </div>
@@ -54,8 +54,9 @@
             tableRows.forEach(row => {
                 const userEmail = row.querySelector('.user-email').textContent.toLowerCase();
                 const userLogs = row.querySelector('.user-logs').textContent.toLowerCase();
+                const userDate = row.querySelector('.user-date').textContent.toLowerCase();
 
-                if (userEmail.includes(searchTerm) || userLogs.includes(searchTerm)) {
+                if (userEmail.includes(searchTerm) || userLogs.includes(searchTerm) || userDate.includes(searchTerm)) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';

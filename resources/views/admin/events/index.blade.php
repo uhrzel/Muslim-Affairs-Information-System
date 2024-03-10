@@ -66,6 +66,7 @@
                     </table>
                 </div>
             </div>
+            {{ $events->links() }}
         </div>
     </div>
     <script>

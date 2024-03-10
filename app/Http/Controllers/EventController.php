@@ -14,7 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $events = Event::paginate(3);
         return view("admin.events.index", compact("events"));
     }
 
@@ -122,11 +122,11 @@ class EventController extends Controller
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('public/events_images', $imageName);
         } else {
-      
+
             $imagePath = $event->event_image;
         }
 
-    
+
         $event->update([
             'event_name' => $request->input('event_name'), // Corrected input name
             'event_description' => $request->input('event_description'),
