@@ -1,7 +1,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <x-app-layout>
         <x-slot name="header">
-            <div class="flex bg-blue-700">
+            <div class="flex">
                 <h2 class="font-semibold text-xl text-white leading-tight w-full">
                     {{ __('Reports from Clients') }}
                 </h2>

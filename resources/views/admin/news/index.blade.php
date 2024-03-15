@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex bg-blue-700">
+        <div class="flex ">
             <h2 class="font-semibold text-xl text-white leading-tight w-full">
                 {{ __('News List') }}
             </h2>

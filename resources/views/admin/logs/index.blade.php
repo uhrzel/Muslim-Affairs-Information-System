@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
 
-        <div class="flex bg-blue-700 items-center">
+        <div class="flex items-center">
             <h2 class="font-semibold text-xl text-white leading-tight w-full">
                 {{ __('User Logs') }}
             </h2>
