@@ -43,6 +43,13 @@
         <main>
             {{ $slot }}
         </main>
+        <footer class="flex-shrink-0 px-6 py-4 ">
+            <p class="flex items-center justify-center gap-1 text-sm text-gray-600 dark:text-gray-400">
+            <div class="container mx-auto text-center text-sm">
+                &copy;{{ date('Y') }} <a href="https://github.com/uhrzel/Muslim-Affairs-Information-System" class="hover:text-blue-600 hover:underline"> Muslim Affairs Information System. All rights reserved. </div>
+            </p>
+        </footer>
+
     </div>
 </body>
 
