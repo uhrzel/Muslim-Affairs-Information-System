@@ -91,11 +91,11 @@
                                     <td class="px-6 py-4 user-reportTitle">{{ $user->report_title}}</td>
                                     <td class="px-6 py-4 user-reportDescription">{{ $user->report_description }}</td>
                                     <td class="px-6 py-4 user-status"> @if($user->status === 'pending')
-                                        <span class="bg-yellow-300 text-yellow-800 px-2 py-1 rounded">{{ $user->status }}</span>
+                                        <span class="bg-green-600 text-white px-2 py-1 rounded-">{{ $user->status }}</span>
                                         @elseif($user->status === 'settled')
-                                        <span class="bg-blue-300 text-blue-800 px-2 py-1 rounded">{{ $user->status }}</span>
+                                        <span class="bg-blue-600 text-white px-2 py-1 rounded">{{ $user->status }}</span>
                                         @elseif($user->status === 'cancelled')
-                                        <span class="bg-red-300 text-red-800 px-2 py-1 rounded">{{ $user->status }}</span>
+                                        <span class="bg-red-600 text-white px-2 py-1 rounded">{{ $user->status }}</span>
                                         @else
                                         <span>{{ $user->status }}</span>
                                         @endif
