@@ -8,10 +8,24 @@
     <link rel="icon" type="image/png" href="{{ asset('img/man.png') }}" />
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Calistoga&family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Calistoga&family=Candal&family=Holtwood+One+SC&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
 
     <style>
+        .title-header {
+            font-family: "Holtwood One SC", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 55px;
+        }
+
         .bg-green-fullscreen {
             background-color: #052e16;
             width: 100%;
@@ -312,11 +326,12 @@
     <main class="flex flex-col justify-center items-center">
         <div class="w-full grid grid-cols-12 px-12 pt-8 mb-8">
             <div class="col-span-6 flex flex-col justify-center">
-                <h1 class="title-header text-7xl font-bold text-white">
-                    <span class="text-yellow-300 desktop-title">Muslim</span>
-                    <span class="text-white desktop-title">Affairs</span>
-                    <span class="text-white desktop-title"> <br> Office</span>
-                    <span class="text-yellow-300 desktop-title"> Information System</span>
+                <h1 class="title-header font-bold " style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                    <span class="text-white desktop-title">Muslim</span>
+                    <span class="text-yellow-300 desktop-title">Affairs</span>
+                    <span class="text-yellow-300 desktop-title"> <br> Office</span>
+                    <span class="text-white desktop-title"> Information</span>
+                    <span class="text-yellow-300 desktop-title"> System</span>
                     <span class="text-yellow-300 mobile-title">Muslim</span>
                     <span class="text-white mobile-title">Affairs</span>
                     <span class="text-yellow-300 mobile-title">InfoSys</span>
@@ -353,8 +368,11 @@
             $currentDate = now();
             @endphp
             <div class="flex justify-center items-center mb-10">
-                <img src="img/news2.png" alt="about" class="w-20 h-15 rounded-full mr-10">
-                <h1 class="text-2xl font-bold text-white news-title">Latest News</h1>
+
+                <h1 class="text-4xl font-bold text-white news-title">
+                    <i class="fa-regular fa-newspaper"></i>
+                    Latest News
+                </h1>
             </div>
             @forelse($sortedNews as $News)
             @if($News->status === 'public')
@@ -473,8 +491,11 @@
 
             @endphp
             <div class="flex justify-center items-center mb-10">
-                <img src="img/calendar.png" alt="about" class="w-20 h-15 rounded-full mr-10">
-                <h1 class="text-2xl font-bold text-white event-title">Latest Events</h1>
+
+                <h1 class="text-4xl font-bold text-white news-title">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Latest Events
+                </h1>
             </div>
             <div class="flex flex-wrap justify-center">
                 @forelse($sortedEvent as $Event)

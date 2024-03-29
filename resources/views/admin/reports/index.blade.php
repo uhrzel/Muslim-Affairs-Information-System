@@ -3,7 +3,12 @@
         <x-slot name="header">
             <div class="flex">
                 <h2 class="font-semibold text-xl text-white leading-tight w-full">
-                    {{ __('Reports from Clients') }}
+                    @if(auth()->user()->type === 'admin')
+                    {{ __('Complains from Client') }}
+                    @endif
+                    @if(auth()->user()->type === 'user')
+                    {{ __('My Complains') }}
+                    @endif
                 </h2>
 
                 <div class="relative pr-4"> <!-- Adjust the padding as needed -->
@@ -12,32 +17,44 @@
                         <i class="fas fa-search text-gray-400"></i>
                     </div>
                 </div>
+
+
                 @if(auth()->user()->type === 'user')
                 <a href="{{ route('admin.reportCreate') }}" class="inline-flex items-center bg-blue-500 text-white rounded-full px-4 py-2 leading-none text-sm dark:hover:text-green-200">
 
                     <i class="fas fa-plus mr-1"></i>
                     Create
                 </a>
-
                 @endif
+                <div class="mr-10 flex items-center justify-end">
+                    @if(auth()->user()->type === 'admin')
+                    <x-dropdown align="left" width="32">
+                        <x-slot name="trigger">
+                            <button type="button" class="text-white dark:text-white bg-transparent hover:bg-green-600 px-2 py-1 rounded-md mr-1 text-xs border border-green-500 transition duration-300">
+                                Export <i class="fa fa-caret-down"></i>
+                            </button>
+                        </x-slot>
+                        <x-slot name="content">
+                            <form method="POST" class="form-inline" id="exportForm">
+                                <button type="submit" id="exportExcel" class="text-green-500 hover:bg-green-600 px-2 py-1 rounded-md mr-1 text-xs border border-green-500 transition duration-300">
+                                    <i class="fa fa-file-excel-o"></i> Excel
+                                </button>
+                                <button type="submit" id="exportPdf" class="text-red-500 hover:bg-red-600 px-2 py-1 rounded-md mr-1 text-xs border border-red-500 transition duration-300">
+                                    <i class="fa fa-file-pdf-o"></i> PDF
+                                </button>
+                                <button type="submit" id="exportWord" class="text-blue-500 hover:bg-blue-600 px-2 py-1 rounded-md text-xs border border-blue-500 transition duration-300">
+                                    <i class="fa fa-file-word-o"></i> Word
+                                </button>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
+
+                    @endif
+                </div>
             </div>
         </x-slot>
-        <div class="mt-3 mr-10 flex items-center justify-end">
-            @if(auth()->user()->type === 'admin')
-            <form method="POST" class="form-inline" id="exportForm">
-                <button type="submit" id="exportExcel" class="text-white bg-green-500 hover:bg-transparent px-2 py-1 rounded-md mr-1 text-xs border border-green-500 transition duration-300">
-                    <i class="fa fa-file-excel-o"></i> Excel
-                </button>
-                <button type="submit" id="exportPdf" class="text-white bg-red-500 hover:bg-transparent px-2 py-1 rounded-md mr-1 text-xs border border-red-500 transition duration-300">
-                    <i class="fa fa-file-pdf-o"></i> PDF
-                </button>
-                <button type="submit" id="exportWord" class="text-white bg-blue-500 hover:bg-transparent px-2 py-1 rounded-md text-xs border border-blue-500 transition duration-300">
-                    <i class="fa fa-file-word-o"></i> Word
-                </button>
-            </form>
-            @endif
-        </div>
-        <div class="py-12">
+
+        <div class="py-10">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -62,6 +79,7 @@
                                     <th scope="col" class="px-6 py-3">FeedBack</th>
                                 </tr>
                             </thead>
+
                             <tbody id="searchResults">
                                 @foreach($reports as $user)
                                 <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
@@ -69,6 +87,7 @@
                                     <td class="px-6 py-4 user-name">{{ $user->user->name }}</td>
                                     <td class="px-6 py-4 user-email">{{ $user->user->email }}</td>
                                     @endif
+
                                     <td class="px-6 py-4 user-reportTitle">{{ $user->report_title}}</td>
                                     <td class="px-6 py-4 user-reportDescription">{{ $user->report_description }}</td>
                                     <td class="px-6 py-4 user-status"> @if($user->status === 'pending')
@@ -175,10 +194,15 @@
                                 <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
                                     <img src="img/excel.png" alt="Icon" class="h-6 w-12">
                                 </div>
+
                                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                     <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
                                         Export Confirmation
                                     </h3>
+                                    <div class="mt-2">
+                                        <label for="dateRangeExcell" class="block text-sm font-medium text-gray-700">Select Date Range:</label>
+                                        <input type="text" id="dateRangeExcell" name="dateRangeExcell" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
+                                    </div>
                                     <div class="mt-2">
                                         <p class="text-sm text-gray-500">
                                             Do you want to export this report as Excel?
@@ -214,6 +238,10 @@
                                         Export Confirmation
                                     </h3>
                                     <div class="mt-2">
+                                        <label for="dateRangePdf" class="block text-sm font-medium text-gray-700">Select Date Range:</label>
+                                        <input type="text" id="dateRangePdf" name="dateRangePdf" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
+                                    </div>
+                                    <div class="mt-2">
                                         <p class="text-sm text-gray-500">
                                             Do you want to export this report as PDF?
                                         </p>
@@ -248,6 +276,10 @@
                                         Export Confirmation
                                     </h3>
                                     <div class="mt-2">
+                                        <label for="dateRangeWord" class="block text-sm font-medium text-gray-700">Select Date Range:</label>
+                                        <input type="text" id="dateRangeWord" name="dateRangeWord" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
+                                    </div>
+                                    <div class="mt-2">
                                         <p class="text-sm text-gray-500">
                                             Do you want to export this report as Word?
                                         </p>
@@ -274,39 +306,61 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script>
+            var userType = "{{ auth()->user()->type }}";
+        </script>
+
+        <script>
+            // Real-time search functionality
             // Real-time search functionality
             document.getElementById('searchInput').addEventListener('input', function() {
                 const searchTerm = this.value.toLowerCase();
                 const tableRows = document.querySelectorAll('#searchResults tr');
 
                 tableRows.forEach(row => {
-                    const userName = row.querySelector('.user-name').textContent.toLowerCase();
-                    const userEmail = row.querySelector('.user-email').textContent.toLowerCase();
                     const userReportTitle = row.querySelector('.user-reportTitle').textContent.toLowerCase();
                     const userDescription = row.querySelector('.user-reportDescription').textContent.toLowerCase();
                     const userStatus = row.querySelector('.user-status').textContent.toLowerCase();
                     const userCreated = row.querySelector('.user-created').textContent.toLowerCase();
 
-                    if (userName.includes(searchTerm) || userEmail.includes(searchTerm) || userReportTitle.includes(searchTerm) || userDescription.includes(searchTerm) || userStatus.includes(searchTerm) || userCreated.includes(searchTerm)) {
-                        row.style.display = '';
+                    // Check if the user type is admin
+                    if (userType === 'admin') {
+                        const userName = row.querySelector('.user-name').textContent.toLowerCase();
+                        const userEmail = row.querySelector('.user-email').textContent.toLowerCase();
+
+                        // Search in all fields available for admins
+                        if (userName.includes(searchTerm) || userEmail.includes(searchTerm) || userReportTitle.includes(searchTerm) || userDescription.includes(searchTerm) || userStatus.includes(searchTerm) || userCreated.includes(searchTerm)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
                     } else {
-                        row.style.display = 'none';
+                        // Search in common fields available for both admin and user
+                        if (userReportTitle.includes(searchTerm) || userDescription.includes(searchTerm) || userStatus.includes(searchTerm) || userCreated.includes(searchTerm)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
                     }
                 });
             });
 
+
+
+            flatpickr("#dateRangeExcell", {
+                mode: "range",
+                dateFormat: "Y-m-d",
+            });
+            flatpickr("#dateRangePdf", {
+                mode: "range",
+                dateFormat: "Y-m-d",
+            });
+            flatpickr("#dateRangeWord", {
+                mode: "range",
+                dateFormat: "Y-m-d",
+            });
+
+
             //excel
-
-            function showModal3() {
-                document.getElementById('confirmationModalExcel').classList.remove('hidden');
-                document.getElementsByTagName('html')[0].classList.add('overflow-y-hidden');
-            }
-
-            // Function to close the modal
-            function closeModal3() {
-                document.getElementById('confirmationModalExcel').classList.add('hidden');
-                document.getElementsByTagName('html')[0].classList.remove('overflow-y-hidden');
-            }
 
             // Handle click event on the "Export PDF" button to show the modal
             document.getElementById('exportExcel').addEventListener('click', function(e) {
@@ -316,9 +370,26 @@
 
             // Handle click event on the "Export" button in the modal to proceed with export
             document.getElementById('exportButton3').addEventListener('click', function() {
-                window.location.href = "{{ route('export.excel') }}";
+                // Retrieve the selected date range
+                const dateRangeExcell = document.getElementById('dateRangeExcell').value;
+
+                // Close the modal
                 closeModal3();
+
+                // Redirect to the export route with the selected date range as a query parameter
+                window.location.href = "{{ route('export.excel') }}" + "?dateRangeExcell=" + encodeURIComponent(dateRangeExcell);
             });
+
+            function showModal3() {
+                document.getElementById('confirmationModalExcel').classList.remove('hidden');
+                document.getElementsByTagName('html')[0].classList.add('overflow-y-hidden');
+            }
+
+            function closeModal3() {
+                document.getElementById('confirmationModalExcel').classList.add('hidden');
+                document.getElementsByTagName('html')[0].classList.remove('overflow-y-hidden');
+            }
+
 
             //pdf
 
@@ -341,8 +412,11 @@
 
             // Handle click event on the "Export" button in the modal to proceed with export
             document.getElementById('exportButton1').addEventListener('click', function() {
-                window.location.href = "{{ route('export.pdf') }}";
+
+                const dateRangePdf = document.getElementById('dateRangePdf').value;
                 closeModal1();
+                window.location.href = "{{ route('export.pdf') }}" + "?dateRangePdf=" + encodeURIComponent(dateRangePdf);
+
             });
 
             //word
@@ -366,7 +440,9 @@
 
             // Handle click event on the "Export" button in the modal to proceed with export
             document.getElementById('exportButton2').addEventListener('click', function() {
-                window.location.href = "{{ route('export.word') }}";
+                const dateRangeWord = document.getElementById('dateRangeWord').value;
+
+                window.location.href = "{{ route('export.word') }}" + "?dateRangeWord=" + encodeURIComponent(dateRangeWord);
                 closeModal2();
             });
 
