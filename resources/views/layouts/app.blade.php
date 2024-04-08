@@ -17,7 +17,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rzQ3sBBRRF1u8+P8p4iUyVMp5O3Jbiu2n6cLhxdHP5qNaxC4Zq7uJ68Hlh1e5thW" crossorigin="anonymous">
     <!-- Add this line to include flatpickr library -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-QrHR7IP3w04pBP35g2Kwms8thZfGKiuULYTwhj1TZ9e6KZWVmJM1rRnDE7IMh5Zfz9ac8Hpnpllnlt2pbS4d7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Calistoga&family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Calistoga&family=Candal&family=Holtwood+One+SC&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Add this line to include the date picker script -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
@@ -27,12 +31,12 @@
 </head>
 
 <body class="font-sans antialiased ">
-    <div class="min-h-screen bg-blue-300">
+    <div class="min-h-screen bg-gray-300">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
         @if (isset($header))
-        <header class="dark:bg-blue-700 shadow">
+        <header class="bg-blue-800 shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
             </div>

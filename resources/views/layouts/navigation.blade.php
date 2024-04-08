@@ -6,7 +6,7 @@
 
     .custom-style:hover {
         color: #4F46E5;
-
+        font-family: Arial, Helvetica, sans-serif
     }
 
 
@@ -25,7 +25,7 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-<nav x-data="{ open: false }" class="text-black bg-green-600 border-b">
+<nav x-data="{ open: false }" class="text-black bg-green-700 border-b">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">

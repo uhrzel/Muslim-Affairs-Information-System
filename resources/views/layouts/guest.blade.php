@@ -29,10 +29,11 @@
 
             </a>
         </div>
-
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 shadow-md overflow-hidden sm:rounded-lg bg-indigo-900">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 shadow-xl rounded-lg bg-green-800 dark:bg-green-900 transition duration-500 ease-in-out transform hover:scale-105">
             {{ $slot }}
         </div>
+
+
     </div>
 </body>
 

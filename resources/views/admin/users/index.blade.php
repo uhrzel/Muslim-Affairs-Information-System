@@ -16,7 +16,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-800">
                         <thead class="text-xs uppercase bg-indigo-700 text-white">
@@ -34,8 +34,8 @@
                         </thead>
                         <tbody id="searchResults">
                             @foreach($users as $user)
-                            <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
-                                <!--     <td scope="row" class="user-id px-6 py-4 font-medium whitespace-nowrap">{{ $user->id }}</td> -->
+                            <tr class="border-b border-gray-500 bg-gray-200 hover:bg-gray-300" style="font-family: 'Arial', sans-serif;">
+                                <!--     <td scope=" row" class="user-id px-6 py-4 font-medium whitespace-nowrap">{{ $user->id }}</td> -->
                                 <td class="user-name px-6 py-4">{{ $user->name }}</td>
                                 <td class="user-email px-6 py-4">{{ $user->email }}</td>
                                 <td class="user-type px-6 py-4">{{ $user->type }}</td>

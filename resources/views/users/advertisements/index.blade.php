@@ -5,61 +5,22 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{-- Display Events --}}
-            <div class="bg-blue-600 overflow-hidden shadow-sm sm:rounded-lg mb-4">
-                <div class="p-6 text-white">
-                    <h3 class="text-lg font-semibold mb-2">Events</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        @php
-                        // Sort events by event_date
-                        $sortedEvents = $events->sortBy('event_date');
-                        @endphp
-                        @forelse($sortedEvents as $event)
-                        @if($event->status == 'private')
-                        @php
-                        // Convert event date string to a DateTime object
-                        $eventDate = new DateTime($event->event_date);
-                        // Get current date
-                        $currentDate = new DateTime();
-                        @endphp
+    {{-- Display Events --}}
+    <div class="bg-gray-200 w-full min-h-screen flex flex-col justify-center items-center">
+        <div class="max-w-4xl w-full p-4 text-center">
 
-                        {{-- Check if event date has not passed --}}
-                        @if($eventDate >= $currentDate)
-                        <div class="flex items-center mb-2">
-                            @if($event->event_image)
-                            <div class="relative mb-6 mr-4 overflow-hidden rounded-lg bg-no-repeat shadow-lg dark:shadow-black/20" data-te-ripple-init data-te-ripple-color="light">
-                                <img src="{{ asset('storage/events_images/' . basename($event->event_image)) }}" class="h-20 w-25">
-                                <a href="#" onclick="openModal2('{{ $event->event_name }}', '{{ $event->event_date }}', '{{ $event->event_time }}','{{ $event->event_description }}',  '{{ asset('storage/events_images/' . basename($event->event_image)) }}')">
-                                    <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
-                                </a>
-                            </div>
-                            @else
-                            {{-- Placeholder image or default image --}}
-                            <img src="{{ asset('path-to-default-image') }}" class="mr-2 w-10 h-10 rounded-full" alt="Default Image">
-                            @endif
-                            <div>
-                                <p class="text-base font-bold event-title">{{ $event->event_name }}</p><br>
-                                <small> <strong>{{ $event->created_at->diffForHumans() }}</strong> </small><br>
-                                <p class="text-sm text-gray-300">Event Date: {{ date('F j, Y', strtotime($event->event_date)) }}</p>
-                                <p class="text-sm text-gray-300">Event Time: {{ date('g:i A', strtotime($event->event_time)) }}</p>
+            {{-- News Details --}}
+            <div class="mb-8 border shadow-lg">
 
-                            </div>
-                        </div>
-                        @endif
-                        @endif
-                        @empty
-                        <p>No private events available.</p>
-                        @endforelse
-                    </div>
+                <div class="bg-green-800 py-4 mb-6">
+                    <h1 class="text-3xl font-bold text-white flex items-center pl-4">
+                        <i class="far fa-newspaper text-2xl mr-2"></i>
+                        News Details
+                    </h1>
                 </div>
-            </div>
 
-            {{-- Display News --}}
-            <div class="bg-green-600 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-white">
-                    <h3 class="text-lg font-semibold mb-2">News</h3>
+
+                <div class="flex flex-wrap justify-center">
                     @php
                     // Sort news by news_date
                     $sortedNews = $news->sortBy('news_date');
@@ -67,47 +28,86 @@
                     $currentDate = now();
                     @endphp
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        @forelse($sortedNews as $singleNews)
-                        @if($singleNews->status == 'private')
-                        @php
-                        // Convert news date string to a DateTime object
-                        $newsDate = new DateTime($singleNews->news_date);
-                        // Calculate 3 days after news date
-                        $threeDaysAfter = $newsDate->modify('+3 days');
-                        @endphp
+                    @forelse($sortedNews as $singleNews)
+                    @if($singleNews->status == 'private')
+                    @php
+                    // Convert news date string to a DateTime object
+                    $newsDate = new DateTime($singleNews->news_date);
+                    // Calculate 3 days after news date
+                    $threeDaysAfter = $newsDate->modify('+3 days');
+                    @endphp
 
-                        {{-- Check if news is within 3 days from news date --}}
-                        @if($currentDate <= $threeDaysAfter) <div class="flex items-center mb-2">
-                            @if($singleNews->news_image)
-                            <div class="relative mb-6 mr-4 overflow-hidden rounded-lg bg-no-repeat shadow-lg dark:shadow-black/20 news-image-container" data-te-ripple-init data-te-ripple-color="light">
-                                <img src="{{ asset('storage/news_images/' . basename($singleNews->news_image)) }}" class="h-20 w-22">
-
-                                <a href="#" onclick="openModal('{{ $singleNews->news_title }}', '{{ $singleNews->news_date }}', '{{ $singleNews->news_time }}','{{ $singleNews->news_content }}','{{ asset('storage/news_images/' . basename($singleNews->news_image)) }}')">
-                                    <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
-                                </a>
-
-                            </div>
-
-                            @else
-                            {{-- Placeholder image or default image --}}
-
-                            <img src="{{ asset('path-to-default-image') }}" class="mr-2 w-10 h-10 rounded-full" alt="Default Image">
-                            @endif
-                            <div>
-                                <p class="text-base font-bold news-title">{{ $singleNews->news_title }}</p> <br>
-                                <small> <strong>{{ $singleNews->created_at->diffForHumans() }}</strong> </small><br>
-                                <p class="text-sm text-gray-300">News Date: {{ date('F j, Y', strtotime($singleNews->news_date)) }}</p>
-                                <p class="text-sm text-gray-300">News Time: {{ date('g:i A', strtotime($singleNews->news_time)) }}</p>
-
-                            </div>
-                    </div>
-                    @endif
-                    @endif
-                    @empty
-                    <p>No private news available.</p>
-                    @endforelse
+                    {{-- Check if news is within 3 days from news date --}}
+                    @if($currentDate <= $threeDaysAfter) <div class="w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl mx-2 mb-4">
+                        @if($singleNews->news_image)
+                        <img class="h-40 object-cover rounded-xl" src="{{ asset('storage/news_images/' . basename($singleNews->news_image)) }}" alt="">
+                        @else
+                        {{-- Placeholder image or default image --}}
+                        <img class="h-40 object-cover rounded-xl" src="{{ asset('path-to-default-image') }}" alt="Default Image">
+                        @endif
+                        <div class="p-2">
+                            <h2 class="font-bold text-lg mb-2">{{ $singleNews->news_title }}</h2>
+                            <small><strong>{{ $singleNews->created_at->diffForHumans() }}</strong></small>
+                            <p class="text-sm text-gray-600">News Date: {{ date('F j, Y', strtotime($singleNews->news_date)) }}</p>
+                            <p class="text-sm text-gray-600">News Time: {{ date('g:i A', strtotime($singleNews->news_time)) }}</p>
+                        </div>
+                        <div class="m-2">
+                            <a role='button' href="#" onclick="openModal('{{ $singleNews->news_title }}', '{{ $singleNews->news_date }}', '{{ $singleNews->news_time }}','{{ $singleNews->news_content }}','{{ asset('storage/news_images/' . basename($singleNews->news_image)) }}')" class="text-white bg-green-600 px-3 py-1 rounded-md hover:bg-green-700">Read More</a>
+                        </div>
                 </div>
+                @endif
+                @endif
+                @empty
+                <p>No private news available.</p>
+                @endforelse
+            </div>
+        </div>
+
+        {{-- Event Details --}}
+        <div class="mb-8 border  shadow-lg">
+            <div class="bg-blue-800 py-4 mb-6">
+                <h1 class="text-3xl font-bold text-white flex items-center pl-4">
+                    <i class="far fa-calendar-days text-2xl mr-2"></i>Event Details
+                </h1>
+            </div>
+            <div class="flex flex-wrap justify-center">
+                @php
+                // Sort events by event_date
+                $sortedEvents = $events->sortBy('event_date');
+                @endphp
+                @forelse($sortedEvents as $event)
+                @if($event->status == 'private')
+                @php
+                // Convert event date string to a DateTime object
+                $eventDate = new DateTime($event->event_date);
+                // Get current date
+                $currentDate = new DateTime();
+                @endphp
+
+                {{-- Check if event date has not passed --}}
+                @if($eventDate >= $currentDate)
+                <div class="w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl mx-2 mb-4">
+                    @if($event->event_image)
+                    <img class="h-40 object-cover rounded-xl" src="{{ asset('storage/events_images/' . basename($event->event_image)) }}" alt="">
+                    @else
+                    {{-- Placeholder image or default image --}}
+                    <img class="h-40 object-cover rounded-xl" src="{{ asset('path-to-default-image') }}" alt="Default Image">
+                    @endif
+                    <div class="p-2">
+                        <h2 class="font-bold text-lg mb-2">{{ $event->event_name }}</h2>
+                        <small><strong>{{ $event->created_at->diffForHumans() }}</strong></small>
+                        <p class="text-sm text-gray-600">Event Date: {{ date('F j, Y', strtotime($event->event_date)) }}</p>
+                        <p class="text-sm text-gray-600">Event Time: {{ date('g:i A', strtotime($event->event_time)) }}</p>
+                    </div>
+                    <div class="m-2">
+                        <a role='button' href="#" onclick="openModal2('{{ $event->event_name }}', '{{ $event->event_date }}', '{{ $event->event_time }}','{{ $event->event_description }}',  '{{ asset('storage/events_images/' . basename($event->event_image)) }}')" class="text-white bg-blue-600 px-3 py-1 rounded-md hover:bg-blue-700">Read More</a>
+                    </div>
+                </div>
+                @endif
+                @endif
+                @empty
+                <p>No private events available.</p>
+                @endforelse
             </div>
         </div>
 

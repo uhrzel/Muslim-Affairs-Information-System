@@ -20,7 +20,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-black">
                         <thead class="text-xs uppercase bg-indigo-700 text-white ">
@@ -39,7 +39,7 @@
                         </thead>
                         <tbody id="searchResults">
                             @foreach($advertisements as $Ads)
-                            <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
+                            <tr class="border-b border-gray-500 bg-gray-200 hover:bg-gray-300" style="font-family: 'Arial', sans-serif;">
                                 <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-black ads-title">{{ $Ads->ads_title }}</td>
                                 <td class="px-6 py-4 ads-description">{{ $Ads->ads_description}}</td>
                                 <td class="px-6 py-4">

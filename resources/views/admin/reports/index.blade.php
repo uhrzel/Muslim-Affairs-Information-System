@@ -36,13 +36,13 @@
                         </x-slot>
                         <x-slot name="content">
                             <form method="POST" class="form-inline" id="exportForm">
-                                <button type="submit" id="exportExcel" class="text-green-500 hover:bg-green-600 px-2 py-1 rounded-md mr-1 text-xs border border-green-500 transition duration-300">
+                                <button type="submit" id="exportExcel" class="text-white  hover:bg-green-600 px-2 py-1 rounded-md mr-1 text-xs border border-green-500 transition duration-300 ">
                                     <i class="fa fa-file-excel-o"></i> Excel
                                 </button>
-                                <button type="submit" id="exportPdf" class="text-red-500 hover:bg-red-600 px-2 py-1 rounded-md mr-1 text-xs border border-red-500 transition duration-300">
+                                <button type="submit" id="exportPdf" class="text-white hover:bg-red-600 px-2 py-1 rounded-md mr-1 text-xs border border-red-500 transition duration-300">
                                     <i class="fa fa-file-pdf-o"></i> PDF
                                 </button>
-                                <button type="submit" id="exportWord" class="text-blue-500 hover:bg-blue-600 px-2 py-1 rounded-md text-xs border border-blue-500 transition duration-300">
+                                <button type="submit" id="exportWord" class="text-white hover:bg-blue-600 px-2 py-1 rounded-md text-xs border border-blue-500 transition duration-300">
                                     <i class="fa fa-file-word-o"></i> Word
                                 </button>
                             </form>
@@ -56,7 +56,7 @@
 
         <div class="py-10">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class=" overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left">
                             <thead class="text-xs uppercase bg-indigo-700 text-white">
@@ -82,7 +82,7 @@
 
                             <tbody id="searchResults">
                                 @foreach($reports as $user)
-                                <tr class="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
+                                <tr class="border-b border-gray-500 bg-gray-200 hover:bg-gray-300" style="font-family: 'Arial', sans-serif;">
                                     @if(auth()->user()->type === 'admin')
                                     <td class="px-6 py-4 user-name">{{ $user->user->name }}</td>
                                     <td class="px-6 py-4 user-email">{{ $user->user->email }}</td>
@@ -90,16 +90,30 @@
 
                                     <td class="px-6 py-4 user-reportTitle">{{ $user->report_title}}</td>
                                     <td class="px-6 py-4 user-reportDescription">{{ $user->report_description }}</td>
-                                    <td class="px-6 py-4 user-status"> @if($user->status === 'pending')
-                                        <span class="bg-green-600 text-white px-2 py-1 rounded-">{{ $user->status }}</span>
+                                    <td class="px-6 py-4 user-status">
+                                        @if($user->status === 'pending')
+                                        <span class="inline-flex items-center bg-green-600 text-white px-2 py-1 rounded-full">
+                                            <i class="fas fa-clock mr-1"></i>
+                                            Pending
+                                        </span>
                                         @elseif($user->status === 'settled')
-                                        <span class="bg-blue-600 text-white px-2 py-1 rounded">{{ $user->status }}</span>
+                                        <span class="inline-flex items-center bg-blue-600 text-white px-2 py-1 rounded-full">
+                                            <i class="fas fa-check-circle mr-1"></i>
+                                            Settled
+                                        </span>
                                         @elseif($user->status === 'cancelled')
-                                        <span class="bg-red-600 text-white px-2 py-1 rounded">{{ $user->status }}</span>
+                                        <span class="inline-flex items-center bg-red-600 text-white px-2 py-1 rounded-full">
+                                            <i class="fas fa-times-circle mr-1"></i>
+                                            Cancelled
+                                        </span>
                                         @else
-                                        <span>{{ $user->status }}</span>
+                                        <span class="inline-flex items-center bg-gray-300 text-gray-700 px-2 py-1 rounded-full">
+                                            <i class="fas fa-exclamation-circle mr-1"></i>
+                                            {{ ucfirst($user->status) }}
+                                        </span>
                                         @endif
                                     </td>
+
                                     <td class="px-6 py-4 user-created">
                                         {{ \Carbon\Carbon::parse($user->created_at)->format('F j, Y') }} <br>
                                         {{ \Carbon\Carbon::parse($user->created_at)->format('h:i A') }}
@@ -110,16 +124,19 @@
                                     <td class="px-6 py-4 flex items-center">
                                         @if($user->status === 'pending')
                                         <div class="flex space-x-2">
-                                            <button class="feedback-btn bg-blue-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200" data-report-id="{{ $user->id }}" data-status="settled">
+                                            <button class="feedback-btn border border-transparent hover:bg-blue-500 border-blue-600 transition-colors text-black font-xl rounded-full px-4 py-2 leading-none dark:hover:text-white " data-report-id="{{ $user->id }}" data-status="settled">
                                                 Settled
                                             </button>
-                                            <button class="feedback-btn bg-red-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-red-200" data-report-id="{{ $user->id }}" data-status="cancelled">
+                                            <button class="feedback-btn border border-transparent hover:bg-red-500 border-red-600 transition-colors text-black font-xl rounded-full px-4 py-2 leading-none dark:hover:text-white" data-report-id="{{ $user->id }}" data-status="cancelled">
                                                 Cancel
                                             </button>
 
                                         </div>
                                         @else
-                                        <span class="text-gray-500">Completed</span>
+                                        <span class="inline-flex items-center font-semibold text-gray-600 px-2 py-1 rounded-full">
+                                            <i class="fas fa-check-circle mr-1"></i>
+                                            Completed
+                                        </span>
                                         @endif
                                     </td>
                                     @endif

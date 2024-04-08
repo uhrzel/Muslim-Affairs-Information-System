@@ -311,11 +311,11 @@
             <div class="nav-links">
                 @if (Route::has('login'))
                 @auth
-                <a href="{{ url('/dashboard') }}" class="bg-yellow-400 font-bold py-2 px-10 rounded-full" style="color: #052e16;">Dashboard</a>
+                <a href="{{ url('/dashboard') }}" class="font-bold py-2 px-10 rounded-full border border-transparent hover:bg-yellow-500 border-yellow-600 transition-colors" style="color: white;">Dashboard</a>
                 @else
-                <a href="{{ route('login') }}" class="bg-yellow-400 font-bold py-2 px-10 rounded-full mr-4" style="color: #052e16;">Log in</a>
+                <a href="{{ route('login') }}" class="font-bold py-2 px-10 rounded-full mr-4 border border-transparent hover:bg-yellow-500 border-yellow-600 transition-colors" style="color: white;">Log in</a>
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="bg-yellow-400  font-bold py-2 px-10 rounded-full" style="color: #052e16;">Register</a>
+                <a href="{{ route('register') }}" class="font-bold py-2 px-10 rounded-full border border-transparent hover:bg-yellow-500 border-yellow-600 transition-colors" style="color: white;">Register</a>
                 @endif
                 @endauth
                 @endif
