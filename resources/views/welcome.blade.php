@@ -363,7 +363,7 @@
         <section class="text-center md:text-left">
             @php
             // Sort news by news_date
-            $sortedNews = $news->sortBy('news_date');
+            $sortedNews = $news->sortByDesc('created_at');
             // Get current date
             $currentDate = now();
             @endphp
@@ -486,7 +486,7 @@
         <section class="mb-32 text-center mt-20">
             @php
 
-            $sortedEvent = $events->sortBy('event_date');
+            $sortedEvent = $events->SortByDesc('created_at');
             // Get current date
 
             @endphp

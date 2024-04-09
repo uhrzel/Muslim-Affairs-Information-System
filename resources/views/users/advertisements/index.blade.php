@@ -23,7 +23,7 @@
                 <div class="flex flex-wrap justify-center">
                     @php
                     // Sort news by news_date
-                    $sortedNews = $news->sortBy('news_date');
+                    $sortedNews = $news->sortByDesc('created_at');
                     // Get current date
                     $currentDate = now();
                     @endphp
@@ -73,7 +73,7 @@
             <div class="flex flex-wrap justify-center">
                 @php
                 // Sort events by event_date
-                $sortedEvents = $events->sortBy('event_date');
+                $sortedEvents = $events->sortByDesc('created_at');
                 @endphp
                 @forelse($sortedEvents as $event)
                 @if($event->status == 'private')
