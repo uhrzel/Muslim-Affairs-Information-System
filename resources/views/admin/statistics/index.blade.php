@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="container mx-auto p-8">
-        <div class=" bg-sky-900 rounded-lg shadow overflow-hidden">
+        <div class=" bg-gray-200 rounded-lg shadow overflow-hidden">
             <div class="p-6 flex flex-wrap gap-4">
                 <div class="w-full md:w-1/2 lg:w-1/4">
                     <canvas id="eventsChart" width="300" height="300"></canvas>

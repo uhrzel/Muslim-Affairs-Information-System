@@ -124,10 +124,10 @@
                                     <td class="px-6 py-4 flex items-center">
                                         @if($user->status === 'pending')
                                         <div class="flex space-x-2">
-                                            <button class="feedback-btn border border-transparent hover:bg-blue-500 border-blue-600 transition-colors text-black font-xl rounded-full px-4 py-2 leading-none dark:hover:text-white " data-report-id="{{ $user->id }}" data-status="settled">
+                                            <button class="feedback-btn border border-blue hover:bg-blue-500 border-blue-600 transition-colors text-black font-xl rounded-full px-4 py-2 leading-none dark:hover:text-white " data-report-id="{{ $user->id }}" data-status="settled">
                                                 Settled
                                             </button>
-                                            <button class="feedback-btn border border-transparent hover:bg-red-500 border-red-600 transition-colors text-black font-xl rounded-full px-4 py-2 leading-none dark:hover:text-white" data-report-id="{{ $user->id }}" data-status="cancelled">
+                                            <button class="feedback-btn border border-red hover:bg-red-500 border-red-600 transition-colors text-black font-xl rounded-full px-4 py-2 leading-none dark:hover:text-white" data-report-id="{{ $user->id }}" data-status="cancelled">
                                                 Cancel
                                             </button>
 

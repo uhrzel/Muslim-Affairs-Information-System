@@ -2,11 +2,12 @@
     .custom-style {
         color: white;
         transition: color 0.3s ease-in-out;
+        font-family: Arial, Helvetica, sans-serif
     }
 
     .custom-style:hover {
-        color: #4F46E5;
-        font-family: Arial, Helvetica, sans-serif
+        color: yellow;
+
     }
 
 

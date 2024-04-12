@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-QrHR7IP3w04pBP35g2Kwms8thZfGKiuULYTwhj1TZ9e6KZWVmJM1rRnDE7IMh5Zfz9ac8Hpnpllnlt2pbS4d7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Calistoga&family=Holtwood+One+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Calistoga&family=Candal&family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-dAsm+MTGpWPjfZlKlGrcFLr0X2FlAoZz3Wr1F+L3yU2yq8+56D4tVl3RtfrDxWp+9T8UVvqgqlVXpDBsKDPyJw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Add this line to include the date picker script -->
