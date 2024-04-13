@@ -53,7 +53,11 @@
                         </div>
                         <div class="m-2">
                             <a role='button' href="#" onclick="openModal('{{ $singleNews->news_title }}', '{{ $singleNews->news_date }}', '{{ $singleNews->news_time }}','{{ $singleNews->news_content }}','{{ asset('storage/news_images/' . basename($singleNews->news_image)) }}')" class="text-white bg-green-600 px-3 py-1 rounded-md hover:bg-green-700">Read More</a>
+                            <button id="likeButtonNews{{ $singleNews->id }}" onclick="likeNews('{{ $singleNews->id }}')" class="absolute top-2 right-2 bg-gray-200 text-gray-600 px-2 py-1 rounded-full">
+                                <i class="fas fa-thumbs-up"></i> <span id="likeCountNews{{ $singleNews->id }}">{{ $singleNews->likes_count }}</span>
+                            </button>
                         </div>
+
                 </div>
                 @endif
                 @endif
@@ -70,6 +74,7 @@
                     <i class="far fa-calendar-days text-2xl mr-2"></i>Event Details
                 </h1>
             </div>
+
             <div class="flex flex-wrap justify-center">
                 @php
                 // Sort events by event_date
@@ -101,6 +106,9 @@
                     </div>
                     <div class="m-2">
                         <a role='button' href="#" onclick="openModal2('{{ $event->event_name }}', '{{ $event->event_date }}', '{{ $event->event_time }}','{{ $event->event_description }}',  '{{ asset('storage/events_images/' . basename($event->event_image)) }}')" class="text-white bg-blue-600 px-3 py-1 rounded-md hover:bg-blue-700">Read More</a>
+                        <button id="likeButtonEvents{{ $event->id }}" onclick="likeEvents('{{ $event->id }}')" class="absolute top-2 right-2 bg-gray-200 text-gray-600 px-2 py-1 rounded-full">
+                            <i class="fas fa-thumbs-up"></i> <span id="likeCountEvents{{ $event->id }}">{{ $event->likes }}</span>
+                        </button>
                     </div>
                 </div>
                 @endif
@@ -109,6 +117,7 @@
                 <p>No private events available.</p>
                 @endforelse
             </div>
+
         </div>
 
     </div>
@@ -180,8 +189,68 @@
         .hover-underline:hover {
             text-decoration: underline;
         }
+
+        .newsliked {
+            background-color: #4CAF50;
+            /* Green */
+            color: white;
+        }
+
+        .eventliked {
+            background-color: #005ce6;
+            /* Green */
+            color: white;
+        }
     </style>
     <script>
+        function likeNews(newsId) {
+            // Assuming there's an API to update the like count on the server
+            // You can send an AJAX request to update the like count
+            // Here, I'm just incrementing the like count on the client-side for demonstration
+            const likeCountElement = document.getElementById('likeCountNews' + newsId);
+            const likeButton = document.getElementById('likeButtonNews' + newsId);
+            let currentLikes = parseInt(likeCountElement.textContent);
+
+            // Check if the text content is a valid number
+            if (!isNaN(currentLikes)) {
+                currentLikes++;
+                likeCountElement.textContent = currentLikes;
+            } else {
+                // If it's not a valid number, set it to 0 and then increment
+                currentLikes = 0;
+                currentLikes++;
+                likeCountElement.textContent = currentLikes;
+            }
+
+            // Change the appearance of the like button
+            likeButton.classList.add('newsliked'); // Add a class to change appearance
+            likeButton.disabled = true; // Disable the button to prevent multiple likes
+        }
+
+        function likeEvents(newsId) {
+            // Assuming there's an API to update the like count on the server
+            // You can send an AJAX request to update the like count
+            // Here, I'm just incrementing the like count on the client-side for demonstration
+            const likeCountElement = document.getElementById('likeCountEvents' + newsId);
+            const likeButton = document.getElementById('likeButtonEvents' + newsId);
+            let currentLikes = parseInt(likeCountElement.textContent);
+
+            // Check if the text content is a valid number
+            if (!isNaN(currentLikes)) {
+                currentLikes++;
+                likeCountElement.textContent = currentLikes;
+            } else {
+                // If it's not a valid number, set it to 0 and then increment
+                currentLikes = 0;
+                currentLikes++;
+                likeCountElement.textContent = currentLikes;
+            }
+
+            // Change the appearance of the like button
+            likeButton.classList.add('eventliked'); // Add a class to change appearance
+            likeButton.disabled = true; // Disable the button to prevent multiple likes
+        }
+
         function openModal2(title, date, time, content, imageSrc) {
             console.log('Opening event modal with data:', title, date, time, imageSrc);
 

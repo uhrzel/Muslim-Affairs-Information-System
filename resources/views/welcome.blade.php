@@ -338,9 +338,10 @@
                 </h1>
 
             </div>
-            <div class="man-icon col-span-6 mb-8">
-                <img src="img/man.png" alt="Picture of a man" class="w-96 object-cover mx-auto drop-shadow-lg">
+            <div class="man-icon col-span-6 mb-8 flex justify-center">
+                <img src="img/man.png" alt="Picture of a man" class="w-96 object-cover shadow-lg rounded-lg">
             </div>
+
         </div>
         <!-- Modal -->
         <div id="newsModal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden">
@@ -387,25 +388,26 @@
                     <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 news-image-container" data-te-ripple-init data-te-ripple-color="light">
                         <img src="{{ asset('storage/news_images/' . basename($News->news_image)) }}" class="max-w-full">
                         <a href="#" onclick="openModal('{{ $News->news_title }}', '{{ $News->news_date }}', '{{ $News->news_time }}', '{{ $News->news_content }}', '{{ asset('storage/news_images/' . basename($News->news_image)) }}')">
-                            <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
+                            <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
+                                <i class="fa-solid fa-eye text-white text-4xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition duration-300 ease-in-out hover:opacity-100"></i>
+                            </div>
                         </a>
                     </div>
                 </div>
                 <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12 news-item">
-                    <h5 class="mb-3 text-lg text-white font-bold news-title"><strong>News Title: </strong>{{ $News->news_title }}</h5>
+                    <h5 class="mb-3 text-lg text-white font-bold news-title"><strong>News: </strong>{{ $News->news_title }}</h5>
 
                     <div class="mb-3 flex items-center justify-center text-yellow-400 text-sm font-medium text-danger dark:text-danger-500 md:justify-start">
                         <small> <strong>{{ $News->created_at->diffForHumans() }}</strong> </small><br>
                     </div>
-                    <p class="mb-6 text-neutral-300">
-
-                        <small>News Date: <u>{{ \Carbon\Carbon::parse($News->news_date)->format('F d, Y') }}</u></small><br>
-                        <small>News Time: <u>{{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}</u></small>
-
+                    <p class="mb-2 text-neutral-300 text-justify">
+                        <small>News Date: {{ \Carbon\Carbon::parse($News->news_date)->format('F d, Y') }}</small><br>
+                        <small>News Time: {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}</small>
                     </p>
-                    <p class="text-neutral-300 news-content">
-                        <strong> News Content:</strong> {{$News->news_content}}
+                    <p class="text-neutral-300 news-content text-justify">
+                        <strong>Content:</strong> {{$News->news_content}}
                     </p>
+
                 </div>
                 </div>
                 @endif
@@ -483,7 +485,7 @@
                 </div>
             </div>
         </div>
-        <section class="mb-32 text-center mt-20">
+        <section class="mb-10 text-center mt-5">
             @php
 
             $sortedEvent = $events->SortByDesc('created_at');
@@ -510,21 +512,22 @@
                     <div class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20" data-te-ripple-init data-te-ripple-color="light">
                         <img src="{{ asset('storage/events_images/' . basename($Event->event_image)) }}" class="w-full h-64 object-cover">
                         <a href="#" onclick="openModal2('{{ $Event->event_name }}', '{{ $Event->event_date }}', '{{ $Event->event_time }}', '{{ $Event->event_description }}', '{{ asset('storage/events_images/' . basename($Event->event_image)) }}')">
-                            <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]"></div>
+                            <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
+                                <i class="fa-solid fa-eye text-white text-4xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition duration-300 ease-in-out hover:opacity-100"></i>
+                            </div>
                         </a>
                     </div>
                     <h5 class="mt-3 mb-2 text-lg font-bold text-white event-title"><strong>Event Name: </strong>{{ $Event->event_name }}</h5>
                     <div class="mb-3 flex items-center justify-center text-sm font-medium text-yellow-400">
                         <small> <strong>{{ $Event->created_at->diffForHumans() }}</strong> </small><br>
                     </div>
-                    <p class="text-neutral-300">
-
-                        <small>Event Date: <u>{{ \Carbon\Carbon::parse($Event->event_date)->format('F d, Y') }}</u></small><br>
-                        <small>Event Time: <u>{{ \Carbon\Carbon::parse($Event->event_time)->format('h:i A') }}</u></small>
-
+                    <p class="text-neutral-300 justify-center ">
+                        <small>Event Date: {{ \Carbon\Carbon::parse($Event->event_date)->format('F d, Y') }}</small><br>
+                        <small>Event Time: {{ \Carbon\Carbon::parse($Event->event_time)->format('h:i A') }}</small>
                     </p>
-                    <p class="text-neutral-300">
-                        <strong>Event Description: </strong>{{ $Event->event_description }}
+
+                    <p class="text-neutral-300 justify-center">
+                        <strong>Content: </strong>{{ $Event->event_description }}
                     </p>
                 </div>
                 @endif
@@ -534,60 +537,6 @@
                 @endforelse
             </div>
         </section>
-
-        <script>
-            function openModal2(title, date, time, content, imageSrc) {
-                if (window.innerWidth > 768) {
-                    const modal = document.getElementById('eventModal');
-                    const modalBody = document.getElementById('modal2Body');
-                    const eventDate = new Date(date);
-                    // Format the date as "Month Day, Year"
-                    const formattedDate = eventDate.toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric'
-                    });
-                    // Format the time as "HH:MM AM/PM"
-                    const formattedTime = new Date(`2000-01-01T${time}`).toLocaleTimeString('en-US', {
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-
-                    modalBody.innerHTML = `
-            <h5 class="mb-3 text-lg text-gray-800 font-bold event-name"><strong>Event Name: </strong>${title}</h5>
-            <div class="mb-3 flex items-center text-yellow-400 text-sm font-medium text-danger">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-2 h-5 w-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
-                </svg>
-                Event
-            </div>
-            <img src="${imageSrc}" class="w-full mb-4 rounded-lg">
-            <p class="mb-6 text-gray-800">
-            <small>Event Date: <u>${formattedDate}</u></small> <br>
-            <small>Event Time: <u>${formattedTime}</u></small>
-            </p>
-            <p class="text-gray-800">
-                <strong> Event Description:</strong> ${content}
-            </p>
-        `;
-                    modal.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
-                }
-            }
-
-
-
-
-            function closeModal() {
-                const modal = document.getElementById('eventModal');
-                modal.classList.add('hidden');
-                document.body.style.overflow = ''; // Enable scrolling on the main page
-            }
-
-            document.getElementById('close2Modal').addEventListener('click', closeModal);
-        </script>
-
-
         <footer class="text-center text-neutral-600 dark:text-neutral-200 lg:text-left">
             <div class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
                 <div class="mr-12 hidden lg:block">
@@ -695,7 +644,59 @@
         </footer>
     </main>
 </body>
+
 <script>
+    function openModal2(title, date, time, content, imageSrc) {
+        if (window.innerWidth > 768) {
+            const modal = document.getElementById('eventModal');
+            const modalBody = document.getElementById('modal2Body');
+            const eventDate = new Date(date);
+            // Format the date as "Month Day, Year"
+            const formattedDate = eventDate.toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            });
+            // Format the time as "HH:MM AM/PM"
+            const formattedTime = new Date(`2000-01-01T${time}`).toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            modalBody.innerHTML = `
+            <h5 class="mb-3 text-lg text-gray-800 font-bold event-name"><strong>Event Name: </strong>${title}</h5>
+            <div class="mb-3 flex items-center text-yellow-400 text-sm font-medium text-danger">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-2 h-5 w-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                </svg>
+                Event
+            </div>
+            <img src="${imageSrc}" class="w-full mb-4 rounded-lg">
+            <p class="mb-6 text-gray-800">
+            <small>Event Date: <u>${formattedDate}</u></small> <br>
+            <small>Event Time: <u>${formattedTime}</u></small>
+            </p>
+            <p class="text-gray-800">
+                <strong> Event Description:</strong> ${content}
+            </p>
+        `;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
+        }
+    }
+
+
+
+
+    function closeModal() {
+        const modal = document.getElementById('eventModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Enable scrolling on the main page
+    }
+
+    document.getElementById('close2Modal').addEventListener('click', closeModal);
+
+
     const mobileMenuButton = document.getElementById('mobileMenuButton');
     const mobileNavLinks = document.getElementById('mobileNavLinks');
 
@@ -711,14 +712,14 @@
         if (menuIcon.classList.contains('open')) {
             // Change back to hamburger icon
             menuIcon.innerHTML = `
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        `;
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+`;
             menuIcon.classList.remove('open');
         } else {
             // Change to "x" icon
             menuIcon.innerHTML = `
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        `;
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+`;
             menuIcon.classList.add('open');
         }
     });
