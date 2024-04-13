@@ -31,6 +31,10 @@ Route::get('/', function () {
     return view('welcome', compact('events', 'news'));
 });
 
+Route::fallback(function () {
+    return view('errors.404');
+});
+
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/export/excel', [ExportController::class, 'excel'])->name('export.excel');
