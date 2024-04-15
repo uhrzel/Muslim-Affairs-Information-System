@@ -13,6 +13,11 @@ use App\Http\Controllers\LogsController;
 use App\Models\Event;
 use App\Models\News;
 use App\Http\Controllers\ExportController;
+use App\Models\Advertisement;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
+use Symfony\Component\Mime\Part\TextPart;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +32,45 @@ use App\Http\Controllers\ExportController;
 Route::get('/', function () {
     $events = Event::all();
     $news = News::all();
+    $ads = Advertisement::all();
 
-    return view('welcome', compact('events', 'news'));
+    return view('welcome', compact('events', 'news', 'ads'));
+});
+Route::post('/', function (Request $request) {
+    $name = $request->input('name');
+    $email = $request->input('email');
+    $subject = $request->input('subject');
+    $message = $request->input('message');
+
+    $to = "Arzeljrz17@gmail.com";
+
+    // Set up SMTP configuration
+    $smtpConfig = [
+        'driver' => 'smtp',
+        'host' => env('MAIL_HOST'),
+        'port' => env('MAIL_PORT'),
+        'username' => env('MAIL_USERNAME'),
+        'password' => env('MAIL_PASSWORD'),
+        'encryption' => env('MAIL_ENCRYPTION'),
+        'from' => [
+            'address' => env('MAIL_FROM_ADDRESS'),
+            'name' => env('MAIL_FROM_NAME'),
+        ],
+    ];
+
+    // Send email
+
+    try {
+        Mail::raw('', function (Message $mail) use ($to, $subject, $message, $name, $email) {
+            $mail->to($to)
+                ->subject($subject)
+                ->setBody(new TextPart("You have received a new message from $name.\nEmail address: $email\nMessage: \n$message"));
+        });
+
+        return "<script>alert('Your message has been sent successfully!'); window.location.href = '/';</script>";
+    } catch (\Exception $e) {
+        return "<p class='text-red-500'>Oops! Something went wrong. Please try again later.</p>";
+    }
 });
 
 Route::fallback(function () {

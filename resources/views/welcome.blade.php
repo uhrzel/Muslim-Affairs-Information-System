@@ -1,505 +1,253 @@
+<!--
+Template Name: Tailone - Tailwind One Page Template
+Author: Aribudin
+Website: https://www.tailwindtemplate.net
+Contact: support@tailwindtemplate.net
+Purchase: https://themes.tailwindtemplate.net/tailone
+License: You must have a valid license from official store to legally use the theme for your project.
+-->
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Muslim Affairs Office Information System</title>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title  -->
+    <title>Muslim Affairs Information System</title>
+    <meta name="description" content="MaoInfoSys">
+
+    <!-- Development css -->
+    <link rel="stylesheet" href="src/css/style.css">
+
+    <!-- Production css -->
+    <!-- <link rel="stylesheet" href="dist/css/style.css"> -->
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+    <!-- Favicon  -->
     <link rel="icon" type="image/png" href="{{ asset('img/man.png') }}" />
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Calistoga&family=Holtwood+One+SC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Calistoga&family=Candal&family=Holtwood+One+SC&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-
-    <style>
-        .title-header {
-            font-family: "Holtwood One SC", serif;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 55px;
-        }
-
-        .bg-green-fullscreen {
-            background-color: #052e16;
-            width: 100%;
-        }
-
-        .drop-shadow-lg {
-            filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.1));
-        }
-
-        .news-image-container:hover::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: rgba(255, 255, 255, 0.1);
-            transition: background 0.3s ease-in-out;
-        }
-
-
-
-        .news-item:hover .news-content {
-            opacity: 1;
-        }
-
-        .news-title {
-            display: inline-block;
-            position: relative;
-        }
-
-        .news-title::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: yellow;
-            /* Adjust color as needed */
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .news-title:hover::before {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        .event-title {
-            display: inline-block;
-            position: relative;
-        }
-
-        .event-title::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: yellow;
-
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .event-title:hover::before {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-
-        .partnership-title {
-            display: inline-block;
-            position: relative;
-        }
-
-        .partnership-title::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: orange;
-            /* Adjust color as needed */
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .partnership-title:hover::before {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        .contact-title {
-            display: inline-block;
-            position: relative;
-        }
-
-        .contact-title::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: orange;
-            /* Adjust color as needed */
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .contact-title:hover::before {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        .useful-links-title {
-            display: inline-block;
-            position: relative;
-        }
-
-        .useful-links-title::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: orange;
-            /* Adjust color as needed */
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .useful-links-title:hover::before {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        /* Add this CSS for the hover effect */
-        .social-icon:hover {
-            transform: scale(1.2);
-            /* Adjust the scale factor as needed */
-            transition: transform 0.3s ease-in-out;
-        }
-
-        /* Add this CSS if you want to change the color on hover */
-        .social-icon:hover svg {
-            fill: orange;
-            /* Adjust the color as needed */
-            transition: fill 0.3s ease-in-out;
-        }
-
-        .mobile-menu {
-            display: none;
-        }
-
-        .mobile-title {
-            display: none;
-        }
-
-        @media screen and (max-width: 768px) {
-            .flex-mobile {
-                display: flex;
-                justify-content: flex-end;
-                /* Align items to the right */
-                align-items: center;
-            }
-
-            .mobile-menu {
-                display: block;
-                margin-right: 20px;
-                /* Adjust margin as needed */
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                /* Align links vertically */
-                align-items: flex-end;
-                /* Align items to the right */
-                position: fixed;
-                top: 10 0px;
-                right: 50px;
-                /* Position on the right side */
-                background-color: white;
-                padding: 10px;
-                z-index: 999;
-                width: 20%;
-                max-width: 300px;
-                height: 30%;
-                overflow-y: auto;
-            }
-
-            .nav-links a {
-                display: block;
-                color: #fff;
-                margin-bottom: 10px;
-                text-align: center;
-            }
-
-            .nav-links a:hover {
-                text-decoration: underline;
-            }
-
-            .man-icon {
-                display: none;
-            }
-
-            /* Hide desktop titles on mobile */
-            .desktop-title {
-                display: none;
-            }
-
-            /* Show mobile title on mobile devices */
-            .mobile-title {
-                display: inline;
-                /* or display: block; depending on your layout */
-            }
-        }
-
-        /* Show nav links for desktop */
-        @media screen and (min-width: 769px) {
-            .nav-links {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .nav-links a {
-                margin: 0 10px;
-                color: #fff;
-                text-decoration: none;
-            }
-        }
-    </style>
 </head>
 
-<body class="bg-green-fullscreen">
-
-    <nav class="flex items-center justify-between flex-wrap bg-transparent p-6">
-        <div class="flex gap-4 items-center flex-shrink-0 text-white mr-6">
-            <a href="#" class="flex items-center">
-                <img src="img/logo1.png" alt="Muslim Affairs Office Logo" class="w-16 h-16 rounded-full">
-            </a>
-            <a href="#" class="flex items-center">
-                <img src="img/logo2.png" alt="Muslim Affairs Office Logo" class="w-16 h-16 rounded-full">
-            </a>
-            <a href="#" class="flex items-center">
-                <img src="img/logo3.png" alt="Muslim Affairs Office Logo" class="w-16 h-16 rounded-full">
-            </a>
-        </div>
-
-        <div class="flex items-center flex-mobile"> <!-- Apply flex-mobile class here -->
-            <div class="mobile-menu">
-                <button id="mobileMenuButton" class="text-white focus:outline-none">
-                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+<body class="text-gray-700">
+    <!-- preloader -->
+    <div class="preloader loaded-success fixed inset-0 z-50 bg-gray-50">
+        <div class="absolute left-1/2 top-1/2 transform -translate-y-1/2">
+            <div class="relative mx-auto my-12">
+                <div class="inline-block">
+                    <svg class="animate-spin h-8 w-8 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                </button>
-
-                <div id="mobileNavLinks" class="nav-links">
-                    @if (Route::has('login'))
-                    @auth
-                    <a href="{{ url('/dashboard') }}" class="font-bold py-2" style="color: #052e16;">Dashboard</a>
-                    @else
-                    <a href="{{ route('login') }}" class="font-bold py-2" style="color: #052e16;">Log in</a>
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="font-bold py-2" style="color: #052e16;">Register</a>
-                    @endif
-                    @endauth
-                    @endif
                 </div>
             </div>
-            <div class="nav-links">
-                @if (Route::has('login'))
-                @auth
-                <a href="{{ url('/dashboard') }}" class="font-bold py-2 px-10 rounded-full border border-transparent hover:bg-yellow-500 border-yellow-600 transition-colors" style="color: white;">Dashboard</a>
-                @else
-                <a href="{{ route('login') }}" class="font-bold py-2 px-10 rounded-full mr-4 border border-transparent hover:bg-yellow-500 border-yellow-600 transition-colors" style="color: white;">Log in</a>
-                @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="font-bold py-2 px-10 rounded-full border border-transparent hover:bg-yellow-500 border-yellow-600 transition-colors" style="color: white;">Register</a>
-                @endif
-                @endauth
-                @endif
-            </div>
         </div>
+    </div>
 
-    </nav>
-    <main class="flex flex-col justify-center items-center">
-        <div class="w-full grid grid-cols-12 px-12 pt-8 mb-8">
-            <div class="col-span-6 flex flex-col justify-center">
-                <h1 class="title-header font-bold " style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                    <span class="text-white desktop-title">Muslim</span>
-                    <span class="text-yellow-300 desktop-title">Affairs</span>
-                    <span class="text-yellow-300 desktop-title"> <br> Office</span>
-                    <span class="text-white desktop-title"> Information</span>
-                    <span class="text-yellow-300 desktop-title"> System</span>
-                    <span class="text-yellow-300 mobile-title">Muslim</span>
-                    <span class="text-white mobile-title">Affairs</span>
-                    <span class="text-yellow-300 mobile-title">InfoSys</span>
-                </h1>
+    <!-- ========== { HEADER }==========  -->
+    <header class="fixed top-0 left-0 right-0 z-40">
+        <nav class="main-nav">
+            <div class="container xl:max-w-6xl mx-auto px-4">
+                <div class="lg:flex lg:justify-between">
+                    <div class="flex justify-between">
+                        <div class="mx-w-10 text-4xl font-bold capitalize text-gray-900 flex items-center">MaoInfoSys</div>
+                        <!-- mobile nav -->
+                        <div class="flex flex-row items-center py-4 lg:py-0">
+                            <div class="relative text-gray-900 hover:text-black block lg:hidden">
+                                <button type="button" class="menu-mobile block py-3 px-6 border-b-2 border-transparent">
+                                    <span class="sr-only">Mobile menu</span>
+                                    <svg class="open h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                    </svg>
 
-            </div>
-            <div class="man-icon col-span-6 mb-8 flex justify-center">
-                <img src="img/man.png" alt="Picture of a man" class="w-96 object-cover shadow-lg rounded-lg">
-            </div>
-
-        </div>
-        <!-- Modal -->
-        <div id="newsModal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden">
-            <div class="absolute w-full h-full bg-gray-900 opacity-70"></div>
-            <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <div class="py-4 text-left px-6">
-                    <div class="flex justify-between items-center pb-3">
-                        <h2 class="text-2xl font-bold text-gray-800">News Details</h2>
-                        <button id="closeModal" class="text-gray-600 hover:text-gray-800">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="close bi bi-x-lg h-8 w-8" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div id="modalBody"></div>
+
+                    <div class="flex flex-row">
+                        <!-- nav menu -->
+                        <ul class="navbar bg-white lg:bg-transparent w-full hidden text-center lg:text-left lg:flex lg:flex-row text-gray-900 text-sm items-center font-bold">
+                            <li class="relative hover:text-black">
+                                <a class="active block py-3 lg:py-7 px-6 border-b-2 border-transparent" href="#hero">Home</a>
+                            </li>
+                            <li class="relative hover:text-black">
+                                <a class="block py-3 lg:py-7 px-6 border-b-2 border-transparent" href="#news">News</a>
+                            </li>
+                            <li class="relative hover:text-black">
+                                <a class="block py-3 lg:py-7 px-6 border-b-2 border-transparent" href="#events">Events</a>
+                            </li>
+                            <li class="relative hover:text-black">
+                                <a class="block py-3 lg:py-7 px-6 border-b-2 border-transparent" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="relative hover:text-black">
+                                <a class="block py-3 lg:py-7 px-6 border-b-2 border-transparent" href="{{ route('register') }}">Register</a>
+                            </li>
+                            <li class="relative hover:text-black">
+                                <a class="block py-3 lg:py-7 px-6 border-b-2 border-transparent" href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </nav>
+    </header><!-- end header -->
 
-        <section class="text-center md:text-left">
-            @php
-            // Sort news by news_date
-            $sortedNews = $news->sortByDesc('created_at');
-            // Get current date
-            $currentDate = now();
-            @endphp
-            <div class="flex justify-center items-center mb-10">
+    <!-- =========={ MAIN }==========  -->
+    <main id="content">
+        <!-- hero start -->
+        <div id="hero" class="section relative z-0 py-16 md:pt-32 md:pb-20 bg-gray-50">
+            <div class="container xl:max-w-6xl mx-auto px-4">
+                <div class="flex flex-wrap flex-row -mx-4 justify-center">
+                    <!-- content -->
+                    <div class="flex-shrink max-w-full px-4 sm:px-12 lg:px-18 w-full sm:w-9/12 lg:w-1/2 self-center">
+                        <img src="img/newman.png" class="w-full max-w-full h-auto" alt="creative agency">
 
-                <h1 class="text-4xl font-bold text-white news-title">
-                    <i class="fa-regular fa-newspaper"></i>
-                    Latest News
-                </h1>
+                    </div><!-- end content -->
+
+                    <!-- text -->
+                    <div class="flex-shrink max-w-full px-4 w-full md:w-9/12 lg:w-1/2 self-center lg:pr-12">
+                        <div class="text-center lg:text-left mt-6 lg:mt-0">
+                            <div class="mb-12">
+                                <h1 class="text-4xl leading-normal text-black font-bold mb-4">Muslim Affairs Office<br>(MAO) <span data-toggle="typed" data-options='{"strings": ["Information System"]}'></span></h1>
+                                <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2"> A comprehensive platform designed to adeptly manage news, events, and grievances within the Muslim community.</p>
+                            </div>
+                            <a class="py-2.5 px-10 inline-block text-center leading-normal text-gray-900 bg-white border-b border-gray-100 hover:text-black hover:ring-0 focus:outline-none focus:ring-0 mr-4" href="#advertisement">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mr-1" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 512 512">
+                                    <path d="M304,384V360c0-29,31.54-56.43,52-76,28.84-27.57,44-64.61,44-108,0-80-63.73-144-144-144A143.6,143.6,0,0,0,112,176c0,41.84,15.81,81.39,44,108,20.35,19.21,52,46.7,52,76v24" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                    <line x1="224" y1="480" x2="288" y2="480" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                    <line x1="208" y1="432" x2="304" y2="432" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                    <line x1="256" y1="384" x2="256" y2="256" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                    <path d="M294,240s-21.51,16-38,16-38-16-38-16" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                </svg>
+                                Advertisements
+                            </a>
+
+                            <a class="py-2.5 px-10 inline-block text-center leading-normal text-gray-100 bg-black border-b border-gray-800 hover:text-white hover:ring-0 focus:outline-none focus:ring-0" target="_blank" href="mailto:MaoInfoSys@gmail.com">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" class="inline-block mr-1" fill="currentColor" viewBox="0 0 512 512">
+                                    <rect x="48" y="96" width="416" height="320" rx="40" ry="40" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                    <polyline points="112 160 256 272 400 160" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                </svg>
+                                Email us
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            @forelse($sortedNews as $News)
-            @if($News->status === 'public')
-            @php
-            $newsDate = new DateTime($News->news_date);
-            $threeDaysAfter = $newsDate->modify('+3 days');
-            @endphp
+        </div><!-- end Hero -->
 
-            {{-- Check if difference between news date and today is greater than 3 days --}}
-            @if($currentDate <= $threeDaysAfter) <div class="mb-6 flex flex-wrap mt-10">
-                <div class="mb-6 ml-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-3/12">
-                    <div class="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 news-image-container" data-te-ripple-init data-te-ripple-color="light">
-                        <img src="{{ asset('storage/news_images/' . basename($News->news_image)) }}" class="max-w-full">
-                        <a href="#" onclick="openModal('{{ $News->news_title }}', '{{ $News->news_date }}', '{{ $News->news_time }}', '{{ $News->news_content }}', '{{ asset('storage/news_images/' . basename($News->news_image)) }}')">
-                            <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
-                                <i class="fa-solid fa-eye text-white text-4xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition duration-300 ease-in-out hover:opacity-100"></i>
+        <!-- start services -->
+        <div id="advertisement" class="section relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
+            <div class="container xl:max-w-6xl mx-auto px-4">
+                <!-- Heading start -->
+                <header class="text-center mx-auto mb-12 lg:px-20">
+                    <h2 class="text-2xl leading-normal mb-2 font-bold text-black">Advertisements</h2>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
+                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary" style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
+                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                    </svg>
+                    <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Save time managing advertising.</p>
+                </header><!-- End heading -->
+
+                <!-- row -->
+                <div class="flex flex-wrap flex-row -mx-4 text-center">
+                    @foreach ($ads as $advertisement)
+                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s">
+                        <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            <div class="inline-block text-gray-900 mb-4">
+                                <video width="100%" controls>
+                                    <source src="{{ asset('storage/ads_videos/' . basename($advertisement->ads_video)) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <h3 class="text-lg leading-normal mb-2 font-semibold text-black">{{ $advertisement->ads_title}}</h3>
+                            <p class="text-gray-500">{{ $advertisement->ads_description}}</p>
+                        </div> <!-- end service block -->
+                    </div>
+                    @endforeach
+                </div><!-- end row -->
+            </div>
+        </div><!-- End Service -->
+
+        <!-- Portfolio Content -->
+        <div id="news" class="section relative z-0 py-12 md:py-16 bg-white">
+            <div class="container xl:max-w-6xl mx-auto px-4">
+                <!-- Heading start -->
+                <header class="text-center mx-auto mb-12 lg:px-20">
+                    <h2 class="text-2xl leading-normal mb-2 font-bold text-black">Latest News</h2>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
+                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary" style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
+                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                    </svg>
+                    <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Our platform provides captivating news experiences that are innovative and visually appealing.</p>
+                </header><!-- End heading -->
+            </div>
+
+            <div class="flex flex-wrap flex-row">
+                @php
+                // Sort news by news_date
+                $sortedNews = $news->sortByDesc('created_at');
+                // Get current date
+                $currentDate = now();
+                @endphp
+
+                @forelse($sortedNews as $News)
+                @if($News->status === 'public')
+                @php
+                $newsDate = new DateTime($News->news_date);
+                $threeDaysAfter = $newsDate->modify('+3 days');
+                @endphp
+                @if($currentDate <= $threeDaysAfter) <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp mb-8" data-wow-duration="1s">
+                    <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a href="{{ asset('storage/news_images/' . basename($News->news_image)) }}" data-gallery="gallery1" data-glightbox="News title: {{ $News->news_title }}; description: {{$News->news_content}}<br> <br> News Date: {{ \Carbon\Carbon::parse($News->news_date)->format('F d, Y') }} <br> News Time: {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}" class="glightbox3">
+                            <img class="block w-full h-auto transform duration-500 " src="{{ asset('storage/news_images/' . basename($News->news_image)) }}" alt="Image Description">
+                            <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                                <h3 class="text-base leading-normal font-semibold my-1 text-white">{{ $News->news_title }}</h3>
+                                <small class="d-block">{{ $News->created_at->diffForHumans() }}</small>
                             </div>
                         </a>
                     </div>
-                </div>
-                <div class="mb-6 mr-auto w-full shrink-0 grow-0 basis-auto px-3 md:mb-0 md:w-9/12 xl:w-7/12 news-item">
-                    <h5 class="mb-3 text-lg text-white font-bold news-title"><strong>News: </strong>{{ $News->news_title }}</h5>
-
-                    <div class="mb-3 flex items-center justify-center text-yellow-400 text-sm font-medium text-danger dark:text-danger-500 md:justify-start">
-                        <small> <strong>{{ $News->created_at->diffForHumans() }}</strong> </small><br>
-                    </div>
-                    <p class="mb-2 text-neutral-300 text-justify">
-                        <small>News Date: {{ \Carbon\Carbon::parse($News->news_date)->format('F d, Y') }}</small><br>
-                        <small>News Time: {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}</small>
-                    </p>
-                    <p class="text-neutral-300 news-content text-justify">
-                        <strong>Content:</strong> {{$News->news_content}}
-                    </p>
-
-                </div>
-                </div>
-                @endif
-                @endif
-                @empty
-                <p class="text-white">No public News available.</p>
-                @endforelse
-        </section>
-
-
-        <script>
-            function openModal(title, date, time, content, imageSrc) {
-
-                if (window.innerWidth > 768) {
-                    const modal = document.getElementById('newsModal');
-                    const modalBody = document.getElementById('modalBody');
-
-                    const newsDate = new Date(date);
-                    // Format the date as "Month Day, Year"
-                    const formattedDate = newsDate.toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric'
-                    });
-                    // Format the time as "HH:MM AM/PM"
-                    const formattedTime = new Date(`2000-01-01T${time}`).toLocaleTimeString('en-US', {
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    });
-
-                    modalBody.innerHTML = `
-            <h5 class="mb-3 text-lg text-gray-800 font-bold news-title"><strong>News Title: </strong>${title}</h5>
-            <div class="mb-3 flex items-center text-yellow-400 text-sm font-medium text-danger">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-2 h-5 w-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
-                </svg>
-                News
+                    <h3 class="text-base leading-normal font-semibold my-1">{{ $News->news_title }}</h3>
+                    <small class="d-block">News Date: {{ \Carbon\Carbon::parse($News->news_date)->format('F d, Y') }}</small><br>
+                    <small class="d-block">News Time: {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}</small>
+                    </figure>
+                    @endif
+                    @endif
+                    @empty
+                    <p class="text-white">No public News available.</p>
+                    @endforelse
             </div>
-            <img src="${imageSrc}" class="w-full mb-4 rounded-lg">
-            <p class="mb-6 text-gray-800">
-               <small>News Date: <u>${formattedDate}</u></small> <br>
-            <small>News Time: <u>${formattedTime}</u></small>
-            </p>
-            <p class="text-gray-800">
-                <strong> News Content:</strong> ${content}
-            </p>
-        `;
-                    modal.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
-                }
-            }
 
-            function closeModal() {
-                const modal = document.getElementById('newsModal');
-                modal.classList.add('hidden');
-                document.body.style.overflow = ''; // Enable scrolling on the main page
-            }
-
-            document.getElementById('closeModal').addEventListener('click', closeModal);
-        </script>
-
-        <div id="eventModal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden">
-            <div class="absolute w-full h-full bg-gray-900 opacity-70"></div>
-            <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <div class="py-4 text-left px-6">
-                    <div class="flex justify-between items-center pb-3">
-                        <h2 class="text-2xl font-bold text-gray-800">Event Details</h2>
-                        <button id="close2Modal" class="text-gray-600 hover:text-gray-800">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <div id="modal2Body"></div>
-                </div>
-            </div>
         </div>
-        <section class="mb-10 text-center mt-5">
-            @php
 
-            $sortedEvent = $events->SortByDesc('created_at');
-            // Get current date
-
-            @endphp
-            <div class="flex justify-center items-center mb-10">
-
-                <h1 class="text-4xl font-bold text-white news-title">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    Latest Events
-                </h1>
+        <div id="events" class="section relative z-0 py-12 md:py-16 bg-white">
+            <div class="container xl:max-w-6xl mx-auto px-4">
+                <!-- Heading start -->
+                <header class="text-center mx-auto mb-12 lg:px-20">
+                    <h2 class="text-2xl leading-normal mb-2 font-bold text-black">Latest Events</h2>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
+                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary" style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
+                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                    </svg>
+                    <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">
+                        We craft innovative and captivating events that inspire and delight.</p>
+                </header><!-- End heading -->
             </div>
-            <div class="flex flex-wrap justify-center">
+
+            <div class="flex flex-wrap flex-row">
+                @php
+                $sortedEvent = $events->SortByDesc('created_at');
+                @endphp
                 @forelse($sortedEvent as $Event)
                 @if($Event->status === 'public')
                 @php
@@ -508,230 +256,437 @@
                 @endphp
                 {{-- Check if event date is in the future --}}
                 @if($eventDate->gt($today))
-                <div class="max-w-sm mb-6 mr-4">
-                    <div class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20" data-te-ripple-init data-te-ripple-color="light">
-                        <img src="{{ asset('storage/events_images/' . basename($Event->event_image)) }}" class="w-full h-64 object-cover">
-                        <a href="#" onclick="openModal2('{{ $Event->event_name }}', '{{ $Event->event_date }}', '{{ $Event->event_time }}', '{{ $Event->event_description }}', '{{ asset('storage/events_images/' . basename($Event->event_image)) }}')">
-                            <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
-                                <i class="fa-solid fa-eye text-white text-4xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition duration-300 ease-in-out hover:opacity-100"></i>
+
+                <figure class="flex-shrink max-w-full px-3 w-full sm:w-1/2 lg:w-1/5 group wow fadeInUp mb-8" data-wow-duration="1s">
+                    <div class="relative overflow-hidden cursor-pointer mb-6">
+                        <a href="{{ asset('storage/events_images/' . basename($Event->event_image)) }}" data-gallery="gallery1" data-glightbox="News title: {{ $Event->event_name }}; description: {{$Event->event_description}}<br> <br> Event Date: {{ \Carbon\Carbon::parse($Event->event_date)->format('F d, Y') }} <br> Event Time: {{ \Carbon\Carbon::parse($Event->event_time)->format('h:i A') }}" class="glightbox3">
+                            <img class="block w-full h-auto transform duration-500 " src="{{ asset('storage/events_images/' . basename($Event->event_image)) }}" alt="Image Description">
+                            <div class="absolute inset-x-0 bottom-0 h-20 transition-opacity duration-500 ease-in opacity-0 group-hover:opacity-100 overflow-hidden px-4 py-2 text-gray-100 bg-black text-center">
+                                <h3 class="text-base leading-normal font-semibold my-1 text-white">{{ $Event->event_name}}</h3>
+                                <small class="d-block">{{ $Event->created_at->diffForHumans() }}</small>
                             </div>
                         </a>
                     </div>
-                    <h5 class="mt-3 mb-2 text-lg font-bold text-white event-title"><strong>Event Name: </strong>{{ $Event->event_name }}</h5>
-                    <div class="mb-3 flex items-center justify-center text-sm font-medium text-yellow-400">
-                        <small> <strong>{{ $Event->created_at->diffForHumans() }}</strong> </small><br>
-                    </div>
-                    <p class="text-neutral-300 justify-center ">
-                        <small>Event Date: {{ \Carbon\Carbon::parse($Event->event_date)->format('F d, Y') }}</small><br>
-                        <small>Event Time: {{ \Carbon\Carbon::parse($Event->event_time)->format('h:i A') }}</small>
-                    </p>
-
-                    <p class="text-neutral-300 justify-center">
-                        <strong>Content: </strong>{{ $Event->event_description }}
-                    </p>
-                </div>
+                    <h3 class="text-base leading-normal font-semibold my-1">{{ $Event->event_name}}</h3>
+                    <small class="d-block">Event Date: {{ \Carbon\Carbon::parse($Event->event_date)->format('F d, Y') }}</small><br>
+                    <small class="d-block">Event Time: {{ \Carbon\Carbon::parse($Event->event_times)->format('h:i A') }}</small>
+                </figure>
                 @endif
                 @endif
                 @empty
-                <p class="text-white">No public events available.</p>
+                <p class="text-white">No public Events available.</p>
                 @endforelse
             </div>
-        </section>
-        <footer class="text-center text-neutral-600 dark:text-neutral-200 lg:text-left">
-            <div class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
-                <div class="mr-12 hidden lg:block">
-                    <span>Get connected with us on social networks:</span>
-                </div>
 
-                <div class="flex justify-center">
-                    <a href="https://web.facebook.com/muslimaffairs.mce" class="mr-6 text-neutral-200 social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                        </svg>
-                    </a>
-                    <a href="#!" class="mr-6 text-neutral-200 social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                        </svg>
-                    </a>
-                    <a href="#!" class="mr-6 text-neutral-200 social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M7 11v2.4h3.97c-.16 1.029-1.2 3.02-3.97 3.02-2.39 0-4.34-1.979-4.34-4.42 0-2.44 1.95-4.42 4.34-4.42 1.36 0 2.27.58 2.79 1.08l1.9-1.83c-1.22-1.14-2.8-1.83-4.69-1.83-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.721-2.84 6.721-6.84 0-.46-.051-.81-.111-1.16h-6.61zm0 0 17 2h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2z" fill-rule="evenodd" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                    <a href="#!" class="mr-6 text-neutral-200 social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <a href="https://github.com/uhrzel" class="text-neutral-200 social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
-                    </a>
-                </div>
+        </div>
 
+
+        <!-- 
+        <div id="clients" class="section relative py-8 bg-white dark:bg-gray-800">
+            <div class="container xl:max-w-6xl mx-auto px-4">
+                <div class="lex flex-wrap flex-row -mx-4 justify-center">
+                    <div class="w-full px-4">
+                   
+                        <div id="post-carousel" class="navslider-hover splide post-carousel">
+                            <div class="splide__track">
+                                <div class="splide__list grayscale">
+                                    @foreach ($ads as $advertisement)
+                                    <div class="splide__slide">
+                                        <div class="w-full px-4 text-center pb-3">
+                                            <a href="#" target="_blank">
+                                                <img class="grayscale mx-auto opacity-80 hover:opacity-100 max-w-full h-auto" src="{{ asset('storage/ads_images/' . basename($advertisement->ads_images)) }}" alt="Image Description">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+ -->
+        <!-- Team start -->
+        <div id="team" class="section relative pt-20 pb-8 md:pt-16 bg-white dark:bg-gray-800">
+            <div class="container xl:max-w-6xl mx-auto px-4">
+                <!-- section header -->
+                <header class="text-center mx-auto mb-12">
+                    <h2 class="text-2xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100"><span class="font-light">Our</span> Team</h2>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
+                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary" style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
+                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                    </svg>
+                </header><!-- end section header -->
 
-            <div class="mx-6 py-10 text-center md:text-left">
-                <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-
-                    <div class="">
-                        <h6 class=" text-neutral-200 mb-4 flex justify-center font-semibold uppercase md:justify-start partnership-title">
-                            Partnership
-                        </h6>
-                        <p class="mb-4">
-                            <a href="#!" class="text-neutral-200 partnership-title">LGU/PLDU - South Cotabato
-                            </a>
-                        </p>
-                        <p class="mb-4">
-                            <a href="#!" class="text-neutral-200 partnership-title">None Government Organization (NGO)</a>
-                        </p>
-                        <p class="mb-4">
-                            <a href="#!" class="text-neutral-200 partnership-title">PNP</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-neutral-200 partnership-title">SF-PA</a>
-                        </p>
+                <!-- row -->
+                <div class="flex flex-wrap flex-row -mx-4 justify-center">
+                    <div class="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                        <div class="relative overflow-hidden bg-white dark:bg-gray-800 mb-12 hover-grayscale-0 wow fadeInUp" data-wow-duration="1s">
+                            <!-- team block -->
+                            <div class="relative overflow-hidden px-6">
+                                <img src="src/img/dummy/arzel.png" class="max-w-full h-auto mx-auto rounded-full bg-gray-50 grayscale" alt="title image">
+                            </div>
+                            <div class="pt-6 text-center">
+                                <p class="text-lg leading-normal font-bold mb-1">Arzel John Zolina</p>
+                                <p class="text-gray-500 leading-relaxed font-light">Founder CEO</p>
+                                <!-- social icon -->
+                                <div class="mt-2 mb-5 space-x-2">
+                                    <a class="hover:text-blue-700" aria-label="Twitter link" href="#">
+                                        <!-- <i class="fab fa-twitter text-twitter"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Facebook link" href="#">
+                                        <!-- <i class="fab fa-facebook text-facebook"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Instagram link" href="#">
+                                        <!-- <i class="fab fa-instagram text-instagram"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z"></path>
+                                            <path fill="currentColor" d="M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z"></path>
+                                            <path fill="currentColor" d="M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Linkedin link" href="#">
+                                        <!-- <i class="fab fa-linkedin text-linkedin"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- end team block -->
                     </div>
-                    <!-- Useful links section -->
-                    <div class="">
-                        <h6 class="text-neutral-200 mb-4 flex justify-center font-semibold uppercase md:justify-start useful-links-title">
-                            Useful links
-                        </h6>
-                        <p class="mb-4">
-                            <a href="https://web.facebook.com/muslimaffairs.mce" class="text-neutral-200 useful-links-title">Facebook</a>
-                        </p>
-                        <p class="mb-4">
-                            <a href="#" class="text-neutral-200 useful-links-title">Youtube</a>
-                        </p>
-                        <p class=" mb-4">
-                            <a href="mailto:maoInfoSys@gmail.com" class="text-neutral-200 useful-links-title">Gmail</a>
-                        </p>
-                        <p>
-                            <a href="#" class="text-neutral-200 useful-links-title">Linkedin</a>
-                        </p>
+
+                    <div class="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                        <!-- team block -->
+                        <div class="relative overflow-hidden bg-white dark:bg-gray-800 mb-12 hover-grayscale-0 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+                            <div class="relative overflow-hidden px-6">
+                                <img src="src/img/dummy/joref.png" class="max-w-full h-auto mx-auto rounded-full bg-gray-50 grayscale" alt="title image">
+                            </div>
+                            <div class="pt-6 text-center">
+                                <p class="text-lg leading-normal font-bold mb-1">Jorefe Marzon</p>
+                                <p class="text-gray-500 leading-relaxed font-light">Hipster</p>
+                                <!-- social icon -->
+                                <div class="mt-2 mb-5 space-x-2">
+                                    <a class="hover:text-blue-700" aria-label="Twitter link" href="#">
+                                        <!-- <i class="fab fa-twitter text-twitter"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Facebook link" href="#">
+                                        <!-- <i class="fab fa-facebook text-facebook"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Instagram link" href="#">
+                                        <!-- <i class="fab fa-instagram text-instagram"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z"></path>
+                                            <path fill="currentColor" d="M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z"></path>
+                                            <path fill="currentColor" d="M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Linkedin link" href="#">
+                                        <!-- <i class="fab fa-linkedin text-linkedin"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- end team block -->
                     </div>
 
-                    <div>
-                        <h6 class="text-neutral-200 mb-4 flex justify-center font-semibold uppercase md:justify-start contact-title">
-                            Contact
-                        </h6>
-                        <p class="text-neutral-200 mb-4 flex items-center justify-center md:justify-start contact-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-neutral-200 mr-3 h-5 w-5">
-                                <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                                <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                            </svg>
-                            Tupi South Cotabato,
-                            Philippines 9506
-                        </p>
-                        <p class="text-neutral-200 mb-4 flex items-center justify-center md:justify-start contact-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-neutral-200 mr-3 h-5 w-5">
-                                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                            </svg>
-                            MaoInfoSys@gmail.com
-                        </p>
-                        <p class="text-neutral-200 mb-4 flex items-center justify-center md:justify-start contact-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-neutral-200 mr-3 h-5 w-5">
-                                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
-                            </svg>
-                            +639154138624
-                        </p>
+                    <div class="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                        <!-- team block -->
+                        <div class="relative overflow-hidden bg-white dark:bg-gray-800 mb-12 hover-grayscale-0 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <div class="relative overflow-hidden px-6">
+                                <img src="src/img/dummy/sulayman.png" class="max-w-full h-auto mx-auto rounded-full bg-gray-50 grayscale" alt="title image">
+                            </div>
+                            <div class="pt-6 text-center">
+                                <p class="text-lg leading-normal font-bold mb-1">Sulayman Sacandal</p>
+                                <p class="text-gray-500 leading-relaxed font-light">Hustler</p>
+                                <!-- social icon -->
+                                <div class="mt-2 mb-5 space-x-2">
+                                    <a class="hover:text-blue-700" aria-label="Twitter link" href="#">
+                                        <!-- <i class="fab fa-twitter text-twitter"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Facebook link" href="#">
+                                        <!-- <i class="fab fa-facebook text-facebook"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Instagram link" href="#">
+                                        <!-- <i class="fab fa-instagram text-instagram"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z"></path>
+                                            <path fill="currentColor" d="M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z"></path>
+                                            <path fill="currentColor" d="M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Linkedin link" href="#">
+                                        <!-- <i class="fab fa-linkedin text-linkedin"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- end team block -->
+                    </div>
 
+                    <div class="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                        <!-- team block -->
+                        <div class="relative overflow-hidden bg-white dark:bg-gray-800 mb-12 hover-grayscale-0 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                            <div class="relative overflow-hidden px-6">
+                                <img src="src/img/dummy/admin.png" class="max-w-full h-auto mx-auto rounded-full bg-gray-50 grayscale" alt="title image">
+                            </div>
+                            <div class="pt-6 text-center">
+                                <p class="text-lg leading-normal font-bold mb-1">Admin</p>
+                                <p class="text-gray-500 leading-relaxed font-light">Administrator of Muslim Affairs office</p>
+                                <!-- social icon -->
+                                <div class="mt-2 mb-5 space-x-2">
+                                    <a class="hover:text-blue-700" aria-label="Twitter link" href="#">
+                                        <!-- <i class="fab fa-twitter text-twitter"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Facebook link" href="#">
+                                        <!-- <i class="fab fa-facebook text-facebook"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Instagram link" href="#">
+                                        <!-- <i class="fab fa-instagram text-instagram"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z"></path>
+                                            <path fill="currentColor" d="M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z"></path>
+                                            <path fill="currentColor" d="M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="hover:text-blue-700" aria-label="Linkedin link" href="#">
+                                        <!-- <i class="fab fa-linkedin text-linkedin"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="1rem" height="1rem" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- end team block -->
+                    </div>
+                </div><!-- end row -->
+            </div>
+        </div><!-- End Team-->
+
+        <!-- contact start -->
+        <div id="contact" class="section relative pb-20 bg-white dark:bg-gray-800">
+            <div class="container xl:max-w-6xl mx-auto px-4">
+                <div class="flex flex-wrap flex-row -mx-4 justify-center">
+                    <div class="max-w-ful px-4 w-full lg:w-8/12">
+                        <div class="bg-gray-50 border-b border-gray-100 w-full p-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                            <!-- section header -->
+                            <header class="text-center mx-auto mb-12 lg:px-20">
+                                <h2 class="text-2xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100"><span class="font-light">Contact</span> Us</h2>
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
+                                    <circle cx="50.1" cy="30.4" r="5" class="stroke-primary" style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
+                                    <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                                    <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary" style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                                </svg>
+                                <p class="text-gray-600 leading-relaxed font-light text-xl mx-auto pb-2">Have questions about information, please contact us.</p>
+                            </header><!-- end section header -->
+
+                            <form action="/" method="post" onsubmit="return validateForm()">
+                                @csrf
+                                <div class="flex flex-wrap flex-row -mx-4">
+                                    <div class="flex-shrink w-full max-w-full md:w-1/2 px-4 mb-6">
+                                        <label class="inline-block mb-2" for="name">Your Name</label>
+                                        <input type="text" name="name" class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border-b border-gray-100 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" id="name" require>
+                                        <div class="validate"></div>
+                                    </div>
+                                    <div class="flex-shrink w-full max-w-full md:w-1/2 px-4 mb-6">
+                                        <label class="inline-block mb-2" for="email">Your Email</label>
+                                        <input type="email" class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border-b border-gray-100 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="email" id="email" require>
+                                        <div class="validate"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label class="inline-block mb-2" for="subject">Subject</label>
+                                    <input type="text" class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border-b border-gray-100 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="subject" id="subject" require>
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="mb-6">
+                                    <label class="inline-block mb-2" for="messages">Message</label>
+                                    <textarea class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border-b border-gray-100 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="message" rows="10" id="messages" require></textarea>
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="text-center mb-6">
+                                    <button type="submit" class="py-2.5 px-10 inline-block text-center leading-normal text-gray-100 bg-black border border-black hover:text-white hover:ring-0 focus:outline-none focus:ring-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" class="inline-block mr-1" fill="currentColor" viewBox="0 0 512 512">
+                                            <rect x="48" y="96" width="416" height="320" rx="40" ry="40" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                            <polyline points="112 160 256 272 400 160" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
+                                        </svg>
+                                        Send message
+                                    </button>
+                                </div>
+                            </form><!-- end contact form -->
+                        </div>
                     </div>
                 </div>
-        </footer>
-    </main>
+            </div>
+        </div>
+
+    </main><!-- end main -->
+
+    <!-- =========={ FOOTER }==========  -->
+    <footer class="bg-gray-50 text-gray-700">
+        <!--Footer content-->
+        <div id="footer-content" class="relative pt-8 xl:pt-16 pb-6 xl:pb-12">
+            <div class="container xl:max-w-6xl mx-auto px-4 overflow-hidden">
+                <div class="flex flex-wrap flex-row lg:justify-between -mx-3">
+                    <div class="flex-shrink max-w-full w-full lg:w-2/5 px-3 lg:pr-16">
+                        <div class="flex items-center mb-2">
+                            <span class="text-3xl leading-normal mb-2 font-bold text-gray-800 mt-2">MaoInfoSys</span>
+                            <!-- <img src="src/img-min/logo.png" alt="LOGO"> -->
+                        </div>
+                        <p>Build in tailwind CSS</p>
+                        <ul class="space-x-3 mt-6 mb-6 Lg:mb-0">
+                            <!--facebook-->
+                            <li class="inline-block">
+                                <a target="_blank" class="hover:text-gray-800" rel="noopener noreferrer" href="https://facebook.com" title="Facebook">
+                                    <!-- <i class="fab fa-facebook fa-2x"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                            <!--twitter-->
+                            <li class="inline-block">
+                                <a target="_blank" class="hover:text-gray-800" rel="noopener noreferrer" href="https://twitter.com" title="Twitter">
+                                    <!-- <i class="fab fa-twitter fa-2x"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                            <!--youtube-->
+                            <li class="inline-block">
+                                <a target="_blank" class="hover:text-gray-800" rel="noopener noreferrer" href="https://youtube.com" title="Youtube">
+                                    <!-- <i class="fab fa-youtube fa-2x"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                            <!--instagram-->
+                            <li class="inline-block">
+                                <a target="_blank" class="hover:text-gray-800" rel="noopener noreferrer" href="https://instagram.com" title="Instagram">
+                                    <!-- <i class="fab fa-instagram fa-2x"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d="M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z"></path>
+                                        <path fill="currentColor" d="M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z"></path>
+                                        <path fill="currentColor" d="M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z"></path>
+                                    </svg>
+                                </a>
+                            </li><!--end instagram-->
+                        </ul>
+                    </div>
+                    <div class="flex-shrink max-w-full w-full lg:w-3/5 px-3">
+                        <div class="flex flex-wrap flex-row">
+                            <div class="flex-shrink max-w-full w-1/2 md:w-1/3 mb-6 lg:mb-0">
+                                <h4 class="text-base leading-normal mb-3 uppercase text-gray-800">Partnership</h4>
+                                <ul>
+                                    <li class="py-1 hover:text-gray-900"><a href="docs/index.html">LGU - South Cotabato</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="docs/components.html">NGO - South Cotabato</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="docs/credits.html">PNP</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="docs/changelogs.html">SF-PA</a></li>
+                                </ul>
+                            </div>
+                            <div class="flex-shrink max-w-full w-1/2 md:w-1/3 mb-6 lg:mb-0">
+                                <h4 class="text-base leading-normal mb-3 uppercase text-gray-800">Useful links</h4>
+                                <ul>
+                                    <li class="py-1 hover:text-gray-900"><a href="https://web.facebook.com/muslimaffairs.mce">Facebook</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="https://www.youtube.com/">Youtube</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="mailto:maoInfoSys@gmail.com">Gmail</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="https://www.linkedin.com/in/arzeljrz/">LinkedIn</a></li>
+                                </ul>
+                            </div>
+                            <div class="flex-shrink max-w-full w-1/2 md:w-1/3 mb-6 lg:mb-0">
+                                <h4 class="text-base leading-normal mb-3 uppercase text-gray-800">Legal</h4>
+                                <ul>
+                                    <li class="py-1 hover:text-gray-900"><a href="#">Privacy Policy</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="#">Terms of Use</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="#">License</a></li>
+                                    <li class="py-1 hover:text-gray-900"><a href="#">GDPR</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Start footer copyright-->
+        <div class="footer-dark">
+            <div class="container xl:max-w-6xl mx-auto px-4 py-4 border-t border-gray-200 border-opacity-10">
+                <div class="row">
+                    <div class="col-12 col-md text-center">
+                        <p class="d-block my-3">Muslim Affairs Office | All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--End footer copyright-->
+    </footer><!-- end footer -->
+
+    <!-- =========={ SCROLL TO TOP }==========  -->
+    <a href="#" class="back-top fixed p-4 rounded bg-gray-100 border border-gray-100 text-gray-500 dark:bg-gray-900 dark:border-gray-800 right-4 bottom-4 hidden" aria-label="Scroll To Top">
+        <svg width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V4a.5.5 0 01.5-.5z" clip-rule="evenodd"></path>
+            <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L8 3.707 5.354 6.354a.5.5 0 11-.708-.708l3-3z" clip-rule="evenodd"></path>
+        </svg>
+    </a>
+
+    <!--Vendor js-->
+    <script src="src/vendors/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="src/vendors/@splidejs/splide/dist/js/splide.min.js"></script>
+    <script src="src/vendors/typed.js/lib/typed.min.js"></script>
+    <script src="src/vendors/wow.js/dist/wow.min.js"></script>
+    <script src="src/vendors/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+    <!-- Start development js -->
+    <script src="src/js/theme.js"></script>
+    <!-- End development js -->
+
+    <!-- Production js -->
+    <!-- <script src="dist/js/scripts.js"></script> -->
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var subject = document.getElementById("subject").value;
+            var message = document.getElementById("messages").value;
+
+            if (name === "" || email === "" || subject === "" || message === "") {
+                alert("Please fill out all fields");
+                return false;
+            }
+        }
+    </script>
+
 </body>
-
-<script>
-    function openModal2(title, date, time, content, imageSrc) {
-        if (window.innerWidth > 768) {
-            const modal = document.getElementById('eventModal');
-            const modalBody = document.getElementById('modal2Body');
-            const eventDate = new Date(date);
-            // Format the date as "Month Day, Year"
-            const formattedDate = eventDate.toLocaleDateString('en-US', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric'
-            });
-            // Format the time as "HH:MM AM/PM"
-            const formattedTime = new Date(`2000-01-01T${time}`).toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-
-            modalBody.innerHTML = `
-            <h5 class="mb-3 text-lg text-gray-800 font-bold event-name"><strong>Event Name: </strong>${title}</h5>
-            <div class="mb-3 flex items-center text-yellow-400 text-sm font-medium text-danger">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-2 h-5 w-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
-                </svg>
-                Event
-            </div>
-            <img src="${imageSrc}" class="w-full mb-4 rounded-lg">
-            <p class="mb-6 text-gray-800">
-            <small>Event Date: <u>${formattedDate}</u></small> <br>
-            <small>Event Time: <u>${formattedTime}</u></small>
-            </p>
-            <p class="text-gray-800">
-                <strong> Event Description:</strong> ${content}
-            </p>
-        `;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Disable scrolling on the main page
-        }
-    }
-
-
-
-
-    function closeModal() {
-        const modal = document.getElementById('eventModal');
-        modal.classList.add('hidden');
-        document.body.style.overflow = ''; // Enable scrolling on the main page
-    }
-
-    document.getElementById('close2Modal').addEventListener('click', closeModal);
-
-
-    const mobileMenuButton = document.getElementById('mobileMenuButton');
-    const mobileNavLinks = document.getElementById('mobileNavLinks');
-
-    mobileMenuButton.addEventListener('click', () => {
-        mobileNavLinks.style.display = (mobileNavLinks.style.display === 'block') ? 'none' : 'block';
-    });
-
-    const menuButton = document.getElementById('mobileMenuButton');
-    const menuIcon = document.getElementById('menuIcon');
-
-    menuButton.addEventListener('click', function() {
-        // Toggle between hamburger and "x" icons
-        if (menuIcon.classList.contains('open')) {
-            // Change back to hamburger icon
-            menuIcon.innerHTML = `
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-`;
-            menuIcon.classList.remove('open');
-        } else {
-            // Change to "x" icon
-            menuIcon.innerHTML = `
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-`;
-            menuIcon.classList.add('open');
-        }
-    });
-    // Get the existing header element
-    var headerElement = document.getElementById("headerTitle");
-
-    // Create a new element with the mobile title
-    var mobileTitle = document.createElement("h1");
-    mobileTitle.innerHTML = "Muslim Affairs InfoSys";
-
-    // Insert the new mobile title before the existing header element
-    headerElement.parentNode.insertBefore(mobileTitle, headerElement);
-</script>
 
 </html>

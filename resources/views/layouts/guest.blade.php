@@ -16,20 +16,18 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <style>
-    .min-h-screen {
-        background-color: #052e16;
-    }
+
 </style>
 
 <body class="font-sans text-black antialiased ">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-200 ">
         <div>
             <a href="/">
                 <img src="{{ asset('img/logo1.png') }}" class="logo block h-20 w-auto" alt="Logo">
 
             </a>
         </div>
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 shadow-xl rounded-lg bg-green-800 dark:bg-green-900 transition duration-500 ease-in-out transform hover:scale-105">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 shadow-lg rounded-lg bg-gray-300 transition duration-500 ease-in-out transform hover:scale-105">
             {{ $slot }}
         </div>
 
