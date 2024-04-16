@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex ">
+        <div class="flex items-center">
             <h2 class="font-semibold text-xl text-white leading-tight w-full">
                 {{ __('News List') }}
             </h2>
@@ -10,20 +10,22 @@
                     <i class="fas fa-search text-gray-400"></i>
                 </div>
             </div>
-            <a href="{{ route('admin.newsCreate') }}" class="inline-flex items-center bg-blue-500 text-white rounded-full px-4 py-2 leading-none text-sm dark:hover:text-green-200">
+            <div class="mr-4">
+                <a href="{{ route('admin.newsCreate') }}" class="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white rounded-full px-4 py-2 leading-none text-sm ">
 
-                <i class="fas fa-plus mr-1"></i>
-                Create
-            </a>
+                    <i class="fas fa-plus"></i>
+                    <span class="ml-1">Create</span>
+                </a>
+            </div>
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-black">
-                        <thead class="text-xs text-white uppercase bg-indigo-700 ">
+                        <thead class="text-xs text-white uppercase bg-blue-800 ">
                             <tr>
                                 <th scope="col" class="px-6 py-3">News Title</th>
                                 <th scope="col" class="px-6 py-3">News Content</th>
@@ -52,7 +54,7 @@
                                     {{ \Carbon\Carbon::parse($News->news_time)->format('h:i A') }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('admin.newsShow', $News->id) }}" class="w-24  inline-block bg-indigo-500 text-white rounded-full px-4 py-2 leading-none dark:hover:text-blue-200">
+                                    <a href="{{ route('admin.newsShow', $News->id) }}" class="w-24  inline-block bg-blue-600 text-white rounded-full px-4 py-2 leading-none hover:bg-blue-800">
                                         <i class="fas fa-eye mr-1"></i>
                                         View
                                     </a>

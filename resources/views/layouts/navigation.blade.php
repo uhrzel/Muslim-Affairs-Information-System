@@ -6,7 +6,7 @@
     }
 
     .custom-style:hover {
-        color: yellow;
+        color: #4338CA;
 
     }
 

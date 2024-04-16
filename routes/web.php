@@ -76,6 +76,11 @@ Route::post('/', function (Request $request) {
 Route::fallback(function () {
     return view('errors.404');
 });
+// Custom route for handling 401 Unauthorized error
+Route::get('/errors/401', function () {
+    return view('errors.401');
+});
+
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

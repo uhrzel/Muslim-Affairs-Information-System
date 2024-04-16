@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex text-white">
+        <div class="flex items-center text-white">
             <h2 class="font-semibold text-xl leading-tight w-full">
                 {{ __('User List') }}
             </h2>
@@ -14,12 +14,12 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-800">
-                        <thead class="text-xs uppercase bg-indigo-700 text-white">
+                        <thead class="text-xs uppercase bg-blue-800 text-white">
                             <tr>
                                 <!--         <th scope="col" class="px-6 py-3">ID</th> -->
                                 <th scope="col" class="px-6 py-3">Name</th>
@@ -48,7 +48,7 @@
 
 
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('admin.userShow', $user->id) }}" class="w-24 inline-flex items-center bg-indigo-500 text-white rounded-full px-4 py-2 leading-none hover:bg-indigo-600">
+                                    <a href="{{ route('admin.userShow', $user->id) }}" class="w-24 inline-flex items-center bg-blue-600 text-white rounded-full px-4 py-2 leading-none hover:bg-blue-800">
                                         <i class="fas fa-eye mr-1"></i>
                                         View
                                     </a>

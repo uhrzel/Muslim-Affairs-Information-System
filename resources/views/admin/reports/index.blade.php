@@ -1,7 +1,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <x-app-layout>
         <x-slot name="header">
-            <div class="flex">
+            <div class="flex items-center">
                 <h2 class="font-semibold text-xl text-white leading-tight w-full">
                     @if(auth()->user()->type === 'admin')
                     {{ __('Complains from Client') }}
@@ -17,14 +17,13 @@
                         <i class="fas fa-search text-gray-400"></i>
                     </div>
                 </div>
-
-
                 @if(auth()->user()->type === 'user')
-                <a href="{{ route('admin.reportCreate') }}" class="inline-flex items-center bg-blue-500 text-white rounded-full px-4 py-2 leading-none text-sm dark:hover:text-green-200">
-
-                    <i class="fas fa-plus mr-1"></i>
-                    Create
-                </a>
+                <div class="mr-4">
+                    <a href="{{ route('admin.reportCreate') }}" class="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white rounded-full px-4 py-2 leading-none text-sm">
+                        <i class="fas fa-plus"></i>
+                        <span class="ml-1">Create</span>
+                    </a>
+                </div>
                 @endif
                 <div class="mr-10 flex items-center justify-end">
                     @if(auth()->user()->type === 'admin')
@@ -54,7 +53,7 @@
             </div>
         </x-slot>
 
-        <div class="py-10">
+        <div class="py-8">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class=" overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
