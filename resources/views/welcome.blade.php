@@ -122,7 +122,7 @@ License: You must have a valid license from official store to legally use the th
                             </h3>
                             <div class="mt-2">
                                 <p class="text-sm text-gray-500">
-                                    We use cookies to improve your browsing experience. Continuing to use this site means you agree & accept of our <a href="" class="hover:underline text-gray-900 text-sm hover:text-green-700">Cookie Policy & Privacy</a>
+                                    We use cookies to improve your browsing experience. Continuing to use this site means you agree & accept of our <a href="#" class="hover:underline text-gray-900 text-sm hover:text-green-700">Cookie Policy & Privacy</a>
                                 </p>
                             </div>
                         </div>
