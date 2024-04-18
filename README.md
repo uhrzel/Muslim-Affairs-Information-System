@@ -1,34 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Table of Contents
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+-   [Introduction](#introduction)
+-   [Users - Admin/Client](#admin-client)
+-   [Objectives](#objectives)
+-   [Landing Page](#landing-page)
+-   [Admin Module](#admin-module)
+-   [Client Module](#client-module)
 
-## Installation
+## Introduction
 
-<img src="https://github.com/uhrzel/muslim-affairs-information-system/blob/main/public/img/landing.png" alt="Picture of a man">
+The project titled "Muslim Affairs Office Information System" is specifically designed for the use of the Muslim Affairs Office. Its aim is to automate the office's daily operations and transactions, enhancing services for the Muslim community and residents overall. Traditionally, the office has relied on manual methods involving paper and pen for encoding and record-keeping, leading to inefficiencies and errors. Residents have had to physically visit the office for services and certification requests, which is outdated and inconvenient. Therefore, there's a pressing need to modernize and improve the system to better serve the Muslim community.
 
-1. Clone the repo and `cd` into it
-2. Run `composer install`
-3. Run `npm install`
-4. Copy and rename `.env.example` to `.env`
-5. Set your database credentials in your `.env` file
-6. Log in to your <a href="https://dashboard.pusher.com/">Pusher Dashboard</a> and create a new Pusher app
-7. Set your Pusher credentials in your `.env` file to enable real-time messaging with Pusher
-8. Run `npm run dev`
-9. Run `php artisan migrate`
-10. Run `php artisan serve`
-11. Visit `localhost:8000` in your browser
+Established in April 2010 by the Provincial Governor of South Cotabato, Honorable Reynaldo Sucayan Tamayo, Jr., alongside Muslim leader Sultan Rahman Paglas Ebrahim Al-Hajj, the Muslim Affairs Office, known as the Tupi Muslim Council of Elders, assists the Muslim community in Tupi Municipality. It operates under the Office of the Mayor within the Local Government Unit of Tupi.
 
-## Usage
+Several challenges necessitate an innovative solution in the form of the Muslim Affairs Office Information System:
 
-1. Register a new user
-2. Login with the new user
-3. Logout
+1. Difficulty in effectively delivering information to the community, sometimes resulting in misinformation.
+2. Human errors in manual report writing.
+3. Limited accessibility for the community to contact or reach out to the office.
+4. Challenges for residents in remote areas to communicate or report issues promptly.
+5. Lack of proper document storage, risking loss or exposure of confidential information.
 
-## License
+To address these challenges, the proposal suggests developing a comprehensive computerized system tailored to the needs of the Muslim Affairs Office. Benefits of such a system include streamlining data processing, reducing errors, improving document management efficiency, and facilitating quicker access to information.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The researchers have created an Information System to meet these needs, providing software infrastructure and trained personnel to manage and disseminate information effectively. This system organizes and stores data for future use, leveraging technology to enhance organizational processes and improve overall efficiency.
+
+## Admin Client
+
+1. **Muslim Individuals**:
+
+    - Users who access the system to receive information, news reports, and updates relevant to the Muslim community.
+    - Utilize the system to interact with the messenger bot for reporting problems or cases requiring assistance.
+    - Benefit from the system's efficiency in accessing accurate information and reports submitted by the community.
+
+2. **Admin/User (Moderator)**:
+    - Responsible for managing and maintaining the system.
+    - Has access to all features and functionalities of the system.
+    - Manages the delivery of information, news reports, and current events to the Muslim community.
+    - Ensures records are easily accessible, accurate, complete, and usable.
+    - Monitors and responds to messages received through the messenger bot, addressing community concerns or issues promptly.
+    - Generates information and statistical reports on settled and unsettled cases for evaluation and decision-making.
+    - Analyzes data to make informed decisions regarding the affairs of the Muslim community.
+
+## Objectives
+
+• To be able to develop a system that has an effective method of delivering information, news reports, and current events to the Muslim Community;
+• to develop a system that can easily find records, ensuring accurate, complete, accessible, and usable;
+• to be able to develop a system that enhances receiving accurate information, reports, and efficiency, the system automatically records all information and reports that have been submitted;
+• to be able to develop a system of that messenger bot that can send/reply to messages where the Muslim community can interact and report any problems/cases that need help or assistance immediately;
+• to be able to develop a system that will automatically generate information, and statistical reports of the settled/unsettled cases for evaluation and make it easy for the moderator to analyze data and make informed decisions.
+
+### Landing Page
+
+-   Here are the images related to the Information posted in Muslim Affairs Office Information System
+
+    **Landing Page**  
+     ![Introduction](public/mao-img/landing.png)
+    ![Advertisements](public/mao-img/landing-ads.png)
+    ![Public News](public/mao-img/landing-news.png)
+    ![Public Events](public/mao-img/landing-events.png)
+    ![Public Contact](public/mao-img/landing-contact.png)
+    ![Footer](public/mao-img/landing-footer.png)
+
+## Admin Module
+
+-   Here are the images related to the Admin Side of Muslim Affairs Office Information System (MAO Infosys) project:
+
+    **Admin Module**
+    ![Login](public/mao-img/login.png)
+    ![Register](public/mao-img/reister.png)
+    ![Users](public/mao-img/admin/dashboard.png)
+    ![Messenger](public/mao-img/admin/messenger.png)
+    ![Complains](public/mao-img/admin/complains.png)
+    ![Advertisements](public/mao-img/admin//ads.png)
+    ![Events](public/mao-img/admin/events.png)
+    ![news](public/mao-img/admin/news.png)
+    ![Statistics](public/mao-img/admin/stat.png)
+    ![User Logs](public/mao-img/admin/logs.png)
+
+## Client Module
+
+-   Here are the images related to the Client Side of Muslim Affairs Office Information System (MAO Infosys) project:
+
+**Client Module**
+![Login](public/mao-img/login.png)
+![Register](public/mao-img/register.png)
+![Private News](public/mao-img/client/dashboard.png)
+![Private Events](public/mao-img/client/dashboard2.png)
+![Messenger](public/mao-img/client/messenger.png)
+![Complains](public/mao-img/client/complains.png)
