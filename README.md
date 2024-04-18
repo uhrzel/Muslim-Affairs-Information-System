@@ -44,11 +44,11 @@ The researchers have created an Information System to meet these needs, providin
 
 ## Objectives
 
-• To be able to develop a system that has an effective method of delivering information, news reports, and current events to the Muslim Community;
-• to develop a system that can easily find records, ensuring accurate, complete, accessible, and usable;
-• to be able to develop a system that enhances receiving accurate information, reports, and efficiency, the system automatically records all information and reports that have been submitted;
-• to be able to develop a system of that messenger bot that can send/reply to messages where the Muslim community can interact and report any problems/cases that need help or assistance immediately;
-• to be able to develop a system that will automatically generate information, and statistical reports of the settled/unsettled cases for evaluation and make it easy for the moderator to analyze data and make informed decisions.
+-   To be able to develop a system that has an effective method of delivering information, news reports, and current events to the Muslim Community.
+-   To develop a system that can easily find records, ensuring accurate, complete, accessible, and usable.
+-   To be able to develop a system that enhances receiving accurate information, reports, and efficiency, the system automatically records all information and reports that have been submitted.
+-   To be able to develop a system of that messenger bot that can send/reply to messages where the Muslim community can interact and report any problems/cases that need help or assistance immediately.
+-   To be able to develop a system that will automatically generate information, and statistical reports of the settled/unsettled cases for evaluation and make it easy for the moderator to analyze data and make informed decisions.
 
 ### Landing Page
 
@@ -84,7 +84,7 @@ The researchers have created an Information System to meet these needs, providin
     </td>
   </tr>
 </table>
-<link rel="shortcut icon" type="image/png" href="public/img/man.png">
+ <link rel="icon" type="image/png" href="{{ asset('img/man.png') }}" />
 
 ## Admin Module
 
