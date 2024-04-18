@@ -103,8 +103,6 @@ The researchers have created an Information System to meet these needs, providin
       <b>Users</b><br>
       <img src="public/mao-img/admin/dashboard.png" height="200">
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <b>Messenger</b><br>
       <img src="public/mao-img/admin/messenger.png" height="200">
