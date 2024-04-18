@@ -54,38 +54,119 @@ The researchers have created an Information System to meet these needs, providin
 
 -   Here are the images related to the Information posted in Muslim Affairs Office Information System
 
-    **Landing Page**  
-     ![Introduction](public/mao-img/landing.png)
-    ![Advertisements](public/mao-img/landing-ads.png)
-    ![Public News](public/mao-img/landing-news.png)
-    ![Public Events](public/mao-img/landing-events.png)
-    ![Public Contact](public/mao-img/landing-contact.png)
-    ![Footer](public/mao-img/landing-footer.png)
+<table>
+  <tr>
+    <td align="center">
+      <b>Introduction</b><br>
+      <img src="public/mao-img/landing.png" height="200">
+    </td>
+    <td align="center">
+      <b>Advertisements</b><br>
+      <img src="public/mao-img/landing-ads.png" height="200">
+    </td>
+    <td align="center">
+      <b>Public News</b><br>
+      <img src="public/mao-img/landing-news.png" height="200">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Public Events</b><br>
+      <img src="public/mao-img/landing-events.png" height="200">
+    </td>
+    <td align="center">
+      <b>Public Contact</b><br>
+      <img src="public/mao-img/landing-contact.png" height="200">
+    </td>
+    <td align="center">
+      <b>Footer</b><br>
+      <img src="public/mao-img/landing-footer.png" height="200">
+    </td>
+  </tr>
+</table>
 
 ## Admin Module
 
 -   Here are the images related to the Admin Side of Muslim Affairs Office Information System (MAO Infosys) project:
 
-    **Admin Module**
-    ![Login](public/mao-img/login.png)
-    ![Register](public/mao-img/reister.png)
-    ![Users](public/mao-img/admin/dashboard.png)
-    ![Messenger](public/mao-img/admin/messenger.png)
-    ![Complains](public/mao-img/admin/complains.png)
-    ![Advertisements](public/mao-img/admin//ads.png)
-    ![Events](public/mao-img/admin/events.png)
-    ![news](public/mao-img/admin/news.png)
-    ![Statistics](public/mao-img/admin/stat.png)
-    ![User Logs](public/mao-img/admin/logs.png)
+<table>
+  <tr>
+    <td align="center">
+      <b>Login</b><br>
+      <img src="public/mao-img/login.png" height="200">
+    </td>
+    <td align="center">
+      <b>Register</b><br>
+      <img src="public/mao-img/register.png" height="200">
+    </td>
+    <td align="center">
+      <b>Users</b><br>
+      <img src="public/mao-img/admin/dashboard.png" height="200">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Messenger</b><br>
+      <img src="public/mao-img/admin/messenger.png" height="200">
+    </td>
+    <td align="center">
+      <b>Complains</b><br>
+      <img src="public/mao-img/admin/complains.png" height="200">
+    </td>
+    <td align="center">
+      <b>Advertisements</b><br>
+      <img src="public/mao-img/admin//ads.png" height="200">
+    </td>
+       <td align="center">
+      <b>Events</b><br>
+      <img src="public/mao-img/admin/events.png" height="200">
+    </td>
+       <td align="center">
+      <b>News</b><br>
+      <img src="public/mao-img/admin/news.png" height="200">
+    </td>
+       <td align="center">
+      <b>Statistics</b><br>
+      <img src="public/mao-img/admin/stat.png" height="200">
+    </td>
+       <td align="center">
+      <b>User Logs</b><br>
+      <img src="public/mao-img/admin/logs.png" height="200">
+    </td>
+  </tr>
+</table>
 
 ## Client Module
 
 -   Here are the images related to the Client Side of Muslim Affairs Office Information System (MAO Infosys) project:
 
-**Client Module**
-![Login](public/mao-img/login.png)
-![Register](public/mao-img/register.png)
-![Private News](public/mao-img/client/dashboard.png)
-![Private Events](public/mao-img/client/dashboard2.png)
-![Messenger](public/mao-img/client/messenger.png)
-![Complains](public/mao-img/client/complains.png)
+<table>
+  <tr>
+    <td align="center">
+      <b>Login</b><br>
+      <img src="public/mao-img/login.png" height="200">
+    </td>
+    <td align="center">
+      <b>Register</b><br>
+      <img src="public/mao-img/register.png" height="200">
+    </td>
+    <td align="center">
+      <b>Private News</b><br>
+      <img src="public/mao-img/client/dashboard.png" height="200">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>Private Events</b><br>
+      <img src="public/mao-img/client/dashboard2.png" height="200">
+    </td>
+    <td align="center">
+      <b>Messenger</b><br>
+      <img src="public/mao-img/client/messenger.png" height="200">
+    </td>
+    <td align="center">
+      <b>Complains</b><br>
+      <img src="public/mao-img/client/complains.png" height="200">
+    </td>
+  </tr>
+</table>
