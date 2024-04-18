@@ -52,7 +52,7 @@ The researchers have created an Information System to meet these needs, providin
 
 ### Landing Page
 
--   Here are the images related to the Information posted in Muslim Affairs Office Information System
+-   Here are the images related to the Information posted in Muslim Affairs Office Information System.
 
 <table>
   <tr>
@@ -84,10 +84,11 @@ The researchers have created an Information System to meet these needs, providin
     </td>
   </tr>
 </table>
+<link rel="shortcut icon" type="image/png" href="public/img/man.png">
 
 ## Admin Module
 
--   Here are the images related to the Admin Side of Muslim Affairs Office Information System (MAO Infosys) project:
+-   Here are the images related to the Admin Side of Muslim Affairs Office Information System (MAO Infosys) project.
 
 <table>
   <tr>
@@ -138,7 +139,6 @@ The researchers have created an Information System to meet these needs, providin
       <img src="public/mao-img/admin/logs.png" height="200">
     </td>
     </tr>
-  </tr>
 </table>
 
 ## Client Module
