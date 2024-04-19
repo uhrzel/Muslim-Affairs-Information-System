@@ -84,7 +84,6 @@ The researchers have created an Information System to meet these needs, providin
     </td>
   </tr>
 </table>
- <link rel="icon" type="image/png" href="{{ asset('img/man.png') }}" />
 
 ## Admin Module
 
