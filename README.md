@@ -58,7 +58,7 @@ The researchers have created an Information System to meet these needs, providin
   <tr>
     <td align="center">
       <b>Introduction</b><br>
-      <img src="public/mao-img/landing.png" height="200">
+      <img src="public/mao-img/landing.png" height="200" width="750">
     </td>
     <td align="center">
       <b>Advertisements</b><br>
