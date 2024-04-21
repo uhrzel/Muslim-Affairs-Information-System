@@ -173,7 +173,7 @@
                     labels: ['Total Advertisements'],
                     datasets: [{
                         label: 'Advertisement Data',
-                        data: [adsCount],
+                        data: [ads],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                         ],
