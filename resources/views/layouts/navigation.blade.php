@@ -41,11 +41,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs(['dashboard', 'admin.userShow', 'admin.userEdit', 'admin.users'])" class="custom-style nav-link-container">
-                        <i class="fas fa-home-alt mr-1"></i>{{ __('Dashboard') }}
+                        <i class="fa-solid fa-home-alt mr-1"></i>{{ __('Dashboard') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('messenger')" :active="request()->routeIs('messenger')" class="custom-style nav-link-container">
-                        <i class="fas fa-message mr-1"></i> {{ __('Messenger') }}
+                        <i class="fa-solid fa-message mr-1"></i> {{ __('Messenger') }}
                     </x-nav-link>
 
                     @if(Auth::user()->type == 'user')
@@ -132,42 +132,50 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="nav-link">
-                {{ __('Dashboard') }}
+                <i class="fa-solid fa-home-alt mr-1"></i>{{ __('Dashboard') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('messenger')" :active="request()->routeIs('messenger')" class="nav-link">
-                {{ __('Messenger') }}
+                <i class="fa-solid fa-message mr-1"></i> {{ __('Messenger') }}
+
             </x-responsive-nav-link>
 
             @if(Auth::user()->type == 'user')
             <x-responsive-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reportCreate', 'admin.reportShow', 'admin.reportEdit'])" class="nav-link">
-                {{ __('Complains') }}
+                <i class="fas fa-file-alt mr-1"></i> {{ __('Complains') }}
+
             </x-responsive-nav-link>
             @endif
 
             @if(Auth::user()->type == 'admin')
             <x-responsive-nav-link :href="route('admin.reports')" :active="request()->routeIs(['admin.reports', 'admin.reportShow', 'admin.reportEdit', 'admin.reportCreate'])" class="nav-link">
-                {{ __('Complains') }}
+                <i class="fas fa-file-alt mr-1"></i> {{ __('Complains') }}
+
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('admin.advertisement')" :active="request()->routeIs(['admin.advertisement', 'admin.advertisementShow', 'admin.advertisementsEdit'])" class="nav-link">
-                {{ __('Advertisements') }}
+                <i class="fas fa-bullhorn mr-1"></i>{{ __('Advertisements') }}
+
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('admin.events')" :active="request()->routeIs(['admin.events', 'admin.eventsShow', 'admin.eventsEdit'])" class="nav-link">
-                {{ __('Events') }}
+                <i class="fas fa-calendar-alt mr-1"></i> {{ __('Events') }}
+
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('admin.news')" :active="request()->routeIs(['admin.news', 'admin.newsShow', 'admin.newsEdit'])" class="nav-link">
-                {{ __('News') }}
+                <i class="fas fa-newspaper mr-1"></i> {{ __('News') }}
+
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('admin.statistics')" :active="request()->routeIs(['admin.statistics', 'admin.statisticsShow', 'admin.statisticsEdit'])" class="nav-link">
-                {{ __('Statistics') }}
+                <i class="fas fa-chart-line mr-1"></i> {{ __('Statistics') }}
+
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('admin.logs')" :active="request()->routeIs(['admin.logs', 'admin.logsShow', 'admin.logsEdit'])" class="nav-link">
-                {{ __('User Logs') }}
+                <i class="fas fa-history mr-1"></i> {{ __('User Logs') }}
+
             </x-responsive-nav-link>
             @endif
         </div>
@@ -180,7 +188,8 @@
             </div>
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')" class="nav-link">
-                    {{ __('Profile') }}
+                    <i class="fa-solid fa-user"></i> {{ __('Profile') }}
+
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -189,7 +198,7 @@
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();" class="nav-link">
-                        {{ __('Log Out') }}
+                        <i class="fa-solid fa-right-from-bracket"></i>{{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
