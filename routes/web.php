@@ -81,7 +81,7 @@ Route::get('/errors/401', function () {
     return view('errors.401');
 });
 
-
+Route::get('/reports/print', [ReportController::class, 'printReports'])->name('reports.print');
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/export/excel', [ExportController::class, 'excel'])->name('export.excel');

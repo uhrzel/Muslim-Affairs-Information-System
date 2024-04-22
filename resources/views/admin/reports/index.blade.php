@@ -1,4 +1,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+
+    </style>
     <x-app-layout>
         <x-slot name="header">
             <div class="flex items-center">
@@ -47,11 +50,40 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-
+                    <button type="button" id="printButton" class="text-white hover:bg-green-600 px-2 py-1 rounded-md text-xs border border-green-500 transition duration-300" onclick="printReport()">
+                        <i class="fa fa-print"></i> Print
+                    </button>
                     @endif
                 </div>
             </div>
         </x-slot>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function printReport() {
+                // Fetch the content of print.blade.php
+                fetch("{{ route('reports.print') }}")
+                    .then(response => response.text())
+                    .then(data => {
+                        // Create a hidden iframe
+                        const iframe = document.createElement('iframe');
+                        iframe.style.display = 'none';
+                        document.body.appendChild(iframe);
+
+                        // Write the fetched content to the iframe
+                        iframe.contentDocument.write(data);
+                        iframe.contentDocument.close();
+
+                        // Print the content
+                        iframe.contentWindow.print();
+
+                        // Remove the iframe from the DOM
+                        setTimeout(() => {
+                            document.body.removeChild(iframe);
+                        }, 1000); // Adjust the delay as needed
+                    })
+                    .catch(error => console.error('Error fetching print content:', error));
+            }
+        </script>
 
         <div class="py-8">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

@@ -112,6 +112,12 @@ class ReportController extends Controller
         return redirect()->route('admin.reports')->with('success', 'Report updated successfully.');
     }
 
+    public function printReports()
+    {
+        $reports = Report::all(); // Fetch all reports
+        return view('admin.reports.print', compact('reports'));
+    }
+
 
     /**
      * Remove the specified resource from storage.
