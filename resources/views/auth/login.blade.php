@@ -44,6 +44,12 @@
                 <button type="submit" class="w-full mt-4 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Log in</button>
             </div>
         </form>
+        <div class="mt-4">
+            <a href="{{ route('google-auth') }}" class="flex items-center justify-center w-full py-2 px-4 border border-indigo-600 rounded-md shadow-sm text-sm font-medium text-black hover:rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 transition-all duration-300 hover:border-indigo-600 hover:bg-indigo-600 hover:text-white">
+                <img src="src/img/google-logo.png" alt="Your Logo" class="mr-2 h-5 w-5 transition-all duration-300" /> Continue with Google
+            </a>
+        </div>
+
         @if (Route::has('password.request'))
         <div class="text-sm text-center mt-4">
             <a href="{{ route('password.request') }}" class="font-medium text-indigo-600 hover:text-indigo-500">

@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\LogsController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Models\Event;
 use App\Models\News;
 use App\Http\Controllers\ExportController;
@@ -80,6 +81,9 @@ Route::fallback(function () {
 Route::get('/errors/401', function () {
     return view('errors.401');
 });
+
+Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('/auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
 
 Route::get('/reports/print', [ReportController::class, 'printReports'])->name('reports.print');
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
